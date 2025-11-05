@@ -445,21 +445,42 @@ choices = st.session_state.shuffled_choices[st.session_state.q_index]
 st.markdown(f"<h3 style='text-align:center'>{q['question']}</h3>", unsafe_allow_html=True)
 
 # -----------------------------
-# CSS FOR LARGE BUTTONS
+# CSS FOR LARGE BUTTONS AND NAVIGATION
 # -----------------------------
 st.markdown("""
 <style>
-.big-button {
+.choice-button {
     width: 90%;
-    height: 60px;
+    max-width: 500px;
+    height: auto;
     font-size: 18px;
+    padding: 15px;
     margin: 10px auto;
     display: block;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+}
+.choice-button:hover {
+    background-color: #e0e0e0;
+}
+.nav-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
 }
 .nav-button {
     width: 120px;
     height: 45px;
     font-size: 16px;
+}
+.feedback {
+    text-align:center;
+    font-size:16px;
+    margin-top:10px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -477,22 +498,27 @@ for choice in choices:
             st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
 
 if st.session_state.feedback:
-    st.markdown(f"<p style='text-align:center;font-size:16px'>{st.session_state.feedback}</p>", unsafe_allow_html=True)
+    st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
 # NAVIGATION BUTTONS
 # -----------------------------
+prev_disabled = st.session_state.q_index == 0
+next_disabled = st.session_state.q_index == len(questions) - 1
+
+st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
 col1, col2 = st.columns([1, 1])
 with col1:
-    if st.button("⬅️ Previous", key="prev"):
+    if st.button("⬅️ Previous", key="prev", disabled=prev_disabled):
         if st.session_state.q_index > 0:
             st.session_state.q_index -= 1
             st.session_state.feedback = ""
 with col2:
-    if st.button("Next ➡️", key="next"):
+    if st.button("Next ➡️", key="next", disabled=next_disabled):
         if st.session_state.q_index < len(questions) - 1:
             st.session_state.q_index += 1
             st.session_state.feedback = ""
+st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
 # PROGRESS
