@@ -417,29 +417,36 @@ questions = [
         "explanation": "Thick CO₂ atmosphere traps heat efficiently."
     }
 ]
-
 # -----------------------------
 # SESSION STATE INIT
 # -----------------------------
 if "q_index" not in st.session_state:
     st.session_state.q_index = 0
+
+if "shuffled_questions" not in st.session_state:
+    st.session_state.shuffled_questions = random.sample(questions, len(questions))  # Shuffle questions
+
 if "user_answers" not in st.session_state:
-    st.session_state.user_answers = [None] * len(questions)
+    st.session_state.user_answers = [None] * len(st.session_state.shuffled_questions)
+
 if "score" not in st.session_state:
     st.session_state.score = 0
+
 if "feedback" not in st.session_state:
     st.session_state.feedback = ""
 
 # -----------------------------
-# SHUFFLE CHOICES
+# SHUFFLE CHOICES PER QUESTION
 # -----------------------------
 if "shuffled_choices" not in st.session_state:
-    st.session_state.shuffled_choices = [random.sample(q["choices"], len(q["choices"])) for q in questions]
+    st.session_state.shuffled_choices = [
+        random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions
+    ]
 
 # -----------------------------
-# DISPLAY QUESTION
+# DISPLAY CURRENT QUESTION
 # -----------------------------
-q = questions[st.session_state.q_index]
+q = st.session_state.shuffled_questions[st.session_state.q_index]
 choices = st.session_state.shuffled_choices[st.session_state.q_index]
 
 st.markdown(f"<h3 style='text-align:center'>{q['question']}</h3>", unsafe_allow_html=True)
@@ -452,7 +459,7 @@ st.markdown("""
 .choice-button {
     width: 90%;
     max-width: 500px;
-    height: auto;
+    min-height: 60px;
     font-size: 18px;
     padding: 15px;
     margin: 10px auto;
@@ -468,7 +475,7 @@ st.markdown("""
 .nav-container {
     width: 90%;
     max-width: 500px;
-    margin: 10px auto;
+    margin: 20px auto 10px auto;
     display: flex;
     justify-content: space-between;
 }
@@ -486,7 +493,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# DISPLAY CHOICES AS BIG BUTTONS
+# DISPLAY CHOICES AS LARGE RECTANGULAR BUTTONS
 # -----------------------------
 for choice in choices:
     if st.button(choice, key=f"{st.session_state.q_index}_{choice}", help="Click to answer"):
@@ -504,7 +511,7 @@ if st.session_state.feedback:
 # NAVIGATION BUTTONS
 # -----------------------------
 prev_disabled = st.session_state.q_index == 0
-next_disabled = st.session_state.q_index == len(questions) - 1
+next_disabled = st.session_state.q_index == len(st.session_state.shuffled_questions) - 1
 
 st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
 col1, col2 = st.columns([1, 1])
@@ -515,14 +522,14 @@ with col1:
             st.session_state.feedback = ""
 with col2:
     if st.button("Next ➡️", key="next", disabled=next_disabled):
-        if st.session_state.q_index < len(questions) - 1:
+        if st.session_state.q_index < len(st.session_state.shuffled_questions) - 1:
             st.session_state.q_index += 1
             st.session_state.feedback = ""
 st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
-# PROGRESS
+# PROGRESS AND SCORE
 # -----------------------------
-st.progress((st.session_state.q_index + 1) / len(questions))
-st.caption(f"Question {st.session_state.q_index + 1} of {len(questions)}")
-st.metric("Score", f"{st.session_state.score} / {len(questions)}")
+st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
+st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
+st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
