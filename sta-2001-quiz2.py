@@ -1,9 +1,7 @@
 import streamlit as st
 import random
 
-st.set_page_config(page_title="Space & Planetary Quiz 2025", layout="centered")
-st.title("🌞 Solar System & Space Quiz")
-st.write("Swipe through questions to practice theory and quick reasoning. Click **Check Answer** to see explanations!")
+st.set_page_config(page_title="Stochastic Processes Quiz 2025", layout="centered")
 
 # -----------------------------
 # QUESTIONS (same as before)
@@ -427,87 +425,116 @@ questions = [
 # -----------------------------
 # SESSION STATE INIT
 # -----------------------------
-if "shuffled_questions" not in st.session_state:
-    st.session_state.shuffled_questions = random.sample(questions, len(questions))
-
 if "q_index" not in st.session_state:
     st.session_state.q_index = 0
-if "checked" not in st.session_state:
-    st.session_state.checked = False
-if "score" not in st.session_state:
-    st.session_state.score = 0
+
+if "shuffled_questions" not in st.session_state:
+    st.session_state.shuffled_questions = random.sample(questions, len(questions))  # Shuffle questions
+
 if "user_answers" not in st.session_state:
     st.session_state.user_answers = [None] * len(st.session_state.shuffled_questions)
 
-q = st.session_state.shuffled_questions[st.session_state.q_index]
+if "score" not in st.session_state:
+    st.session_state.score = 0
+
+if "feedback" not in st.session_state:
+    st.session_state.feedback = ""
 
 # -----------------------------
-# DISPLAY QUESTION
+# SHUFFLE CHOICES PER QUESTION
 # -----------------------------
-st.subheader(f"Question {st.session_state.q_index + 1}: {q['question']}")
-
-# Randomize choices per question if not done yet
 if "shuffled_choices" not in st.session_state:
-    st.session_state.shuffled_choices = [random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions]
-
-user_choice = st.radio("Choose your answer:", 
-                       st.session_state.shuffled_choices[st.session_state.q_index],
-                       index=None, key=f"choice_{st.session_state.q_index}")
-
-st.session_state.user_answers[st.session_state.q_index] = user_choice
-
-# Hint toggle
-if st.checkbox("Show Hint"):
-    st.info(q.get("hint", "No hint available for this question."))
+    st.session_state.shuffled_choices = [
+        random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions
+    ]
 
 # -----------------------------
-# CHECK ANSWER
+# DISPLAY CURRENT QUESTION
 # -----------------------------
-if st.button("Check Answer"):
-    if user_choice is None:
-        st.warning("Please select an answer first!")
-    else:
-        st.session_state.checked = True
-        if user_choice == q["answer"]:
+q = st.session_state.shuffled_questions[st.session_state.q_index]
+choices = st.session_state.shuffled_choices[st.session_state.q_index]
+
+st.markdown(f"<h3 style='text-align:center'>{q['question']}</h3>", unsafe_allow_html=True)
+
+# -----------------------------
+# CSS FOR LARGE BUTTONS AND NAVIGATION
+# -----------------------------
+st.markdown("""
+<style>
+.choice-button {
+    width: 90%;
+    max-width: 500px;
+    min-height: 60px;
+    font-size: 18px;
+    padding: 15px;
+    margin: 10px auto;
+    display: block;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+}
+.choice-button:hover {
+    background-color: #e0e0e0;
+}
+.nav-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-button {
+    width: 120px;
+    height: 45px;
+    font-size: 16px;
+}
+.feedback {
+    text-align:center;
+    font-size:16px;
+    margin-top:10px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# -----------------------------
+# DISPLAY CHOICES AS LARGE RECTANGULAR BUTTONS
+# -----------------------------
+for choice in choices:
+    if st.button(choice, key=f"{st.session_state.q_index}_{choice}", help="Click to answer"):
+        st.session_state.user_answers[st.session_state.q_index] = choice
+        if choice == q["answer"]:
+            st.session_state.feedback = f"✅ Correct! {q['explanation']}"
             st.session_state.score += 1
+        else:
+            st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
 
-if st.session_state.checked:
-    if user_choice == q["answer"]:
-        st.success(f"✅ Correct! {q['explanation']}")
-    else:
-        st.error(f"❌ Incorrect. Correct answer: **{q['answer']}**")
-        st.info(q["explanation"])
+if st.session_state.feedback:
+    st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
-# NAVIGATION
+# NAVIGATION BUTTONS
 # -----------------------------
-col1, col2 = st.columns(2)
+prev_disabled = st.session_state.q_index == 0
+next_disabled = st.session_state.q_index == len(st.session_state.shuffled_questions) - 1
+
+st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
+col1, col2 = st.columns([1, 1])
 with col1:
-    if st.button("⬅️ Previous", disabled=st.session_state.q_index == 0):
-        st.session_state.q_index -= 1
-        st.session_state.checked = False
-
+    if st.button("⬅️ Previous", key="prev", disabled=prev_disabled):
+        if st.session_state.q_index > 0:
+            st.session_state.q_index -= 1
+            st.session_state.feedback = ""
 with col2:
-    if st.button("Next ➡️", disabled=st.session_state.q_index == len(questions) - 1):
-        st.session_state.q_index += 1
-        st.session_state.checked = False
+    if st.button("Next ➡️", key="next", disabled=next_disabled):
+        if st.session_state.q_index < len(st.session_state.shuffled_questions) - 1:
+            st.session_state.q_index += 1
+            st.session_state.feedback = ""
+st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
-# PROGRESS & SCORE
+# PROGRESS AND SCORE
 # -----------------------------
-st.progress((st.session_state.q_index + 1) / len(questions))
-st.caption(f"Question {st.session_state.q_index + 1} of {len(questions)}")
-st.metric("Current Score", f"{st.session_state.score} / {len(questions)}")
-
-# -----------------------------
-# QUIZ SUMMARY
-# -----------------------------
-if st.session_state.q_index == len(questions) - 1:
-    if st.button("Show Quiz Summary"):
-        st.subheader("📊 Quiz Summary")
-        for i, q in enumerate(st.session_state.shuffled_questions):
-            answer = st.session_state.user_answers[i]
-            if answer == q["answer"]:
-                st.success(f"Q{i+1}: ✅ Correct ({answer})")
-            else:
-                st.error(f"Q{i+1}: ❌ Incorrect (Your: {answer}, Correct: {q['answer']})")
+st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
+st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
+st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
