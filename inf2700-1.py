@@ -667,8 +667,8 @@ if "shuffled_choices" not in st.session_state:
     st.session_state.shuffled_choices = [
         random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions
     ]
-if "clicked_choice" not in st.session_state:
-    st.session_state.clicked_choice = None  # Track the last clicked choice
+if "answered_current" not in st.session_state:
+    st.session_state.answered_current = False
 
 # -----------------------------
 # CURRENT QUESTION
@@ -699,7 +699,7 @@ st.markdown("""
 answered = st.session_state.user_answers[st.session_state.q_index] is not None
 
 for choice in choices:
-    # Add color feedback if already answered
+    # Show button color-coded if answered
     if answered:
         if choice == q["answer"]:
             style_class = "choice-button correct"
@@ -710,22 +710,20 @@ for choice in choices:
         st.markdown(f"<button class='{style_class}' disabled>{choice}</button>", unsafe_allow_html=True)
     else:
         if st.button(choice, key=f"{st.session_state.q_index}_{choice}"):
-            # Save answer
+            # Save the user's answer
             st.session_state.user_answers[st.session_state.q_index] = choice
-            st.session_state.clicked_choice = choice
-            # Set feedback
+            st.session_state.answered_current = True
             if choice == q["answer"]:
                 st.session_state.feedback = f"✅ Correct! {q['explanation']}"
                 st.session_state.score += 1
             else:
                 st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
-            # Force rerun safely
-            st.experimental_rerun()
+            # Do NOT call experimental_rerun() here — Streamlit automatically reruns
 
 # -----------------------------
 # SHOW FEEDBACK
 # -----------------------------
-if st.session_state.feedback:
+if st.session_state.feedback and st.session_state.answered_current:
     st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
@@ -738,16 +736,14 @@ st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
 col1, col2 = st.columns([1, 1])
 with col1:
     if st.button("⬅️ Previous", key="prev", disabled=prev_disabled):
-        if st.session_state.q_index > 0:
-            st.session_state.q_index -= 1
-            st.session_state.feedback = ""
-            st.session_state.clicked_choice = None
+        st.session_state.q_index -= 1
+        st.session_state.feedback = ""
+        st.session_state.answered_current = st.session_state.user_answers[st.session_state.q_index] is not None
 with col2:
     if st.button("Next ➡️", key="next", disabled=next_disabled):
-        if st.session_state.q_index < len(st.session_state.shuffled_questions) - 1:
-            st.session_state.q_index += 1
-            st.session_state.feedback = ""
-            st.session_state.clicked_choice = None
+        st.session_state.q_index += 1
+        st.session_state.feedback = ""
+        st.session_state.answered_current = st.session_state.user_answers[st.session_state.q_index] is not None
 st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
