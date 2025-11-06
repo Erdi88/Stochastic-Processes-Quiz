@@ -711,28 +711,32 @@ if st.session_state.feedback:
     st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
-# NAVIGATION BUTTONS
+# NAVIGATION BUTTONS (safe)
 # -----------------------------
 prev_disabled = st.session_state.q_index == 0
 next_disabled = st.session_state.q_index == len(st.session_state.shuffled_questions) - 1
 
 st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
-col1, col2 = st.columns([1,1])
+col1, col2 = st.columns([1, 1])
+
 with col1:
     if st.button("⬅️ Previous", key="prev", disabled=prev_disabled):
         if st.session_state.q_index > 0:
             st.session_state.q_index -= 1
             st.session_state.feedback = ""
-            st.session_state.user_answers[st.session_state.q_index] = None  # reset answer
-            st.experimental_rerun()
+            # Do NOT reset user_answers here unless you want them to answer again
+            # No experimental_rerun() needed
+
 with col2:
     if st.button("Next ➡️", key="next", disabled=next_disabled):
         if st.session_state.q_index < len(st.session_state.shuffled_questions) - 1:
             st.session_state.q_index += 1
             st.session_state.feedback = ""
-            st.session_state.user_answers[st.session_state.q_index] = None  # reset answer
-            st.experimental_rerun()
+            # Again, do NOT reset user_answers unless you want to force answer
+            # No experimental_rerun() needed
 st.markdown("</div>", unsafe_allow_html=True)
+
+
 
 # -----------------------------
 # PROGRESS AND SCORE
@@ -741,3 +745,4 @@ st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_quest
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
 
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
+
