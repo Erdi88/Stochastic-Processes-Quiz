@@ -573,7 +573,7 @@ if "feedback" not in st.session_state:
 # -----------------------------
 if "shuffled_choices" not in st.session_state:
     st.session_state.shuffled_choices = [
-        random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions
+        random.sample(q["options"], len(q["options"])) for q in st.session_state.shuffled_questions
     ]
 
 # -----------------------------
