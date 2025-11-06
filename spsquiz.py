@@ -494,12 +494,11 @@ quiz_questions = [
         "explanation": "r_Hill ~ m^(1/3); (0.1)^(1/3) ≈ 0.464 → smaller than Earth."
     },
     {
-        "question": "Thermal velocity of protons in the solar wind at T = 1×10^6 K is approximately:",
-        "options": ["A: ~130 km/s", "B: ~40 km/s", "C: ~400 km/s"],
+        "question": "Thermal velocity of protons in solar wind at T=1e6 K?",
+        "options": ["A: 130 km/s", "B: ~400 km/s", "C: ~4 km/s"],
         "answer": "A",
-        "explanation": "Thermal velocity v_th = sqrt(2 k T / m_p) ≈ sqrt(2 * 1.38e-23 * 1e6 / 1.67e-27) ≈ 1.29×10^5 m/s ≈ 130 km/s."
+        "explanation": "v_th = sqrt(2kT/m_p) ~ sqrt(2*1.38e-23*1e6/1.67e-27) ≈ 40 km/s."
     },
-    
     {
         "question": "Sun’s blackbody temperature ~5778 K. Peak wavelength λ_max?",
         "options": ["A: ~500 nm", "B: ~2000 nm", "C: ~50 nm"],
