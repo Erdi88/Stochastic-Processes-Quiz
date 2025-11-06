@@ -655,29 +655,23 @@ questions = [
 # -----------------------------
 if "q_index" not in st.session_state:
     st.session_state.q_index = 0
-
 if "shuffled_questions" not in st.session_state:
     st.session_state.shuffled_questions = random.sample(questions, len(questions))
-
 if "user_answers" not in st.session_state:
     st.session_state.user_answers = [None] * len(st.session_state.shuffled_questions)
-
 if "score" not in st.session_state:
     st.session_state.score = 0
-
 if "feedback" not in st.session_state:
     st.session_state.feedback = ""
-
 if "shuffled_choices" not in st.session_state:
     st.session_state.shuffled_choices = [
         random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions
     ]
-
-if "current_answer" not in st.session_state:
-    st.session_state.current_answer = None
+if "clicked_choice" not in st.session_state:
+    st.session_state.clicked_choice = None  # Track the last clicked choice
 
 # -----------------------------
-# DISPLAY CURRENT QUESTION
+# CURRENT QUESTION
 # -----------------------------
 q = st.session_state.shuffled_questions[st.session_state.q_index]
 choices = st.session_state.shuffled_choices[st.session_state.q_index]
@@ -685,7 +679,7 @@ choices = st.session_state.shuffled_choices[st.session_state.q_index]
 st.markdown(f"<h3 style='text-align:center'>{q['question']}</h3>", unsafe_allow_html=True)
 
 # -----------------------------
-# CSS FOR BUTTONS
+# CSS
 # -----------------------------
 st.markdown("""
 <style>
@@ -694,26 +688,45 @@ st.markdown("""
 .nav-container {width:90%; max-width:500px; margin:20px auto 10px auto; display:flex; justify-content:space-between;}
 .nav-button {width:120px; height:45px; font-size:16px;}
 .feedback {text-align:center; font-size:16px; margin-top:10px;}
+.correct {background-color:#d4edda; border-color:#c3e6cb;}
+.incorrect {background-color:#f8d7da; border-color:#f5c6cb;}
 </style>
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# DISPLAY CHOICES AS LARGE RECTANGULAR BUTTONS
+# DISPLAY CHOICES
 # -----------------------------
 answered = st.session_state.user_answers[st.session_state.q_index] is not None
 
 for choice in choices:
-    if st.button(choice, key=f"{st.session_state.q_index}_{choice}") and not answered:
-        st.session_state.user_answers[st.session_state.q_index] = choice
-        st.session_state.current_answer = choice
+    # Add color feedback if already answered
+    if answered:
         if choice == q["answer"]:
-            st.session_state.feedback = f"✅ Correct! {q['explanation']}"
-            st.session_state.score += 1
+            style_class = "choice-button correct"
+        elif choice == st.session_state.user_answers[st.session_state.q_index]:
+            style_class = "choice-button incorrect"
         else:
-            st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
-        # Force Streamlit to rerun immediately so feedback is displayed
-        st.experimental_rerun()
+            style_class = "choice-button"
+        st.markdown(f"<button class='{style_class}' disabled>{choice}</button>", unsafe_allow_html=True)
+    else:
+        if st.button(choice, key=f"{st.session_state.q_index}_{choice}"):
+            # Save answer
+            st.session_state.user_answers[st.session_state.q_index] = choice
+            st.session_state.clicked_choice = choice
+            # Set feedback
+            if choice == q["answer"]:
+                st.session_state.feedback = f"✅ Correct! {q['explanation']}"
+                st.session_state.score += 1
+            else:
+                st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
+            # Force rerun safely
+            st.experimental_rerun()
 
+# -----------------------------
+# SHOW FEEDBACK
+# -----------------------------
+if st.session_state.feedback:
+    st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
 # NAVIGATION BUTTONS
@@ -721,42 +734,26 @@ for choice in choices:
 prev_disabled = st.session_state.q_index == 0
 next_disabled = st.session_state.q_index == len(st.session_state.shuffled_questions) - 1
 
-col1, col2 = st.columns([1,1])
+st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
+col1, col2 = st.columns([1, 1])
 with col1:
     if st.button("⬅️ Previous", key="prev", disabled=prev_disabled):
         if st.session_state.q_index > 0:
             st.session_state.q_index -= 1
             st.session_state.feedback = ""
-            # restore previous answer feedback
-            prev_answer = st.session_state.user_answers[st.session_state.q_index]
-            if prev_answer:
-                st.session_state.current_answer = prev_answer
-                if prev_answer == st.session_state.shuffled_questions[st.session_state.q_index]["answer"]:
-                    st.session_state.feedback = f"✅ Correct! {st.session_state.shuffled_questions[st.session_state.q_index]['explanation']}"
-                else:
-                    st.session_state.feedback = f"❌ Incorrect. Correct: {st.session_state.shuffled_questions[st.session_state.q_index]['answer']}.\n{st.session_state.shuffled_questions[st.session_state.q_index]['explanation']}"
-
+            st.session_state.clicked_choice = None
 with col2:
     if st.button("Next ➡️", key="next", disabled=next_disabled):
         if st.session_state.q_index < len(st.session_state.shuffled_questions) - 1:
             st.session_state.q_index += 1
             st.session_state.feedback = ""
-            # restore next answer if already answered
-            next_answer = st.session_state.user_answers[st.session_state.q_index]
-            if next_answer:
-                st.session_state.current_answer = next_answer
-                if next_answer == st.session_state.shuffled_questions[st.session_state.q_index]["answer"]:
-                    st.session_state.feedback = f"✅ Correct! {st.session_state.shuffled_questions[st.session_state.q_index]['explanation']}"
-                else:
-                    st.session_state.feedback = f"❌ Incorrect. Correct: {st.session_state.shuffled_questions[st.session_state.q_index]['answer']}.\n{st.session_state.shuffled_questions[st.session_state.q_index]['explanation']}"
+            st.session_state.clicked_choice = None
+st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
-# PROGRESS AND SCORE
+# PROGRESS & SCORE
 # -----------------------------
 st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
-
-
-
 
