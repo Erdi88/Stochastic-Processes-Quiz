@@ -711,11 +711,9 @@ for choice in choices:
             st.session_state.score += 1
         else:
             st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
-        answered = True
+        # Force Streamlit to rerun immediately so feedback is displayed
+        st.experimental_rerun()
 
-# Show feedback below choices
-if st.session_state.user_answers[st.session_state.q_index]:
-    st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
 # NAVIGATION BUTTONS
@@ -758,6 +756,7 @@ with col2:
 st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
+
 
 
 
