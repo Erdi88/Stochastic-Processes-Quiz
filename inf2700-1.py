@@ -655,18 +655,26 @@ questions = [
 # -----------------------------
 if "q_index" not in st.session_state:
     st.session_state.q_index = 0
+
 if "shuffled_questions" not in st.session_state:
     st.session_state.shuffled_questions = random.sample(questions, len(questions))
+
 if "user_answers" not in st.session_state:
     st.session_state.user_answers = [None] * len(st.session_state.shuffled_questions)
+
 if "score" not in st.session_state:
     st.session_state.score = 0
+
 if "feedback" not in st.session_state:
     st.session_state.feedback = ""
+
 if "shuffled_choices" not in st.session_state:
     st.session_state.shuffled_choices = [
         random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions
     ]
+
+if "current_answer" not in st.session_state:
+    st.session_state.current_answer = None
 
 # -----------------------------
 # DISPLAY CURRENT QUESTION
@@ -695,18 +703,18 @@ st.markdown("""
 answered = st.session_state.user_answers[st.session_state.q_index] is not None
 
 for choice in choices:
-    # Show button, but only allow changing answer if not already answered
     if st.button(choice, key=f"{st.session_state.q_index}_{choice}") and not answered:
         st.session_state.user_answers[st.session_state.q_index] = choice
+        st.session_state.current_answer = choice
         if choice == q["answer"]:
             st.session_state.feedback = f"✅ Correct! {q['explanation']}"
             st.session_state.score += 1
         else:
             st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
-        answered = True  # mark as answered to prevent double-counting
+        answered = True
 
 # Show feedback below choices
-if st.session_state.feedback:
+if st.session_state.user_answers[st.session_state.q_index]:
     st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
@@ -715,28 +723,41 @@ if st.session_state.feedback:
 prev_disabled = st.session_state.q_index == 0
 next_disabled = st.session_state.q_index == len(st.session_state.shuffled_questions) - 1
 
-st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
-col1, col2 = st.columns([1, 1])
+col1, col2 = st.columns([1,1])
 with col1:
     if st.button("⬅️ Previous", key="prev", disabled=prev_disabled):
         if st.session_state.q_index > 0:
             st.session_state.q_index -= 1
             st.session_state.feedback = ""
+            # restore previous answer feedback
+            prev_answer = st.session_state.user_answers[st.session_state.q_index]
+            if prev_answer:
+                st.session_state.current_answer = prev_answer
+                if prev_answer == st.session_state.shuffled_questions[st.session_state.q_index]["answer"]:
+                    st.session_state.feedback = f"✅ Correct! {st.session_state.shuffled_questions[st.session_state.q_index]['explanation']}"
+                else:
+                    st.session_state.feedback = f"❌ Incorrect. Correct: {st.session_state.shuffled_questions[st.session_state.q_index]['answer']}.\n{st.session_state.shuffled_questions[st.session_state.q_index]['explanation']}"
+
 with col2:
     if st.button("Next ➡️", key="next", disabled=next_disabled):
         if st.session_state.q_index < len(st.session_state.shuffled_questions) - 1:
             st.session_state.q_index += 1
             st.session_state.feedback = ""
-st.markdown("</div>", unsafe_allow_html=True)
-
-
+            # restore next answer if already answered
+            next_answer = st.session_state.user_answers[st.session_state.q_index]
+            if next_answer:
+                st.session_state.current_answer = next_answer
+                if next_answer == st.session_state.shuffled_questions[st.session_state.q_index]["answer"]:
+                    st.session_state.feedback = f"✅ Correct! {st.session_state.shuffled_questions[st.session_state.q_index]['explanation']}"
+                else:
+                    st.session_state.feedback = f"❌ Incorrect. Correct: {st.session_state.shuffled_questions[st.session_state.q_index]['answer']}.\n{st.session_state.shuffled_questions[st.session_state.q_index]['explanation']}"
 
 # -----------------------------
 # PROGRESS AND SCORE
 # -----------------------------
 st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
-
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
+
 
 
