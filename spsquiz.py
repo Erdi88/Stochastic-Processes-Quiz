@@ -494,11 +494,12 @@ quiz_questions = [
         "explanation": "r_Hill ~ m^(1/3); (0.1)^(1/3) ≈ 0.464 → smaller than Earth."
     },
     {
-        "question": "Thermal velocity of protons in solar wind at T=1e6 K?",
-        "options": ["A: ~40 km/s", "B: ~400 km/s", "C: ~4 km/s"],
+        "question": "Thermal velocity of protons in the solar wind at T = 1×10^6 K is approximately:",
+        "options": ["A: ~130 km/s", "B: ~40 km/s", "C: ~400 km/s"],
         "answer": "A",
-        "explanation": "v_th = sqrt(2kT/m_p) ~ sqrt(2*1.38e-23*1e6/1.67e-27) ≈ 40 km/s."
+        "explanation": "Thermal velocity v_th = sqrt(2 k T / m_p) ≈ sqrt(2 * 1.38e-23 * 1e6 / 1.67e-27) ≈ 1.29×10^5 m/s ≈ 130 km/s."
     },
+    
     {
         "question": "Sun’s blackbody temperature ~5778 K. Peak wavelength λ_max?",
         "options": ["A: ~500 nm", "B: ~2000 nm", "C: ~50 nm"],
@@ -558,31 +559,19 @@ if "shuffled_questions" not in st.session_state:
 if "user_answers" not in st.session_state:
     st.session_state.user_answers = [None] * len(st.session_state.shuffled_questions)
 
+if "score" not in st.session_state:
+    st.session_state.score = 0
+
 if "feedback" not in st.session_state:
     st.session_state.feedback = ""
 
 # -----------------------------
-# SHUFFLE CHOICES PER QUESTION (use the correct key "options")
+# SHUFFLE CHOICES PER QUESTION
 # -----------------------------
 if "shuffled_choices" not in st.session_state:
-    # make sure we reference "options" (not "choices")
     st.session_state.shuffled_choices = [
-        random.sample(q["options"], len(q["options"])) for q in st.session_state.shuffled_questions
+        random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions
     ]
-
-# -----------------------------
-# Helper: recompute score from answers (prevents double-counting)
-# -----------------------------
-def recompute_score():
-    score = 0
-    for i, q in enumerate(st.session_state.shuffled_questions):
-        ans = st.session_state.user_answers[i]
-        if ans is not None and ans == q["answer"]:
-            score += 1
-    st.session_state.score = score
-
-if "score" not in st.session_state:
-    st.session_state.score = 0
 
 # -----------------------------
 # DISPLAY CURRENT QUESTION
@@ -629,7 +618,6 @@ st.markdown("""
     text-align:center;
     font-size:16px;
     margin-top:10px;
-    white-space: pre-wrap;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -638,18 +626,13 @@ st.markdown("""
 # DISPLAY CHOICES AS LARGE RECTANGULAR BUTTONS
 # -----------------------------
 for choice in choices:
-    # key must be unique — include q_index to avoid duplication
     if st.button(choice, key=f"{st.session_state.q_index}_{choice}", help="Click to answer"):
-        # extract the letter (e.g. "A" from "A: some text")
-        selected_letter = choice.split(":")[0].strip()
-        st.session_state.user_answers[st.session_state.q_index] = selected_letter
-
-        # update feedback and recompute score
-        if selected_letter == q["answer"]:
-            st.session_state.feedback = f"✅ Correct! {q.get('explanation','')}"
+        st.session_state.user_answers[st.session_state.q_index] = choice
+        if choice == q["answer"]:
+            st.session_state.feedback = f"✅ Correct! {q['explanation']}"
+            st.session_state.score += 1
         else:
-            st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q.get('explanation','')}"
-        recompute_score()
+            st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
 
 if st.session_state.feedback:
     st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
