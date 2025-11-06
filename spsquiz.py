@@ -9,6 +9,8 @@ st.set_page_config(page_title="Space Quiz 2025", layout="centered")
 
 # FYS-2019 Sun, Planets and Space - Phone-Friendly Quiz Database
 
+# FYS-2019 Sun, Planets and Space - Phone-Friendly Quiz Database
+
 quiz_questions = [
     # Star Formation
     {
@@ -281,6 +283,7 @@ quiz_questions = [
         "answer": "A",
         "explanation": "Gravitational perturbations and outgassing forces can alter comet trajectories."
     },
+    # Hill Sphere and Roche Limit
     {
         "question": "The Hill sphere radius depends on which parameters?",
         "options": ["A: Planet mass, Sun mass, distance to Sun", "B: Planet size only", "C: Distance only"],
@@ -495,7 +498,7 @@ quiz_questions = [
     },
     {
         "question": "Thermal velocity of protons in solar wind at T=1e6 K?",
-        "options": ["A: 130 km/s", "B: ~400 km/s", "C: ~4 km/s"],
+        "options": ["A: ~130 km/s", "B: ~400 km/s", "C: ~4 km/s"],
         "answer": "A",
         "explanation": "v_th = sqrt(2kT/m_p) ~ sqrt(2*1.38e-23*1e6/1.67e-27) ≈ 40 km/s."
     },
@@ -540,7 +543,8 @@ quiz_questions = [
         "options": ["A: Negative, magnitude ~6.67e7 * m", "B: Positive", "C: Zero"],
         "answer": "A",
         "explanation": "Gravitational potential is always negative; U ~ -GMm/r."
-    }  
+    }
+
 ]
 
 # Total questions: 50
