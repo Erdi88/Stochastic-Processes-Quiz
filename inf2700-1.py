@@ -655,23 +655,29 @@ questions = [
 # -----------------------------
 if "q_index" not in st.session_state:
     st.session_state.q_index = 0
+
 if "shuffled_questions" not in st.session_state:
-    st.session_state.shuffled_questions = random.sample(questions, len(questions))
+    st.session_state.shuffled_questions = random.sample(questions, len(questions))  # Shuffle questions
+
 if "user_answers" not in st.session_state:
     st.session_state.user_answers = [None] * len(st.session_state.shuffled_questions)
+
 if "score" not in st.session_state:
     st.session_state.score = 0
+
 if "feedback" not in st.session_state:
     st.session_state.feedback = ""
+
+# -----------------------------
+# SHUFFLE CHOICES PER QUESTION
+# -----------------------------
 if "shuffled_choices" not in st.session_state:
     st.session_state.shuffled_choices = [
         random.sample(q["choices"], len(q["choices"])) for q in st.session_state.shuffled_questions
     ]
-if "answered_current" not in st.session_state:
-    st.session_state.answered_current = False
 
 # -----------------------------
-# CURRENT QUESTION
+# DISPLAY CURRENT QUESTION
 # -----------------------------
 q = st.session_state.shuffled_questions[st.session_state.q_index]
 choices = st.session_state.shuffled_choices[st.session_state.q_index]
@@ -679,52 +685,73 @@ choices = st.session_state.shuffled_choices[st.session_state.q_index]
 st.markdown(f"<h3 style='text-align:center'>{q['question']}</h3>", unsafe_allow_html=True)
 
 # -----------------------------
-# CSS
+# CSS FOR LARGE BUTTONS AND NAVIGATION
 # -----------------------------
 st.markdown("""
 <style>
-.choice-button {width:90%; max-width:500px; min-height:60px; font-size:18px; padding:15px; margin:10px auto; display:block; text-align:left; border-radius:10px; background-color:#f0f0f0; border:2px solid #ccc;}
-.choice-button:hover {background-color:#e0e0e0;}
-.nav-container {width:90%; max-width:500px; margin:20px auto 10px auto; display:flex; justify-content:space-between;}
-.nav-button {width:120px; height:45px; font-size:16px;}
-.feedback {text-align:center; font-size:16px; margin-top:10px;}
-.correct {background-color:#d4edda; border-color:#c3e6cb;}
-.incorrect {background-color:#f8d7da; border-color:#f5c6cb;}
+.choice-button {
+    width: 90%;
+    max-width: 500px;
+    min-height: 60px;
+    font-size: 18px;
+    padding: 15px;
+    margin: 10px auto;
+    display: block;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+}
+.choice-button:hover {
+    background-color: #e0e0e0;
+}
+.nav-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-button {
+    width: 120px;
+    height: 45px;
+    font-size: 16px;
+}
+.feedback {
+    text-align:center;
+    font-size:16px;
+    margin-top:10px;
+}
 </style>
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# DISPLAY CHOICES
+# DISPLAY CHOICES AS LARGE RECTANGULAR BUTTONS
 # -----------------------------
 answered = st.session_state.user_answers[st.session_state.q_index] is not None
 
 for choice in choices:
-    # Show button color-coded if answered
     if answered:
+        # Color buttons based on correctness
         if choice == q["answer"]:
-            style_class = "choice-button correct"
+            style = "background-color:#d4edda; border-color:#c3e6cb;"  # greenish
         elif choice == st.session_state.user_answers[st.session_state.q_index]:
-            style_class = "choice-button incorrect"
+            style = "background-color:#f8d7da; border-color:#f5c6cb;"  # reddish
         else:
-            style_class = "choice-button"
-        st.markdown(f"<button class='{style_class}' disabled>{choice}</button>", unsafe_allow_html=True)
+            style = ""
+        st.markdown(
+            f"<button class='choice-button' style='{style}' disabled>{choice}</button>",
+            unsafe_allow_html=True
+        )
     else:
-        if st.button(choice, key=f"{st.session_state.q_index}_{choice}"):
-            # Save the user's answer
+        if st.button(choice, key=f"{st.session_state.q_index}_{choice}", help="Click to answer"):
             st.session_state.user_answers[st.session_state.q_index] = choice
-            st.session_state.answered_current = True
             if choice == q["answer"]:
                 st.session_state.feedback = f"✅ Correct! {q['explanation']}"
                 st.session_state.score += 1
             else:
                 st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
-            # Do NOT call experimental_rerun() here — Streamlit automatically reruns
 
-# -----------------------------
-# SHOW FEEDBACK
-# -----------------------------
-if st.session_state.feedback and st.session_state.answered_current:
-    st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
 # NAVIGATION BUTTONS
@@ -736,20 +763,19 @@ st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
 col1, col2 = st.columns([1, 1])
 with col1:
     if st.button("⬅️ Previous", key="prev", disabled=prev_disabled):
-        st.session_state.q_index -= 1
-        st.session_state.feedback = ""
-        st.session_state.answered_current = st.session_state.user_answers[st.session_state.q_index] is not None
+        if st.session_state.q_index > 0:
+            st.session_state.q_index -= 1
+            st.session_state.feedback = ""
 with col2:
     if st.button("Next ➡️", key="next", disabled=next_disabled):
-        st.session_state.q_index += 1
-        st.session_state.feedback = ""
-        st.session_state.answered_current = st.session_state.user_answers[st.session_state.q_index] is not None
+        if st.session_state.q_index < len(st.session_state.shuffled_questions) - 1:
+            st.session_state.q_index += 1
+            st.session_state.feedback = ""
 st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------
-# PROGRESS & SCORE
+# PROGRESS AND SCORE
 # -----------------------------
 st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
-
