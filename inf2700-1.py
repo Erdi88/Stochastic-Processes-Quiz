@@ -690,50 +690,43 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# DISPLAY CHOICES SAFELY
+# DISPLAY CHOICES AS LARGE RECTANGULAR BUTTONS
 # -----------------------------
-def answer_callback(choice):
-    st.session_state.user_answers[st.session_state.q_index] = choice
-    if choice == q["answer"]:
-        st.session_state.feedback = f"✅ Correct! {q['explanation']}"
-        st.session_state.score += 1
-    else:
-        st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
-    # No need to rerun immediately; feedback will show on next script rerun automatically
+answered = st.session_state.user_answers[st.session_state.q_index] is not None
 
-# Show buttons only if not answered yet
-if not st.session_state.user_answers[st.session_state.q_index]:
-    for choice in choices:
-        st.button(choice, key=f"{st.session_state.q_index}_{choice}", on_click=answer_callback, args=(choice,))
+for choice in choices:
+    # Show button, but only allow changing answer if not already answered
+    if st.button(choice, key=f"{st.session_state.q_index}_{choice}") and not answered:
+        st.session_state.user_answers[st.session_state.q_index] = choice
+        if choice == q["answer"]:
+            st.session_state.feedback = f"✅ Correct! {q['explanation']}"
+            st.session_state.score += 1
+        else:
+            st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
+        answered = True  # mark as answered to prevent double-counting
 
-# Show feedback
+# Show feedback below choices
 if st.session_state.feedback:
     st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 # -----------------------------
-# NAVIGATION BUTTONS (safe)
+# NAVIGATION BUTTONS
 # -----------------------------
 prev_disabled = st.session_state.q_index == 0
 next_disabled = st.session_state.q_index == len(st.session_state.shuffled_questions) - 1
 
 st.markdown("<div class='nav-container'>", unsafe_allow_html=True)
 col1, col2 = st.columns([1, 1])
-
 with col1:
     if st.button("⬅️ Previous", key="prev", disabled=prev_disabled):
         if st.session_state.q_index > 0:
             st.session_state.q_index -= 1
             st.session_state.feedback = ""
-            # Do NOT reset user_answers here unless you want them to answer again
-            # No experimental_rerun() needed
-
 with col2:
     if st.button("Next ➡️", key="next", disabled=next_disabled):
         if st.session_state.q_index < len(st.session_state.shuffled_questions) - 1:
             st.session_state.q_index += 1
             st.session_state.feedback = ""
-            # Again, do NOT reset user_answers unless you want to force answer
-            # No experimental_rerun() needed
 st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -745,4 +738,5 @@ st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_quest
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
 
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
+
 
