@@ -690,18 +690,21 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# DISPLAY CHOICES
+# DISPLAY CHOICES SAFELY
 # -----------------------------
+def answer_callback(choice):
+    st.session_state.user_answers[st.session_state.q_index] = choice
+    if choice == q["answer"]:
+        st.session_state.feedback = f"✅ Correct! {q['explanation']}"
+        st.session_state.score += 1
+    else:
+        st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
+    # No need to rerun immediately; feedback will show on next script rerun automatically
+
+# Show buttons only if not answered yet
 if not st.session_state.user_answers[st.session_state.q_index]:
     for choice in choices:
-        if st.button(choice, key=f"{st.session_state.q_index}_{choice}"):
-            st.session_state.user_answers[st.session_state.q_index] = choice
-            if choice == q["answer"]:
-                st.session_state.feedback = f"✅ Correct! {q['explanation']}"
-                st.session_state.score += 1
-            else:
-                st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
-            st.experimental_rerun()  # force immediate refresh to show feedback
+        st.button(choice, key=f"{st.session_state.q_index}_{choice}", on_click=answer_callback, args=(choice,))
 
 # Show feedback
 if st.session_state.feedback:
@@ -736,4 +739,5 @@ st.markdown("</div>", unsafe_allow_html=True)
 # -----------------------------
 st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
+
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
