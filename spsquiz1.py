@@ -1331,7 +1331,7 @@ st.markdown("""
 for choice in options:
     if st.button(choice, key=f"{st.session_state.q_index}_{choice}", help="Click to answer"):
         st.session_state.user_answers[st.session_state.q_index] = choice
-        if choice == q["answer"]:
+        if choice[0] == q["answer"]:
             st.session_state.feedback = f"✅ Correct! {q['explanation']}"
             st.session_state.score += 1
         else:
