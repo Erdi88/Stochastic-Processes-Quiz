@@ -1269,10 +1269,10 @@ if "feedback" not in st.session_state:
     st.session_state.feedback = ""
 
 # -----------------------------
-# SHUFFLE CHOICES PER QUESTION
+# SHUFFLE options PER QUESTION
 # -----------------------------
-if "shuffled_choices" not in st.session_state:
-    st.session_state.shuffled_choices = [
+if "shuffled_options" not in st.session_state:
+    st.session_state.shuffled_options = [
         random.sample(q["options"], len(q["options"])) for q in st.session_state.shuffled_questions
     ]
 
@@ -1280,7 +1280,7 @@ if "shuffled_choices" not in st.session_state:
 # DISPLAY CURRENT QUESTION
 # -----------------------------
 q = st.session_state.shuffled_questions[st.session_state.q_index]
-choices = st.session_state.shuffled_choices[st.session_state.q_index]
+options = st.session_state.shuffled_options[st.session_state.q_index]
 
 st.markdown(f"<h3 style='text-align:center'>{q['question']}</h3>", unsafe_allow_html=True)
 
@@ -1326,9 +1326,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# DISPLAY CHOICES AS LARGE RECTANGULAR BUTTONS
+# DISPLAY options AS LARGE RECTANGULAR BUTTONS
 # -----------------------------
-for choice in choices:
+for choice in options:
     if st.button(choice, key=f"{st.session_state.q_index}_{choice}", help="Click to answer"):
         st.session_state.user_answers[st.session_state.q_index] = choice
         if choice == q["answer"]:
