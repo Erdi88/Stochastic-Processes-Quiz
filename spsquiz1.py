@@ -6,664 +6,649 @@ st.set_page_config(page_title="Database Systems Quiz 2025", layout="centered")
 # -----------------------------
 # QUESTIONS (same as before)
 # -----------------------------
-
 questions = [
+    # SQL / Relational
     {
-        "question": "What is the main source of the Sun’s energy?",
-        "options": ["A: Gravitational contraction", "B: Nuclear fusion of hydrogen", "C: Radioactive decay", "D: Chemical reactions"],
-        "answer": "B",
-        "explanation": "The Sun’s energy comes from hydrogen nuclei fusing into helium in its core, releasing energy via E=mc²."
+        "question": "Which database object stores multiple rows with the same schema?",
+        "choices": ["A. Table", "B. View", "C. Index", "D. Sequence"],
+        "answer": "A. Table",
+        "explanation": "Tables store tuples with the same attributes in relational databases."
     },
     {
-        "question": "Which particles from the Sun reach Earth almost instantly after being produced in the core?",
-        "options": ["A: Photons", "B: Neutrinos", "C: Protons", "D: Solar wind ions"],
-        "answer": "B",
-        "explanation": "Neutrinos pass through the Sun and space almost without interaction, arriving at Earth in about 8 minutes."
+        "question": "True or False: A primary key can have NULL values.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "Primary keys must uniquely identify each row and cannot be NULL."
     },
     {
-        "question": "The approximate temperature of the Sun’s core is about:",
-        "options": ["A: 6,000 K", "B: 15 million K", "C: 1 million K", "D: 100,000 K"],
-        "answer": "B",
-        "explanation": "The Sun’s core temperature is around 1.5 × 10⁷ K, sufficient for hydrogen fusion."
+        "question": "Which SQL clause is used to filter rows after a GROUP BY?",
+        "choices": ["A. WHERE", "B. HAVING", "C. ORDER BY", "D. SELECT"],
+        "answer": "B. HAVING",
+        "explanation": "HAVING filters groups, while WHERE filters individual rows."
     },
     {
-        "question": "True or False: The Sun transfers energy to the planets mainly through convection.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Energy transfer from the Sun to planets occurs via radiation (light), not convection."
+        "question": "What is a foreign key used for?",
+        "choices": ["A. Storing duplicate data", "B. Referencing primary keys in another table", "C. Creating indexes", "D. Ensuring unique values"],
+        "answer": "B. Referencing primary keys in another table",
+        "explanation": "Foreign keys maintain referential integrity between tables."
     },
     {
-        "question": "Which physical law explains why all planets orbit the Sun in roughly the same direction?",
-        "options": ["A: Newton’s Third Law", "B: Conservation of Angular Momentum", "C: Kepler’s Second Law", "D: Universal Gravitation"],
-        "answer": "B",
-        "explanation": "Conservation of angular momentum in the rotating solar nebula caused planets to form in the same orbital direction."
+        "question": "True or False: SQL JOINs combine rows from two or more tables based on a related column.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "JOINs merge rows where the join condition is met."
     },
     {
-        "question": "A Hohmann transfer orbit is primarily used to:",
-        "options": ["A: Land on a moon", "B: Change orbital inclination", "C: Transfer between two circular orbits", "D: Maintain geostationary position"],
-        "answer": "C",
-        "explanation": "It’s the most fuel-efficient two-burn transfer between circular orbits in the same plane."
+        "question": "Which SQL statement is used to remove all records from a table but keep its structure?",
+        "choices": ["A. DELETE", "B. DROP", "C. TRUNCATE", "D. REMOVE"],
+        "answer": "C. TRUNCATE",
+        "explanation": "TRUNCATE removes all rows efficiently but preserves the table."
     },
     {
-        "question": "True or False: A planet’s Hill sphere depends only on its mass.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "It also depends on the planet’s distance from the Sun — farther planets have larger Hill spheres."
+        "question": "Which normal form requires that every non-key attribute is fully functionally dependent on the primary key?",
+        "choices": ["A. 1NF", "B. 2NF", "C. 3NF", "D. BCNF"],
+        "answer": "B. 2NF",
+        "explanation": "2NF eliminates partial dependencies on a composite primary key."
     },
     {
-        "question": "What is the Roche limit?",
-        "options": ["A: Minimum distance where a moon can orbit without breaking apart", "B: Distance where escape velocity equals orbital velocity", "C: Region of gravitational equilibrium", "D: Maximum stable orbital radius"],
-        "answer": "A",
-        "explanation": "Inside the Roche limit, tidal forces overcome a moon’s self-gravity, possibly forming rings."
+        "question": "True or False: A B+-tree leaf node contains pointers to actual data records.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Leaf nodes in B+-trees store data or pointers to data for efficient search."
     },
     {
-        "question": "In planetary formation, what is 'runaway growth'?",
-        "options": ["A: Rapid accumulation of mass by the largest planetesimals", "B: Evaporation of small dust particles", "C: Expansion of a protoplanet’s orbit", "D: Loss of gas by photoevaporation"],
-        "answer": "A",
-        "explanation": "Larger planetesimals attract material faster, growing disproportionately — a positive feedback process."
+        "question": "What does SQL's DISTINCT keyword do?",
+        "choices": ["A. Orders rows", "B. Removes duplicates", "C. Filters rows", "D. Aggregates values"],
+        "answer": "B. Removes duplicates",
+        "explanation": "DISTINCT ensures each row in the result is unique."
     },
     {
-        "question": "Kepler’s third law connects which two parameters of a planet’s orbit?",
-        "options": ["A: Period and mass", "B: Eccentricity and inclination", "C: Period and semi-major axis", "D: Velocity and radius"],
-        "answer": "C",
-        "explanation": "Kepler’s third law: P² ∝ a³ — orbital period squared is proportional to the cube of the semi-major axis."
+        "question": "Which of the following is a condition for a relation to be in BCNF?",
+        "choices": ["A. All attributes are numeric", "B. Every determinant is a candidate key", "C. No duplicate rows", "D. Only one primary key exists"],
+        "answer": "B. Every determinant is a candidate key",
+        "explanation": "BCNF requires that all functional dependencies have a candidate key as determinant."
     },
     {
-        "question": "True or False: Mercury has a thin atmosphere because of its strong gravity.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Mercury’s gravity is weak and its temperature is high, so gas escapes easily, leaving only a thin exosphere."
+        "question": "True or False: A view can store data physically in the database.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "Views are virtual tables; they do not store data but display data from underlying tables."
     },
     {
-        "question": "A primary atmosphere is composed mainly of:",
-        "options": ["A: Outgassed CO₂ and N₂", "B: Captured hydrogen and helium", "C: Oxygen and ozone", "D: Volcanic dust and ice"],
-        "answer": "B",
-        "explanation": "Primary atmospheres are captured directly from the solar nebula (H and He), while secondary atmospheres come from outgassing or impacts."
+        "question": "Which SQL aggregate function counts the number of rows?",
+        "choices": ["A. SUM", "B. AVG", "C. COUNT", "D. TOTAL"],
+        "answer": "C. COUNT",
+        "explanation": "COUNT returns the number of rows satisfying the query conditions."
     },
     {
-        "question": "Which property most influences a planet’s bulk density?",
-        "options": ["A: Distance from the Sun", "B: Composition", "C: Rotation rate", "D: Number of moons"],
-        "answer": "B",
-        "explanation": "Planets with rocky composition are denser; those with ice and gas are less dense."
+        "question": "Which type of lock allows multiple transactions to read a data item but not write?",
+        "choices": ["A. Exclusive lock", "B. Shared lock", "C. Deadlock lock", "D. Optimistic lock"],
+        "answer": "B. Shared lock",
+        "explanation": "Shared locks allow concurrent reads but prevent writes until released."
     },
     {
-        "question": "A surface-bound exosphere refers to:",
-        "options": ["A: A dense layer of air near the ground", "B: Gas particles escaping freely without collisions", "C: A subsurface ocean", "D: A magnetic boundary layer"],
-        "answer": "B",
-        "explanation": "In an exosphere, gas particles rarely collide and follow ballistic trajectories — typical for Mercury or the Moon."
+        "question": "True or False: WAL (Write-Ahead Logging) ensures updates are logged before they are applied to the database.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "WAL helps recovery by recording changes before actual database updates."
     },
     {
-        "question": "True or False: Atmospheric composition generally stays constant with altitude.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Heavier gases settle lower; lighter gases dominate at higher altitudes."
+        "question": "Which relational algebra operation combines rows from two tables with a common attribute?",
+        "choices": ["A. Union", "B. Difference", "C. Cartesian product", "D. Join"],
+        "answer": "D. Join",
+        "explanation": "Join merges tuples from tables based on matching attribute values."
     },
     {
-        "question": "Where do short-period comets originate?",
-        "options": ["A: Oort Cloud", "B: Kuiper Belt", "C: Asteroid Belt", "D: Solar corona"],
-        "answer": "B",
-        "explanation": "Short-period comets come from the Kuiper Belt and have orbits lasting under 200 years."
+        "question": "Which SQL clause sorts the result set?",
+        "choices": ["A. WHERE", "B. GROUP BY", "C. ORDER BY", "D. HAVING"],
+        "answer": "C. ORDER BY",
+        "explanation": "ORDER BY arranges rows in ascending or descending order."
     },
     {
-        "question": "Where do long-period comets originate?",
-        "options": ["A: Asteroid Belt", "B: Kuiper Belt", "C: Oort Cloud", "D: Main Belt"],
-        "answer": "C",
-        "explanation": "Long-period comets come from the distant, spherical Oort Cloud extending thousands of AU from the Sun."
+        "question": "True or False: A database transaction must be atomic, consistent, isolated, and durable.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "These are the ACID properties ensuring transaction reliability."
     },
     {
-        "question": "True or False: Meteor showers are linked to debris left behind by comets.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "Earth passes through trails of cometary dust, producing meteor showers when particles burn in the atmosphere."
+        "question": "Which SQL command changes existing records in a table?",
+        "choices": ["A. INSERT", "B. UPDATE", "C. DELETE", "D. ALTER"],
+        "answer": "B. UPDATE",
+        "explanation": "UPDATE modifies data in existing rows based on conditions."
     },
     {
-        "question": "Which is most massive among these small Solar System objects?",
-        "options": ["A: Dwarf planet", "B: Asteroid", "C: Comet nucleus", "D: Meteoroid"],
-        "answer": "A",
-        "explanation": "Dwarf planets like Pluto or Eris are the most massive class of small bodies."
-    },
-    {
-        "question": "True or False: Crater counts give the same meteoroid flux estimate on Mars and its moons.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Different gravity, surface age, and atmosphere cause different apparent crater densities and flux estimates."
-    },
-    {
-        "question": "How was the first exoplanet around a main-sequence star discovered?",
-        "options": ["A: Direct imaging", "B: Transit method", "C: Radial velocity (Doppler wobble)", "D: Gravitational microlensing"],
-        "answer": "C",
-        "explanation": "The first exoplanet around a Sun-like star (51 Pegasi b) was found by detecting the star’s Doppler shifts due to the planet’s gravity."
-    },
-    {
-        "question": "A 'hot Jupiter' refers to:",
-        "options": ["A: A massive planet far from its star", "B: A gas giant close to its star", "C: A small rocky planet with lava surface", "D: A young planet still contracting"],
-        "answer": "B",
-        "explanation": "Hot Jupiters are gas giants orbiting very close to their stars, resulting in high temperatures and short orbital periods."
-    },
-    {
-        "question": "Which parameter primarily determines an exoplanet’s equilibrium temperature?",
-        "options": ["A: Planet’s mass", "B: Distance from its star", "C: Rotation speed", "D: Magnetic field strength"],
-        "answer": "B",
-        "explanation": "The farther a planet is from its star, the less radiation it receives, leading to a lower equilibrium temperature."
-    },
-    {
-        "question": "The habitable zone around a star is defined as:",
-        "options": ["A: The region where liquid water can exist", "B: The zone with maximum stellar flux", "C: The orbit where comets form", "D: The magnetic boundary of the star"],
-        "answer": "A",
-        "explanation": "It’s the distance range where conditions allow liquid water to be stable on a planet’s surface."
-    },
-    {
-        "question": "The Drake equation is used to estimate:",
-        "options": ["A: The age of the universe", "B: The number of intelligent civilizations", "C: The lifetime of stars", "D: The speed of galactic rotation"],
-        "answer": "B",
-        "explanation": "The Drake equation multiplies several factors to estimate the number of detectable extraterrestrial civilizations."
-    },
-    {
-        "question": "True or False: The Sun’s magnetic activity cycle lasts about 11 years.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "The number of sunspots rises and falls in an ~11-year cycle, marking the solar activity period."
-    },
-    {
-        "question": "Why is Earth slightly warmer during solar maximum, despite sunspots being cooler?",
-        "options": ["A: Increased solar luminosity from faculae", "B: Greenhouse gas buildup", "C: Tidal effects from the Moon", "D: Decreased albedo"],
-        "answer": "A",
-        "explanation": "Bright magnetic regions (faculae) increase total solar output, offsetting the cooling effect of sunspots."
-    },
-    {
-        "question": "What is observed in the solar wind at 1 AU?",
-        "options": ["A: Plasma of protons and electrons", "B: Neutral hydrogen gas", "C: Only magnetic fields", "D: Cosmic dust grains"],
-        "answer": "A",
-        "explanation": "The solar wind is a stream of charged particles—mostly protons and electrons—flowing outward from the Sun."
-    },
-    {
-        "question": "True or False: The Sun’s magnetic field at 1 AU is purely radial.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Due to the Sun’s rotation, the field has a spiral (azimuthal) component—forming the Parker spiral."
-    },
-    {
-        "question": "A Sun-synchronous orbit is useful because:",
-        "options": ["A: It keeps constant sunlight conditions for imaging", "B: It avoids eclipses", "C: It moves with the solar wind", "D: It remains fixed over the equator"],
-        "answer": "A",
-        "explanation": "Sun-synchronous orbits precess so that each pass occurs at the same local solar time, ideal for consistent lighting in observations."
-    },
-    {
-        "question": "True or False: Energy from the Sun reaches Earth mainly by conduction.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "There’s no medium for conduction in space—energy is transferred by electromagnetic radiation."
-    },
-    {
-        "question": "Which two factors determine a star’s luminosity?",
-        "options": ["A: Radius and surface temperature", "B: Mass and density", "C: Age and composition", "D: Magnetic field and rotation rate"],
-        "answer": "A",
-        "explanation": "Luminosity follows L = 4πR²σT⁴, depending on the star’s size and surface temperature."
-    },
-    {
-        "question": "True or False: Most stars in the Milky Way are main-sequence stars.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "The main sequence phase lasts the majority of a star’s lifetime, so most observed stars are in this stage."
-    },
-    {
-        "question": "What determines whether a planet retains an atmosphere over time?",
-        "options": ["A: Temperature and escape velocity", "B: Distance from Earth", "C: Rotation rate", "D: Number of moons"],
-        "answer": "A",
-        "explanation": "Gas retention depends on how fast molecules move (temperature) versus how fast the planet can hold them (escape velocity)."
-    },
-    {
-        "question": "If a spacecraft moves from Earth’s orbit to Mars’ orbit via a Hohmann transfer, the transfer ellipse’s semi-major axis is:",
-        "options": ["A: (r_Earth + r_Mars)/2", "B: (r_Earth × r_Mars)/2", "C: (r_Mars − r_Earth)", "D: (r_Mars + r_Earth)²"],
-        "answer": "A",
-        "explanation": "The Hohmann transfer orbit’s semi-major axis is the average of the two circular orbital radii."
-    },
-    {
-        "question": "True or False: Increasing a planet’s mass increases the size of its Hill sphere.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "A more massive planet has stronger gravity relative to the Sun, allowing a larger region of stable satellite orbits."
-    },
-    {
-        "question": "What happens if a moon orbits inside the Roche limit?",
-        "options": ["A: It becomes tidally locked", "B: It may be torn apart by tidal forces", "C: It speeds up its orbit", "D: It escapes into space"],
-        "answer": "B",
-        "explanation": "Tidal stresses exceed the moon’s self-gravity, causing fragmentation—forming rings or debris."
-    },
-    {
-        "question": "True or False: The habitable zone moves outward as a star evolves into a red giant.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "As luminosity increases, the region where water can exist moves farther from the star."
-    },
-    {
-        "question": "Which formula would you use to compare energy output between a sunspot and the normal solar surface?",
-        "options": ["A: L ∝ T⁴", "B: L ∝ 1/T", "C: L ∝ T²", "D: L ∝ √T"],
-        "answer": "A",
-        "explanation": "Blackbody radiation follows the Stefan–Boltzmann law: energy ∝ T⁴, so cooler regions emit much less energy."
-    },
-    {
-        "question": "True or False: Venus is hotter than Earth because it’s closer to the Sun.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Venus’s extreme heat is due to its dense CO₂ atmosphere and strong greenhouse effect, not just its distance."
-    },
-    {
-        "question": "How does the solar wind interact with Earth’s magnetic field?",
-        "options": ["A: It passes straight through", "B: It’s deflected, creating a magnetosphere", "C: It heats the atmosphere directly", "D: It increases Earth’s rotation speed"],
-        "answer": "B",
-        "explanation": "The solar wind is deflected by Earth’s magnetic field, forming the magnetosphere and sometimes causing auroras."
-    },
-    {
-        "question": "True or False: The Sun’s 11-year cycle is tracked by counting sunspots.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "Sunspots increase and decrease in a predictable ~11-year cycle, used to monitor solar activity."
-    },
-    {
-        "question": "The solar wind mainly consists of which particles?",
-        "options": ["A: Protons and electrons", "B: Neutrons", "C: Neutral hydrogen atoms", "D: Cosmic rays"],
-        "answer": "A",
-        "explanation": "It’s a plasma made mostly of protons and electrons, continuously streaming from the Sun’s corona."
-    },
-    {
-        "question": "True or False: The thermal velocity of solar wind protons is usually higher than their bulk flow speed.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "The bulk flow (hundreds of km/s) is faster than the random thermal motion of the protons."
-    },
-    {
-        "question": "Why does the Sun’s magnetic field have both radial and azimuthal components at 1 AU?",
-        "options": ["A: Magnetic field reversals", "B: Solar differential rotation and wind outflow", "C: Interaction with planets", "D: Cosmic ray pressure"],
-        "answer": "B",
-        "explanation": "The combination of solar rotation and the outward-moving solar wind winds the field into a spiral pattern (Parker spiral)."
-    },
-    {
-        "question": "What is the typical bulk velocity of the solar wind near Earth?",
-        "options": ["A: 100 km/s", "B: 400 km/s", "C: 1500 km/s", "D: 20 km/s"],
-        "answer": "B",
-        "explanation": "At 1 AU, the solar wind flows at ~400 km/s on average, with faster streams during high solar activity."
-    },
-    {
-        "question": "True or False: A Sun-synchronous satellite passes over each location on Earth at different local times each day.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Sun-synchronous orbits maintain a constant local solar time for imaging consistency."
-    },
-    {
-        "question": "Which orbit allows a satellite to appear fixed above one point on Earth?",
-        "options": ["A: Polar", "B: Geostationary", "C: Sun-synchronous", "D: Elliptical"],
-        "answer": "B",
-        "explanation": "A geostationary satellite orbits at ~35,786 km, matching Earth’s rotation period and appearing stationary over the equator."
-    },
-    {
-        "question": "True or False: A planet’s orbital energy determines whether its path is bound or unbound.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "If total energy is negative, the orbit is bound; if positive, the object escapes to infinity."
-    },
-    {
-        "question": "What does the vis-viva equation describe?",
-        "options": ["A: The relation between orbital speed, position, and semi-major axis", "B: The escape speed from a planet", "C: The surface gravity of a star", "D: The expansion of the universe"],
-        "answer": "A",
-        "explanation": "The vis-viva equation v² = GM(2/r − 1/a) links orbital velocity, distance, and the semi-major axis."
-    },
-    {
-        "question": "True or False: A circular orbit has the same speed everywhere because r = a.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "For circular orbits, distance from the focus is constant, so the orbital velocity doesn’t vary."
-    },
-    {
-        "question": "Conceptually, how would you find perihelion and aphelion speeds of an orbit?",
-        "options": ["A: Use the vis-viva equation with r = r_min or r_max", "B: Multiply the semi-major axis by eccentricity", "C: Divide orbital period by mass", "D: Assume constant velocity"],
-        "answer": "A",
-        "explanation": "By applying v² = GM(2/r − 1/a) at the closest and farthest orbital points (r_min, r_max)."
-    },
-    {
-        "question": "What determines the equilibrium temperature of a planet?",
-        "options": ["A: Distance from its star and albedo", "B: Planet’s density", "C: Its moons’ orbits", "D: Its magnetic field strength"],
-        "answer": "A",
-        "explanation": "A planet’s temperature depends mainly on how much sunlight it receives and how much it reflects (albedo)."
-    },
-    {
-        "question": "True or False: A perfect blackbody absorbs all incident radiation.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "By definition, a blackbody absorbs all incoming radiation and re-emits according to its temperature."
-    },
-    {
-        "question": "Why is the Moon’s blackbody temperature similar to Earth’s?",
-        "options": ["A: It has an atmosphere", "B: It receives similar solar flux", "C: It rotates quickly", "D: It has volcanic heating"],
-        "answer": "B",
-        "explanation": "Both Earth and Moon are at roughly the same distance from the Sun and thus receive similar solar energy per area."
-    },
-    {
-        "question": "True or False: The solar constant increases if the Sun expands into a red giant.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "A larger, more luminous Sun would greatly increase the solar energy reaching a given distance."
-    },
-    {
-        "question": "What is the approximate blackbody temperature of Earth (ignoring greenhouse effects)?",
-        "options": ["A: 255 K", "B: 300 K", "C: 100 K", "D: 500 K"],
-        "answer": "A",
-        "explanation": "Using solar flux and albedo, Earth’s equilibrium temperature is about 255 K (~−18°C)."
-    },
-    {
-        "question": "Describe the structure of a comet’s nucleus and surrounding regions.",
-        "options": ["A: Rocky core only", "B: Icy nucleus with coma and tails", "C: Metallic center with rings", "D: Gas-only sphere"],
-        "answer": "B",
-        "explanation": "A comet has an icy nucleus surrounded by a coma of gas and dust, with tails pointing away from the Sun."
-    },
-    {
-        "question": "True or False: Comet tails always point opposite to the comet’s motion.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Tails always point away from the Sun due to solar radiation and the solar wind, not necessarily opposite to motion."
-    },
-    {
-        "question": "What was the main goal of the Rosetta mission?",
-        "options": ["A: Study the Sun’s corona", "B: Orbit and land on a comet nucleus", "C: Measure dark matter", "D: Explore the Kuiper Belt"],
-        "answer": "B",
-        "explanation": "ESA’s Rosetta mission orbited comet 67P/Churyumov–Gerasimenko and deployed the Philae lander to its surface."
-    },
-    {
-        "question": "Stars form in which type of interstellar clouds?",
-        "options": ["A: Diffuse atomic clouds", "B: Molecular clouds", "C: Ionized H II regions", "D: Planetary nebulae"],
-        "answer": "B",
-        "explanation": "Stars form in cold, dense molecular clouds where gravity can overcome gas pressure to start collapse."
-    },
-    {
-        "question": "The first step in star formation is called:",
-        "options": ["A: Protostar ignition", "B: Gravitational collapse", "C: Main sequence burning", "D: Nuclear condensation"],
-        "answer": "B",
-        "explanation": "Star formation begins when a region of a molecular cloud collapses under its own gravity, forming a protostar."
-    },
-    {
-        "question": "True or False: Most stars spend the majority of their lives on the main sequence.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "The main sequence phase, where hydrogen fusion occurs in the core, is the longest stage in a star’s life."
-    },
-    {
-        "question": "Which two parameters determine a star’s luminosity?",
-        "options": ["A: Temperature and radius", "B: Age and distance", "C: Density and metallicity", "D: Rotation and mass loss"],
-        "answer": "A",
-        "explanation": "Luminosity is proportional to R²T⁴ — both size and surface temperature control how bright a star is."
-    },
-    {
-        "question": "True or False: Planets generally orbit the Sun in random directions.",
-        "options": ["True", "False"],
-        "answer": "False",
-        "explanation": "Conservation of angular momentum in the rotating solar nebula caused most planets to orbit in the same direction."
-    },
-    {
-        "question": "Which planets are terrestrial?",
-        "options": ["A: Mercury, Venus, Earth, Mars", "B: Jupiter, Saturn, Uranus, Neptune", "C: Pluto and Eris", "D: Only Earth"],
-        "answer": "A",
-        "explanation": "The inner four planets are rocky and dense — classified as terrestrial planets."
-    },
-    {
-        "question": "Why is Mercury’s atmosphere so thin compared to Venus?",
-        "options": ["A: It’s closer to the Sun and has low gravity", "B: It’s farther from the Sun", "C: It has many moons", "D: It rotates faster"],
-        "answer": "A",
-        "explanation": "High temperature and weak gravity allow gases to escape from Mercury’s surface easily."
-    },
-    {
-        "question": "True or False: A planet’s Hill sphere defines the region where it can hold moons in stable orbits.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "Inside the Hill sphere, a planet’s gravity dominates over the Sun’s, allowing stable satellite orbits."
-    },
-    {
-        "question": "Conceptually, how is the Hill radius calculated?",
-        "options": ["A: It depends on planet mass and distance from the Sun", "B: Only on orbital speed", "C: Only on the Sun’s luminosity", "D: On the planet’s temperature"],
-        "answer": "A",
-        "explanation": "r_H ≈ a × (m_planet / (3M_sun))^(1/3); it grows with planet mass and distance from the Sun."
-    },
-    {
-        "question": "What happens if a moon orbits within the Roche limit of its planet?",
-        "options": ["A: It becomes more spherical", "B: It can be torn apart by tidal forces", "C: It gains mass from the planet", "D: It moves to a higher orbit"],
-        "answer": "B",
-        "explanation": "Tidal forces exceed the moon’s gravity, causing it to disintegrate — forming rings or debris."
-    },
-    {
-        "question": "Why are most moons found within a planet’s Hill sphere?",
-        "options": ["A: The planet’s gravity dominates there", "B: It’s the coldest region", "C: It’s protected from solar radiation", "D: It has strong magnetic fields"],
-        "answer": "A",
-        "explanation": "Outside the Hill sphere, solar gravity overcomes the planet’s pull, making orbits unstable."
-    },
-    {
-        "question": "Explain the difference between a meteor, meteoroid, and meteorite.",
-        "options": ["A: They are all the same", "B: Meteoroid = in space, Meteor = in atmosphere, Meteorite = on ground", "C: Meteorite = in space, Meteor = on ground", "D: Meteor = star"],
-        "answer": "B",
-        "explanation": "A meteoroid travels in space, a meteor is the streak in the sky, and a meteorite is what reaches the surface."
-    },
-    {
-        "question": "True or False: Dwarf planets are typically more massive than comets or asteroids.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "Dwarf planets like Pluto and Eris are the largest class of small Solar System bodies."
-    },
-    {
-        "question": "How are comet orbits classified?",
-        "options": ["A: By their brightness", "B: By orbital period (short or long)", "C: By their composition", "D: By their distance from Jupiter"],
-        "answer": "B",
-        "explanation": "Comets with periods under 200 years are short-period; longer ones come from the distant Oort Cloud."
-    },
-    {
-        "question": "Where do long-period comets originate?",
-        "options": ["A: The Oort Cloud", "B: The Asteroid Belt", "C: The Kuiper Belt", "D: The Scattered Disk"],
-        "answer": "A",
-        "explanation": "Long-period comets come from the spherical Oort Cloud, far beyond Pluto."
-    },
-    {
-        "question": "Where do short-period comets come from?",
-        "options": ["A: Oort Cloud", "B: Kuiper Belt", "C: Asteroid Belt", "D: Interstellar space"],
-        "answer": "B",
-        "explanation": "Short-period comets typically originate in the Kuiper Belt, beyond Neptune."
-    },
-    {
-        "question": "True or False: The vis-viva equation can be used to find a spacecraft’s speed at any orbital point.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "v² = GM(2/r − 1/a) gives the orbital velocity based on position and semi-major axis."
-    },
-    {
-        "question": "Conceptually, how can you estimate the time for a Hohmann transfer between two planets?",
-        "options": ["A: Half the orbital period of the transfer ellipse", "B: Twice the orbital period", "C: Equal to the inner planet’s period", "D: Equal to one full orbit of the outer planet"],
-        "answer": "A",
-        "explanation": "A Hohmann transfer covers half of an elliptical orbit between the two circular orbits."
-    },
-    {
-        "question": "What does 'effective potential' in orbital motion represent?",
-        "options": ["A: Gravitational + rotational energy per mass", "B: Magnetic field strength", "C: Electric charge balance", "D: Kinetic energy only"],
-        "answer": "A",
-        "explanation": "Effective potential combines gravitational potential with the centrifugal term, useful for analyzing orbital stability."
-    },
-    {
-        "question": "True or False: Total mechanical energy of a bound orbit is negative.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "A negative total energy indicates a closed, bound orbit—object cannot escape the central body."
-    },
-    {
-        "question": "Conceptually, what is a blackbody in astronomy?",
-        "options": ["A: A perfectly reflecting object", "B: An ideal emitter that absorbs all radiation", "C: A black hole", "D: A starless planet"],
-        "answer": "B",
-        "explanation": "A blackbody absorbs all incident energy and emits radiation only based on its temperature."
-    },
-    {
-        "question": "How do solar radius and surface temperature affect luminosity?",
-        "options": ["A: Luminosity ∝ R²T⁴", "B: Luminosity ∝ 1/(R²T)", "C: Luminosity ∝ R/T²", "D: Luminosity ∝ T"],
-        "answer": "A",
-        "explanation": "Luminosity grows rapidly with both radius and temperature, following the Stefan–Boltzmann law."
-    },
-    {
-        "question": "True or False: Earth’s actual temperature is higher than its blackbody temperature because of the greenhouse effect.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "Atmospheric gases trap infrared radiation, keeping Earth’s surface warmer than the 255 K blackbody estimate."
-    },
-    {
-        "question": "How can an electrostatic + magnetic analyzer measure ion mass on a spacecraft?",
-        "options": ["A: By measuring light emission", "B: By combining deflection by electric and magnetic fields", "C: By weighing particles directly", "D: By counting photons"],
-        "answer": "B",
-        "explanation": "Ion analyzers determine particle mass-to-charge ratios from their deflection in electric and magnetic fields."
-    },
-    {
-        "question": "True or False: Comet orbits can change due to outgassing effects.",
-        "options": ["True", "False"],
-        "answer": "True",
-        "explanation": "Jets of gas from sublimating ice can slightly alter a comet’s path, making its orbit deviate from predictions."
-    },
-    {
-        "question": "Why do planets orbit roughly in the same plane?",
-        "options": [
-            "A: Due to random collisions during planet formation",
-            "B: Because the Sun’s gravity flattens their orbits",
-            "C: Result of angular momentum conservation in the protoplanetary disk",
-            "D: Because of tidal forces from nearby stars"
+        "question": "What is the difference between a primary index and a secondary index?",
+        "choices": [
+            "A. Primary indexes are unique, secondary are not",
+            "B. Primary indexes are on sorted files, secondary on unsorted",
+            "C. Primary index is on the primary key, secondary can be on other attributes",
+            "D. There is no difference"
         ],
-        "answer": "C",
-        "explanation": "The protoplanetary disk was rotating, and conservation of angular momentum caused most planets to orbit roughly in the same plane."
+        "answer": "C. Primary index is on the primary key, secondary can be on other attributes",
+        "explanation": "Primary indexes enforce uniqueness on primary keys; secondary indexes speed up other queries."
     },
     {
-        "question": "What differentiates terrestrial and giant planets?",
-        "options": [
-            "A: Terrestrial planets are gas-rich; giant planets are rocky",
-            "B: Terrestrial planets are small, dense, rocky; giants are large, gas-dominated",
-            "C: Terrestrial planets are further from the Sun; giants are closer",
-            "D: Terrestrial planets have rings; giants do not"
-        ],
-        "answer": "B",
-        "explanation": "Terrestrial planets formed in the hot inner disk and are rocky, whereas giant planets accreted gas and ice in the cooler outer disk."
+        "question": "True or False: In a functional dependency A → B, knowing A determines B uniquely.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Functional dependency means attribute B is uniquely determined by A."
     },
     {
-        "question": "What is the ice line in a protoplanetary disk?",
-        "options": [
-            "A: The distance where water ice can exist in solid form",
-            "B: The boundary between rocky planets and gas giants",
-            "C: The limit of the Sun’s magnetic field",
-            "D: The distance beyond which planets cannot form"
-        ],
-        "answer": "A",
-        "explanation": "The ice line marks where temperatures are low enough for volatile compounds like water to freeze, aiding formation of giant planet cores."
+        "question": "Which SQL statement is used to add a new row to a table?",
+        "choices": ["A. INSERT", "B. UPDATE", "C. DELETE", "D. ALTER"],
+        "answer": "A. INSERT",
+        "explanation": "INSERT adds new tuples into a table."
     },
     {
-        "question": "Why does the Moon always show the same face to Earth?",
-        "options": [
-            "A: Because of tidal locking",
-            "B: Because the Moon does not rotate",
-            "C: Because Earth’s gravity slows its orbit",
-            "D: Because of solar radiation pressure"
-        ],
-        "answer": "A",
-        "explanation": "The Moon is tidally locked to Earth, meaning its rotation period equals its orbital period around Earth."
+        "question": "True or False: The Cartesian product of two tables always increases the number of rows.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Each row of the first table is combined with every row of the second table."
     },
     {
-        "question": "Which of the following is an example of another tidally locked body?",
-        "options": [
-            "A: Mercury around the Sun",
-            "B: Jupiter around the Sun",
-            "C: Venus around Earth",
-            "D: Mars around the Sun"
-        ],
-        "answer": "A",
-        "explanation": "Mercury rotates three times on its axis for every two orbits around the Sun, a form of tidal resonance (effectively locked in long-term)."
+        "question": "Which SQL keyword eliminates duplicate rows in a query result?",
+        "choices": ["A. UNIQUE", "B. DISTINCT", "C. FILTER", "D. REMOVE"],
+        "answer": "B. DISTINCT",
+        "explanation": "DISTINCT ensures each row in the output appears only once."
     },
     {
-        "question": "Why does Earth have a magnetic field but Venus does not?",
-        "options": [
-            "A: Earth is larger than Venus",
-            "B: Earth has a liquid iron core generating a dynamo; Venus rotates too slowly",
-            "C: Venus lacks water",
-            "D: Venus is too far from the Sun"
-        ],
-        "answer": "B",
-        "explanation": "Earth’s liquid outer core and rotation drive a magnetic dynamo. Venus rotates very slowly, preventing a similar dynamo."
+        "question": "Which operation in relational algebra corresponds to SQL's SELECT ... FROM ... WHERE?",
+        "choices": ["A. Projection", "B. Selection", "C. Join", "D. Union"],
+        "answer": "B. Selection",
+        "explanation": "Selection (σ) filters rows based on a condition."
     },
     {
-        "question": "How does a planet’s magnetic field protect its atmosphere?",
-        "options": [
-            "A: By reflecting sunlight",
-            "B: By deflecting solar wind particles",
-            "C: By heating the atmosphere",
-            "D: By creating auroras"
-        ],
-        "answer": "B",
-        "explanation": "The magnetic field deflects charged particles from the solar wind, preventing significant atmospheric erosion."
+        "question": "True or False: Deleting a primary key that is referenced by a foreign key without CASCADE will result in an error.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Referential integrity prevents deletion unless CASCADE is specified."
     },
     {
-        "question": "How are comets classified?",
-        "options": [
-            "A: By their brightness",
-            "B: By orbital period (short or long)",
-            "C: By composition",
-            "D: By distance from Jupiter"
-        ],
-        "answer": "B",
-        "explanation": "Comets with periods under 200 years are short-period; longer ones typically come from the distant Oort Cloud."
+        "question": "Which SQL clause groups rows with the same values into summary rows?",
+        "choices": ["A. GROUP BY", "B. ORDER BY", "C. HAVING", "D. WHERE"],
+        "answer": "A. GROUP BY",
+        "explanation": "GROUP BY collects rows sharing attribute values for aggregation."
     },
     {
-        "question": "What is the main source of energy in the Sun’s interior?",
-        "options": [
-            "A: Thermal fusion",
-            "B: Neutron capture",
-            "C: Radioactive decay",
-            "D: Gravitational contraction"
-        ],
-        "answer": "A",
-        "explanation": "Hydrogen nuclei fuse into helium in the Sun’s core, releasing energy as radiation."
+        "question": "What type of join returns all rows from the left table and matched rows from the right table?",
+        "choices": ["A. Inner Join", "B. Left Outer Join", "C. Right Outer Join", "D. Full Outer Join"],
+        "answer": "B. Left Outer Join",
+        "explanation": "Left Outer Join keeps all rows from the left table regardless of matches."
     },
     {
-        "question": "Which formula gives the Hill radius of a planet?",
-        "options": [
-            "A: r_Hill = (m / M)^(1/3) * R",
-            "B: r_Roche = 2.4 * (rho_planet / rho_satellite)^(1/3) * R_planet",
-            "C: v_orb = sqrt(G * M / R)",
-            "D: T_eq = ((1 - A_B) * L / (16 * pi * r^2 * sigma))^(1/4)"
-        ],
-        "answer": "A",
-        "explanation": "The Hill radius marks the region where a planet dominates the gravitational attraction of nearby satellites."
+        "question": "True or False: A schema in 3NF can have transitive dependencies.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "3NF removes transitive dependencies on non-key attributes."
     },
     {
-        "question": "Which formula gives the blackbody temperature of a planet in radiation balance?",
-        "options": [
-            "A: T = ((1 - A_B) * L / (16 * pi * r^2 * sigma))^(1/4)",
-            "B: v = sqrt(G * M / r)",
-            "C: P = n * k_B * T",
-            "D: r_Hill = (m / M)^(1/3) * R"
-        ],
-        "answer": "A",
-        "explanation": "A planet absorbs energy on the Sun-facing side and radiates over its surface; this formula computes its equilibrium blackbody temperature."
+        "question": "Which SQL aggregate function calculates the average value of a column?",
+        "choices": ["A. SUM", "B. AVG", "C. COUNT", "D. MAX"],
+        "answer": "B. AVG",
+        "explanation": "AVG returns the arithmetic mean of the selected column."
     },
     {
-        "question": "Which formula is used to calculate the solar constant at Earth after the Sun changes size and temperature?",
-        "options": [
-            "A: S = L / (4 * pi * r^2), with L = 4 * pi * R^2 * sigma * T^4",
-            "B: v = sqrt(G * M / r)",
-            "C: r_Roche = 2.4 * (rho_planet / rho_satellite)^(1/3) * R_planet",
-            "D: T_eq = ((1 - A_B) * L / (16 * pi * r^2 * sigma))^(1/4)"
-        ],
-        "answer": "A",
-        "explanation": "The solar constant depends on the Sun’s luminosity and distance; luminosity is computed from radius and surface temperature via the Stefan-Boltzmann law."
+        "question": "True or False: An index can improve read performance but may slow down write operations.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Indexes speed up searches but add overhead when inserting/updating data."
     },
     {
-        "question": "Which formula is relevant to calculate the transfer time in a Hohmann orbit from Earth to Mars?",
-        "options": [
-            "A: t_transfer = pi * sqrt(a^3 / (G * M))",
-            "B: v = sqrt(G * M * (2 / r - 1 / a))",
-            "C: r_Roche = 2.4 * (rho_planet / rho_satellite)^(1/3) * R_planet",
-            "D: T_eq = ((1 - A_B) * L / (16 * pi * r^2 * sigma))^(1/4)"
+        "question": "Which of the following ensures that multiple transactions execute without interfering with each other?",
+        "choices": ["A. Normalization", "B. Concurrency control", "C. Indexing", "D. Logging"],
+        "answer": "B. Concurrency control",
+        "explanation": "Concurrency control mechanisms maintain isolation and prevent anomalies."
+    },
+    {
+        "question": "True or False: A B*-tree can store more keys per node than a B-tree.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "B*-trees split nodes differently, allowing higher space utilization."
+    },
+    {
+        "question": "What is the difference between TRUNCATE and DELETE in SQL?",
+        "choices": [
+            "A. TRUNCATE is slower than DELETE",
+            "B. DELETE can be rolled back, TRUNCATE cannot",
+            "C. TRUNCATE removes all rows quickly without logging individual deletions, DELETE removes rows one by one",
+            "D. There is no difference"
         ],
-        "answer": "A",
-        "explanation": "The transfer time is half the period of the elliptical Hohmann orbit, which can be derived from Kepler’s third law."
+        "answer": "C. TRUNCATE removes all rows quickly without logging individual deletions, DELETE removes rows one by one",
+        "explanation": "TRUNCATE is faster but less flexible; DELETE can use WHERE and can be rolled back."
+    },
+    {
+        "question": "True or False: Lossless decomposition guarantees that no information is lost during normalization.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Lossless decomposition ensures the original relation can be reconstructed from decomposed relations."
+    },
+    {
+        "question": "Which SQL keyword is used to enforce uniqueness in a column?",
+        "choices": ["A. UNIQUE", "B. PRIMARY", "C. DISTINCT", "D. FOREIGN"],
+        "answer": "A. UNIQUE",
+        "explanation": "UNIQUE ensures that all values in the column are distinct."
+    },
+    {
+        "question": "Which of the following describes a strict schedule in transaction processing?",
+        "choices": [
+            "A. Transactions do not lock data",
+            "B. Transactions hold exclusive locks until commit or abort",
+            "C. Transactions read dirty data",
+            "D. Transactions can be partially applied"
+        ],
+        "answer": "B. Transactions hold exclusive locks until commit or abort",
+        "explanation": "Strict schedules prevent cascading aborts by holding locks until completion."
+    },
+    {
+        "question": "True or False: A foreign key must reference a primary key in another table.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Foreign keys maintain referential integrity by referencing primary keys."
+    },
+    {
+        "question": "Which SQL statement is used to remove an entire table from the database?",
+        "choices": ["A. DELETE", "B. DROP", "C. TRUNCATE", "D. REMOVE"],
+        "answer": "B. DROP",
+        "explanation": "DROP completely removes the table and its data from the database."
+    },
+    {
+        "question": "True or False: In functional dependency A → B, B is dependent on A.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "A functional dependency means knowing A allows you to uniquely determine B."
+    },
+    {
+        "question": "Which transaction property ensures that once a transaction commits, its changes are permanent?",
+        "choices": ["A. Atomicity", "B. Consistency", "C. Isolation", "D. Durability"],
+        "answer": "D. Durability",
+        "explanation": "Durability guarantees that committed changes persist even in case of system failure."
+    },
+    {
+        "question": "True or False: Shared locks allow other transactions to read the same data simultaneously.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Shared locks permit concurrent reads but block writes."
+    },
+    {
+        "question": "Which relational algebra operation returns rows present in the first table but not in the second?",
+        "choices": ["A. Union", "B. Intersection", "C. Difference", "D. Cartesian product"],
+        "answer": "C. Difference",
+        "explanation": "Difference (−) returns tuples in the first relation not found in the second."
+    },
+    {
+        "question": "Which SQL statement is used to modify the structure of a table?",
+        "choices": ["A. ALTER", "B. UPDATE", "C. MODIFY", "D. CHANGE"],
+        "answer": "A. ALTER",
+        "explanation": "ALTER can add, drop, or modify columns and constraints in a table."
+    },
+    {
+        "question": "True or False: Query optimization improves the performance of database queries.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Optimized queries run faster and use fewer resources."
+    },
+    {
+        "question": "Which B+-tree node type contains pointers to other nodes and guides searches?",
+        "choices": ["A. Root node", "B. Internal node", "C. Leaf node", "D. Index node"],
+        "answer": "B. Internal node",
+        "explanation": "Internal nodes store keys and child pointers for traversal."
+    },
+    {
+        "question": "True or False: A composite primary key consists of more than one attribute.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Composite keys use multiple columns to uniquely identify a row."
+    },
+    {
+        "question": "Which SQL clause specifies conditions to filter rows before aggregation?",
+        "choices": ["A. HAVING", "B. WHERE", "C. GROUP BY", "D. ORDER BY"],
+        "answer": "B. WHERE",
+        "explanation": "WHERE filters rows before GROUP BY or aggregation is applied."
+    },
+    {
+        "question": "True or False: A view can be used to simplify complex queries for users.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Views provide a virtual table abstraction over complex queries."
+    },
+    {
+        "question": "Which type of join returns only rows that satisfy the join condition in both tables?",
+        "choices": ["A. Inner Join", "B. Left Outer Join", "C. Right Outer Join", "D. Full Outer Join"],
+        "answer": "A. Inner Join",
+        "explanation": "Inner joins return rows that match the join condition in both tables."
+    },
+    {
+        "question": "Which of the following is NOT a property of ACID transactions?",
+        "choices": ["A. Atomicity", "B. Consistency", "C. Isolation", "D. Indexing"],
+        "answer": "D. Indexing",
+        "explanation": "Indexing is unrelated to transaction properties."
+    },
+    {
+        "question": "True or False: Checkpoints in transaction logs help speed up recovery after a crash.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Checkpoints reduce the amount of log replay required during recovery."
+    },
+    {
+        "question": "Which type of index stores keys in a sorted order to facilitate range queries?",
+        "choices": ["A. Hash index", "B. B+-tree index", "C. Bitmap index", "D. Clustered index"],
+        "answer": "B. B+-tree index",
+        "explanation": "B+-trees maintain sorted keys for efficient search and range queries."
+    },
+    {
+        "question": "Which relational algebra operation corresponds to SQL's JOIN?",
+        "choices": ["A. Union", "B. Cartesian Product", "C. Join", "D. Selection"],
+        "answer": "C. Join",
+        "explanation": "Join combines tuples from two relations based on a condition."
+    },
+    {
+        "question": "True or False: A B*-tree always has more than one root node.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "B*-trees have a single root node like regular B-trees."
+    },
+    {
+        "question": "Which SQL statement retrieves the top N records ordered by salary?",
+        "choices": ["A. SELECT TOP N ...", "B. SELECT ... LIMIT N", "C. SELECT ... ORDER BY salary DESC LIMIT N", "D. SELECT ... ORDER BY salary ASC LIMIT N"],
+        "answer": "C. SELECT ... ORDER BY salary DESC LIMIT N",
+        "explanation": "LIMIT N after ORDER BY DESC returns top N salaries."
+    },
+    {
+        "question": "True or False: Functional dependency X → Y means that two rows with the same X value must have the same Y value.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "This is the definition of a functional dependency."
+    },
+    {
+        "question": "Which type of join returns all rows from both tables, filling NULL when no match exists?",
+        "choices": ["A. Inner Join", "B. Left Outer Join", "C. Right Outer Join", "D. Full Outer Join"],
+        "answer": "D. Full Outer Join",
+        "explanation": "Full outer joins include unmatched rows from both tables."
+    },
+    {
+        "question": "Which SQL clause filters groups after aggregation?",
+        "choices": ["A. WHERE", "B. GROUP BY", "C. HAVING", "D. ORDER BY"],
+        "answer": "C. HAVING",
+        "explanation": "HAVING filters aggregated results, while WHERE filters individual rows."
+    },
+    {
+        "question": "True or False: In BCNF, every non-trivial functional dependency has a superkey on the left side.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "BCNF ensures all dependencies are on superkeys to eliminate anomalies."
+    },
+    {
+        "question": "Which SQL statement updates existing rows in a table?",
+        "choices": ["A. INSERT", "B. UPDATE", "C. ALTER", "D. MODIFY"],
+        "answer": "B. UPDATE",
+        "explanation": "UPDATE changes data in existing rows according to a condition."
+    },
+    {
+        "question": "True or False: A transaction is atomic if all its operations succeed or none are applied.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Atomicity ensures no partial changes occur in a transaction."
+    },
+    {
+        "question": "Which index type is best suited for equality searches but poor for range queries?",
+        "choices": ["A. Hash index", "B. B+-tree", "C. Bitmap index", "D. Clustered index"],
+        "answer": "A. Hash index",
+        "explanation": "Hash indexes map values directly to buckets, making equality fast but range searches inefficient."
+    },
+    {
+        "question": "True or False: An SQL VIEW can update underlying tables if it references only one table and no aggregation.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Simple views without joins or aggregations can allow updates."
+    },
+    {
+        "question": "Which concurrency control technique uses timestamps to order transactions?",
+        "choices": ["A. Two-phase locking", "B. Optimistic concurrency control", "C. Timestamp ordering", "D. Deadlock detection"],
+        "answer": "C. Timestamp ordering",
+        "explanation": "Transactions are executed in timestamp order to ensure serializability."
+    },
+    {
+        "question": "True or False: In a redo phase, only committed transactions are applied to recover a crash.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "Redo applies updates from all transactions to ensure database consistency."
+    },
+    {
+        "question": "Which normal form removes partial dependencies on a composite primary key?",
+        "choices": ["A. 1NF", "B. 2NF", "C. 3NF", "D. BCNF"],
+        "answer": "B. 2NF",
+        "explanation": "2NF eliminates dependencies on part of a composite key."
+    },
+    {
+        "question": "True or False: Dirty reads occur when a transaction reads uncommitted data from another transaction.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Reading uncommitted changes can lead to inconsistent results."
+    },
+    {
+        "question": "Which SQL keyword enforces that a column cannot contain NULL values?",
+        "choices": ["A. PRIMARY KEY", "B. NOT NULL", "C. UNIQUE", "D. FOREIGN KEY"],
+        "answer": "B. NOT NULL",
+        "explanation": "NOT NULL ensures every row must have a value for the column."
+    },
+    {
+        "question": "True or False: A clustered index determines the physical order of rows in a table.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Clustered indexes physically order table data according to the key."
+    },
+    {
+        "question": "Which SQL function counts the number of rows in a table?",
+        "choices": ["A. COUNT", "B. SUM", "C. AVG", "D. TOTAL"],
+        "answer": "A. COUNT",
+        "explanation": "COUNT returns the total number of rows satisfying a condition."
+    },
+    {
+        "question": "True or False: Normalization always improves query performance.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "Normalization reduces redundancy but can require joins, which may reduce performance."
+    },
+    {
+        "question": "Which schedule allows transactions to execute concurrently without violating isolation?",
+        "choices": ["A. Serializable schedule", "B. Non-serializable schedule", "C. Recoverable schedule", "D. Strict schedule"],
+        "answer": "A. Serializable schedule",
+        "explanation": "Serializable schedules produce the same result as some serial execution."
+    },
+    {
+        "question": "True or False: In two-phase locking, a transaction must acquire all locks before releasing any.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Two-phase locking ensures serializability with growing and shrinking phases."
+    },
+    {
+        "question": "Which SQL clause sorts the results of a query?",
+        "choices": ["A. WHERE", "B. ORDER BY", "C. GROUP BY", "D. HAVING"],
+        "answer": "B. ORDER BY",
+        "explanation": "ORDER BY arranges the output rows according to specified columns."
+    },
+    {
+        "question": "True or False: A fuzzy checkpoint allows updates during checkpoint creation to reduce system downtime.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Fuzzy checkpoints don’t require the database to halt updates, improving performance."
+    },
+    {
+        "question": "Which SQL constraint ensures uniqueness across multiple columns?",
+        "choices": ["A. UNIQUE(column1)", "B. UNIQUE(column1, column2)", "C. PRIMARY KEY", "D. FOREIGN KEY"],
+        "answer": "B. UNIQUE(column1, column2)",
+        "explanation": "Composite UNIQUE constraints ensure no two rows share the same combination of values."
+    },
+    {
+        "question": "True or False: Undo phase in recovery rolls back uncommitted transactions.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Undo restores database to a consistent state by reversing incomplete transactions."
+    },
+    {
+        "question": "Which SQL statement removes specific rows from a table based on a condition?",
+        "choices": ["A. DELETE", "B. TRUNCATE", "C. DROP", "D. REMOVE"],
+        "answer": "A. DELETE",
+        "explanation": "DELETE removes rows matching the WHERE condition."
+    },
+     {
+        "question": "Which type of join returns only rows that match in both tables?",
+        "choices": ["A. Inner Join", "B. Left Outer Join", "C. Right Outer Join", "D. Full Outer Join"],
+        "answer": "A. Inner Join",
+        "explanation": "Inner Join returns only rows where the join condition is satisfied in both tables."
+    },
+    {
+        "question": "True or False: A composite primary key is a primary key consisting of more than one attribute.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Composite keys combine multiple attributes to uniquely identify a row."
+    },
+    {
+        "question": "Which SQL query lists students who have taken both course INF-1101 and INF-2700?",
+        "choices": ["A. Using INTERSECT on two SELECTs", "B. Using UNION on two SELECTs", "C. Using JOIN", "D. Using WHERE IN for one course"],
+        "answer": "A. Using INTERSECT on two SELECTs",
+        "explanation": "INTERSECT returns only students present in both course queries."
+    },
+    {
+        "question": "True or False: In relational algebra, the projection operation can remove duplicate tuples.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Projection eliminates duplicate rows, returning a set of distinct tuples."
+    },
+    {
+        "question": "Which type of index is ideal for range queries like BETWEEN or >, < comparisons?",
+        "choices": ["A. Hash index", "B. B+-tree", "C. Bitmap index", "D. Clustered index"],
+        "answer": "B. B+-tree",
+        "explanation": "B+-trees allow efficient range searches by traversing leaf nodes sequentially."
+    },
+    {
+        "question": "True or False: In 3NF, every non-prime attribute is non-transitively dependent on every key.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "3NF removes transitive dependencies to reduce redundancy."
+    },
+    {
+        "question": "Which transaction anomaly occurs when two transactions update the same data simultaneously without isolation?",
+        "choices": ["A. Dirty Read", "B. Lost Update", "C. Unrepeatable Read", "D. Phantom Read"],
+        "answer": "B. Lost Update",
+        "explanation": "A lost update happens when one transaction overwrites another transaction’s changes."
+    },
+    {
+        "question": "Which SQL keyword is used to prevent duplicates in the result of a SELECT query?",
+        "choices": ["A. DISTINCT", "B. UNIQUE", "C. GROUP BY", "D. HAVING"],
+        "answer": "A. DISTINCT",
+        "explanation": "DISTINCT removes duplicate rows from the query result."
+    },
+    {
+        "question": "True or False: A checkpoint allows the database to recover faster after a crash.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Checkpoints reduce the amount of work during recovery by marking consistent states."
+    },
+    {
+        "question": "Which SQL clause is used to group rows before applying aggregate functions?",
+        "choices": ["A. WHERE", "B. HAVING", "C. GROUP BY", "D. ORDER BY"],
+        "answer": "C. GROUP BY",
+        "explanation": "GROUP BY groups rows for aggregation like COUNT, SUM, AVG."
+    },
+    {
+        "question": "True or False: A foreign key must reference a primary key or a unique key in another table.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Foreign keys enforce referential integrity by pointing to a unique row in another table."
+    },
+    {
+        "question": "Which type of join would you use to include all students, even if they have not taken any courses?",
+        "choices": ["A. Inner Join", "B. Left Outer Join", "C. Right Outer Join", "D. Cross Join"],
+        "answer": "B. Left Outer Join",
+        "explanation": "Left Outer Join includes all rows from the left table and matches from the right table if they exist."
+    },
+    {
+        "question": "True or False: Undo phase in recovery must be performed before redo phase.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "Redo phase is applied first to ensure committed updates, then undo reverses uncommitted changes."
+    },
+    {
+        "question": "Which normal form eliminates repeating groups?",
+        "choices": ["A. 1NF", "B. 2NF", "C. 3NF", "D. BCNF"],
+        "answer": "A. 1NF",
+        "explanation": "1NF requires each attribute to hold atomic values, removing repeating groups."
+    },
+    {
+        "question": "True or False: In a B+-tree, all records are stored at the leaf nodes.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "B+-tree leaves store all data records; internal nodes only store keys for navigation."
+    },
+    {
+        "question": "Which SQL query finds the highest salary in each department?",
+        "choices": ["A. SELECT MAX(salary) FROM Instructor", "B. SELECT dept, MAX(salary) FROM Instructor GROUP BY dept", "C. SELECT dept, salary FROM Instructor WHERE salary = MAX(salary)", "D. SELECT dept, salary FROM Instructor ORDER BY salary DESC"],
+        "answer": "B. SELECT dept, MAX(salary) FROM Instructor GROUP BY dept",
+        "explanation": "GROUP BY allows aggregation per department."
+    },
+    {
+        "question": "True or False: A schedule is strict if a transaction can read or write uncommitted data from another transaction.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "Strict schedules prevent reading or writing uncommitted data."
+    },
+    {
+        "question": "Which operation in relational algebra selects rows based on a condition?",
+        "choices": ["A. Projection", "B. Selection", "C. Join", "D. Union"],
+        "answer": "B. Selection",
+        "explanation": "Selection (σ) filters tuples satisfying a given predicate."
+    },
+    {
+        "question": "True or False: A dependency-preserving decomposition allows all functional dependencies to be enforced without joins.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Dependency preservation ensures constraints can be checked on decomposed tables individually."
+    },
+    {
+        "question": "Which SQL command removes a table completely from the database?",
+        "choices": ["A. DELETE", "B. TRUNCATE", "C. DROP", "D. REMOVE"],
+        "answer": "C. DROP",
+        "explanation": "DROP deletes the table schema and all its data permanently."
+    },
+    {
+        "question": "True or False: Hash file organization is better for sequential range queries than B+-tree file organization.",
+        "choices": ["A. True", "B. False"],
+        "answer": "B. False",
+        "explanation": "Hash organization is efficient for equality searches but poor for range queries."
+    },
+    {
+        "question": "Which SQL construct retrieves rows from one table based on matching values in another table?",
+        "choices": ["A. Subquery", "B. Join", "C. Index", "D. Aggregate function"],
+        "answer": "B. Join",
+        "explanation": "Joins combine tables based on a condition to retrieve related rows."
+    },
+    {
+        "question": "True or False: Phantom reads occur when a transaction reads a different set of rows in repeated queries due to another transaction inserting or deleting rows.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Phantom reads are caused by concurrent inserts or deletes affecting query results."
+    },
+    {
+        "question": "Which SQL clause is used to filter rows before aggregation?",
+        "choices": ["A. WHERE", "B. HAVING", "C. GROUP BY", "D. ORDER BY"],
+        "answer": "A. WHERE",
+        "explanation": "WHERE filters individual rows before aggregation, while HAVING filters groups after aggregation."
+    },
+    {
+        "question": "True or False: In a B*-tree, nodes are more densely packed than in a B-tree, improving storage utilization.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "B*-trees split nodes differently to maintain 2/3 occupancy for better disk space usage."
+    },
+    {
+        "question": "Which type of transaction schedule ensures serializability and strictness simultaneously?",
+        "choices": ["A. Recoverable schedule", "B. Strict Two-phase Locking schedule", "C. Fuzzy checkpoint schedule", "D. Timestamp schedule"],
+        "answer": "B. Strict Two-phase Locking schedule",
+        "explanation": "Strict 2PL enforces serializability and prevents reading uncommitted data."
     }
 
 ]
-
 
 # -----------------------------
 # SESSION STATE INIT
