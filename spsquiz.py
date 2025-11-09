@@ -401,15 +401,14 @@ st.markdown("""
 for choice in choices:
     if st.button(choice, key=f"{st.session_state.q_index}_{choice}", help="Click to answer"):
         st.session_state.user_answers[st.session_state.q_index] = choice
-        
-        # Extract the letter from the choice before comparing
-        choice_letter = choice.split(":")[0].strip()  # "A: Oort cloud" -> "A"
-        
-        if choice_letter == q["answer"]:
+        if choice == q["answer"]:
             st.session_state.feedback = f"✅ Correct! {q['explanation']}"
             st.session_state.score += 1
         else:
-            st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}. {q['explanation']}"
+            st.session_state.feedback = f"❌ Incorrect. Correct: {q['answer']}.\n{q['explanation']}"
+
+if st.session_state.feedback:
+    st.markdown(f"<div class='feedback'>{st.session_state.feedback}</div>", unsafe_allow_html=True)
 
 
 # -----------------------------
@@ -438,6 +437,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
+
 
 
 
