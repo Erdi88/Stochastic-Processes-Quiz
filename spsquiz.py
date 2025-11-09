@@ -9,1243 +9,786 @@ st.set_page_config(page_title="Database Systems Quiz 2025", layout="centered")
 
 questions = [
     {
-        "question": "What is the main source of the Sun’s energy?",
-        "choices": ["A. Gravitational contraction", "B. Nuclear fusion of hydrogen", "C. Radioactive decay", "D: Chemical reactions"],
-        "answer": "B",
-        "explanation": "The Sun’s energy comes from hydrogen nuclei fusing into helium in its core, releasing energy via E=mc²."
-    },
-    {
-        "question": "Which particles from the Sun reach Earth almost instantly after being produced in the core?",
-        "choices": ["A. Photons", "B. Neutrinos", "C. Protons", "D: Solar wind ions"],
-        "answer": "B",
-        "explanation": "Neutrinos pass through the Sun and space almost without interaction, arriving at Earth in about 8 minutes."
-    },
-    {
-        "question": "The approximate temperature of the Sun’s core is about:",
-        "choices": ["A. 6,000 K", "B. 15 million K", "C. 1 million K", "D: 100,000 K"],
-        "answer": "B",
-        "explanation": "The Sun’s core temperature is around 1.5 × 10⁷ K, sufficient for hydrogen fusion."
-    },
-    {
-        "question": "True or False: The Sun transfers energy to the planets mainly through convection.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Energy transfer from the Sun to planets occurs via radiation (light), not convection."
-    },
-    {
-        "question": "Which physical law explains why all planets orbit the Sun in roughly the same direction?",
-        "choices": ["A. Newton’s Third Law", "B. Conservation of Angular Momentum", "C. Kepler’s Second Law", "D: Universal Gravitation"],
-        "answer": "B",
-        "explanation": "Conservation of angular momentum in the rotating solar nebula caused planets to form in the same orbital direction."
-    },
-    {
-        "question": "A Hohmann transfer orbit is primarily used to:",
-        "choices": ["A. Land on a moon", "B. Change orbital inclination", "C. Transfer between two circular orbits", "D: Maintain geostationary position"],
-        "answer": "C",
-        "explanation": "It’s the most fuel-efficient two-burn transfer between circular orbits in the same plane."
-    },
-    {
-        "question": "True or False: A planet’s Hill sphere depends only on its mass.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "It also depends on the planet’s distance from the Sun — farther planets have larger Hill spheres."
-    },
-    {
-        "question": "What is the Roche limit?",
-        "choices": ["A. Minimum distance where a moon can orbit without breaking apart", "B. Distance where escape velocity equals orbital velocity", "C. Region of gravitational equilibrium", "D: Maximum stable orbital radius"],
-        "answer": "A",
-        "explanation": "Inside the Roche limit, tidal forces overcome a moon’s self-gravity, possibly forming rings."
-    },
-    {
-        "question": "In planetary formation, what is 'runaway growth'?",
-        "choices": ["A. Rapid accumulation of mass by the largest planetesimals", "B. Evaporation of small dust particles", "C. Expansion of a protoplanet’s orbit", "D: Loss of gas by photoevaporation"],
-        "answer": "A",
-        "explanation": "Larger planetesimals attract material faster, growing disproportionately — a positive feedback process."
-    },
-    {
-        "question": "Kepler’s third law connects which two parameters of a planet’s orbit?",
-        "choices": ["A. Period and mass", "B. Eccentricity and inclination", "C. Period and semi-major axis", "D: Velocity and radius"],
-        "answer": "C",
-        "explanation": "Kepler’s third law: P² ∝ a³ — orbital period squared is proportional to the cube of the semi-major axis."
-    },
-    {
-        "question": "True or False: Mercury has a thin atmosphere because of its strong gravity.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Mercury’s gravity is weak and its temperature is high, so gas escapes easily, leaving only a thin exosphere."
-    },
-    {
-        "question": "A primary atmosphere is composed mainly of:",
-        "choices": ["A. Outgassed CO₂ and N₂", "B. Captured hydrogen and helium", "C. Oxygen and ozone", "D: Volcanic dust and ice"],
-        "answer": "B",
-        "explanation": "Primary atmospheres are captured directly from the solar nebula (H and He), while secondary atmospheres come from outgassing or impacts."
-    },
-    {
-        "question": "Which property most influences a planet’s bulk density?",
-        "choices": ["A. Distance from the Sun", "B. Composition", "C. Rotation rate", "D: Number of moons"],
-        "answer": "B",
-        "explanation": "Planets with rocky composition are denser; those with ice and gas are less dense."
-    },
-    {
-        "question": "A surface-bound exosphere refers to:",
-        "choices": ["A. A dense layer of air near the ground", "B. Gas particles escaping freely without collisions", "C. A subsurface ocean", "D: A magnetic boundary layer"],
-        "answer": "B",
-        "explanation": "In an exosphere, gas particles rarely collide and follow ballistic trajectories — typical for Mercury or the Moon."
-    },
-    {
-        "question": "True or False: Atmospheric composition generally stays constant with altitude.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Heavier gases settle lower; lighter gases dominate at higher altitudes."
-    },
-    {
-        "question": "Where do short-period comets originate?",
-        "choices": ["A. Oort Cloud", "B. Kuiper Belt", "C. Asteroid Belt", "D: Solar corona"],
-        "answer": "B",
-        "explanation": "Short-period comets come from the Kuiper Belt and have orbits lasting under 200 years."
-    },
-    {
-        "question": "Where do long-period comets originate?",
-        "choices": ["A. Asteroid Belt", "B. Kuiper Belt", "C. Oort Cloud", "D: Main Belt"],
-        "answer": "C",
-        "explanation": "Long-period comets come from the distant, spherical Oort Cloud extending thousands of AU from the Sun."
-    },
-    {
-        "question": "True or False: Meteor showers are linked to debris left behind by comets.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "Earth passes through trails of cometary dust, producing meteor showers when particles burn in the atmosphere."
-    },
-    {
-        "question": "Which is most massive among these small Solar System objects?",
-        "choices": ["A. Dwarf planet", "B. Asteroid", "C. Comet nucleus", "D: Meteoroid"],
-        "answer": "A",
-        "explanation": "Dwarf planets like Pluto or Eris are the most massive class of small bodies."
-    },
-    {
-        "question": "True or False: Crater counts give the same meteoroid flux estimate on Mars and its moons.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Different gravity, surface age, and atmosphere cause different apparent crater densities and flux estimates."
-    },
-    {
-        "question": "How was the first exoplanet around a main-sequence star discovered?",
-        "choices": ["A. Direct imaging", "B. Transit method", "C. Radial velocity (Doppler wobble)", "D: Gravitational microlensing"],
-        "answer": "C",
-        "explanation": "The first exoplanet around a Sun-like star (51 Pegasi b) was found by detecting the star’s Doppler shifts due to the planet’s gravity."
-    },
-    {
-        "question": "A 'hot Jupiter' refers to:",
-        "choices": ["A. A massive planet far from its star", "B. A gas giant close to its star", "C. A small rocky planet with lava surface", "D: A young planet still contracting"],
-        "answer": "B",
-        "explanation": "Hot Jupiters are gas giants orbiting very close to their stars, resulting in high temperatures and short orbital periods."
-    },
-    {
-        "question": "Which parameter primarily determines an exoplanet’s equilibrium temperature?",
-        "choices": ["A. Planet’s mass", "B. Distance from its star", "C. Rotation speed", "D: Magnetic field strength"],
-        "answer": "B",
-        "explanation": "The farther a planet is from its star, the less radiation it receives, leading to a lower equilibrium temperature."
-    },
-    {
-        "question": "The habitable zone around a star is defined as:",
-        "choices": ["A. The region where liquid water can exist", "B. The zone with maximum stellar flux", "C. The orbit where comets form", "D: The magnetic boundary of the star"],
-        "answer": "A",
-        "explanation": "It’s the distance range where conditions allow liquid water to be stable on a planet’s surface."
-    },
-    {
-        "question": "The Drake equation is used to estimate:",
-        "choices": ["A. The age of the universe", "B. The number of intelligent civilizations", "C. The lifetime of stars", "D: The speed of galactic rotation"],
-        "answer": "B",
-        "explanation": "The Drake equation multiplies several factors to estimate the number of detectable extraterrestrial civilizations."
-    },
-    {
-        "question": "True or False: The Sun’s magnetic activity cycle lasts about 11 years.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "The number of sunspots rises and falls in an ~11-year cycle, marking the solar activity period."
-    },
-    {
-        "question": "Why is Earth slightly warmer during solar maximum, despite sunspots being cooler?",
-        "choices": ["A. Increased solar luminosity from faculae", "B. Greenhouse gas buildup", "C. Tidal effects from the Moon", "D: Decreased albedo"],
-        "answer": "A",
-        "explanation": "Bright magnetic regions (faculae) increase total solar output, offsetting the cooling effect of sunspots."
-    },
-    {
-        "question": "What is observed in the solar wind at 1 AU?",
-        "choices": ["A. Plasma of protons and electrons", "B. Neutral hydrogen gas", "C. Only magnetic fields", "D: Cosmic dust grains"],
-        "answer": "A",
-        "explanation": "The solar wind is a stream of charged particles—mostly protons and electrons—flowing outward from the Sun."
-    },
-    {
-        "question": "True or False: The Sun’s magnetic field at 1 AU is purely radial.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Due to the Sun’s rotation, the field has a spiral (azimuthal) component—forming the Parker spiral."
-    },
-    {
-        "question": "A Sun-synchronous orbit is useful because:",
-        "choices": ["A. It keeps constant sunlight conditions for imaging", "B. It avoids eclipses", "C. It moves with the solar wind", "D: It remains fixed over the equator"],
-        "answer": "A",
-        "explanation": "Sun-synchronous orbits precess so that each pass occurs at the same local solar time, ideal for consistent lighting in observations."
-    },
-    {
-        "question": "True or False: Energy from the Sun reaches Earth mainly by conduction.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "There’s no medium for conduction in space—energy is transferred by electromagnetic radiation."
-    },
-    {
-        "question": "Which two factors determine a star’s luminosity?",
-        "choices": ["A. Radius and surface temperature", "B. Mass and density", "C. Age and composition", "D: Magnetic field and rotation rate"],
-        "answer": "A",
-        "explanation": "Luminosity follows L = 4πR²σT⁴, depending on the star’s size and surface temperature."
-    },
-    {
-        "question": "True or False: Most stars in the Milky Way are main-sequence stars.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "The main sequence phase lasts the majority of a star’s lifetime, so most observed stars are in this stage."
-    },
-    {
-        "question": "What determines whether a planet retains an atmosphere over time?",
-        "choices": ["A. Temperature and escape velocity", "B. Distance from Earth", "C. Rotation rate", "D: Number of moons"],
-        "answer": "A",
-        "explanation": "Gas retention depends on how fast molecules move (temperature) versus how fast the planet can hold them (escape velocity)."
-    },
-    {
-        "question": "If a spacecraft moves from Earth’s orbit to Mars’ orbit via a Hohmann transfer, the transfer ellipse’s semi-major axis is:",
-        "choices": ["A. (r_Earth + r_Mars)/2", "B. (r_Earth × r_Mars)/2", "C. (r_Mars − r_Earth)", "D: (r_Mars + r_Earth)²"],
-        "answer": "A",
-        "explanation": "The Hohmann transfer orbit’s semi-major axis is the average of the two circular orbital radii."
-    },
-    {
-        "question": "True or False: Increasing a planet’s mass increases the size of its Hill sphere.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "A more massive planet has stronger gravity relative to the Sun, allowing a larger region of stable satellite orbits."
-    },
-    {
-        "question": "What happens if a moon orbits inside the Roche limit?",
-        "choices": ["A. It becomes tidally locked", "B. It may be torn apart by tidal forces", "C. It speeds up its orbit", "D: It escapes into space"],
-        "answer": "B",
-        "explanation": "Tidal stresses exceed the moon’s self-gravity, causing fragmentation—forming rings or debris."
-    },
-    {
-        "question": "True or False: The habitable zone moves outward as a star evolves into a red giant.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "As luminosity increases, the region where water can exist moves farther from the star."
-    },
-    {
-        "question": "Which formula would you use to compare energy output between a sunspot and the normal solar surface?",
-        "choices": ["A. L ∝ T⁴", "B. L ∝ 1/T", "C. L ∝ T²", "D: L ∝ √T"],
-        "answer": "A",
-        "explanation": "Blackbody radiation follows the Stefan–Boltzmann law: energy ∝ T⁴, so cooler regions emit much less energy."
-    },
-    {
-        "question": "True or False: Venus is hotter than Earth because it’s closer to the Sun.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Venus’s extreme heat is due to its dense CO₂ atmosphere and strong greenhouse effect, not just its distance."
-    },
-    {
-        "question": "How does the solar wind interact with Earth’s magnetic field?",
-        "choices": ["A. It passes straight through", "B. It’s deflected, creating a magnetosphere", "C. It heats the atmosphere directly", "D: It increases Earth’s rotation speed"],
-        "answer": "B",
-        "explanation": "The solar wind is deflected by Earth’s magnetic field, forming the magnetosphere and sometimes causing auroras."
-    },
-    {
-        "question": "True or False: The Sun’s 11-year cycle is tracked by counting sunspots.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "Sunspots increase and decrease in a predictable ~11-year cycle, used to monitor solar activity."
-    },
-    {
-        "question": "The solar wind mainly consists of which particles?",
-        "choices": ["A. Protons and electrons", "B. Neutrons", "C. Neutral hydrogen atoms", "D: Cosmic rays"],
-        "answer": "A",
-        "explanation": "It’s a plasma made mostly of protons and electrons, continuously streaming from the Sun’s corona."
-    },
-    {
-        "question": "True or False: The thermal velocity of solar wind protons is usually higher than their bulk flow speed.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "The bulk flow (hundreds of km/s) is faster than the random thermal motion of the protons."
-    },
-    {
-        "question": "Why does the Sun’s magnetic field have both radial and azimuthal components at 1 AU?",
-        "choices": ["A. Magnetic field reversals", "B. Solar differential rotation and wind outflow", "C. Interaction with planets", "D: Cosmic ray pressure"],
-        "answer": "B",
-        "explanation": "The combination of solar rotation and the outward-moving solar wind winds the field into a spiral pattern (Parker spiral)."
-    },
-    {
-        "question": "What is the typical bulk velocity of the solar wind near Earth?",
-        "choices": ["A. 100 km/s", "B. 400 km/s", "C. 1500 km/s", "D: 20 km/s"],
-        "answer": "B",
-        "explanation": "At 1 AU, the solar wind flows at ~400 km/s on average, with faster streams during high solar activity."
-    },
-    {
-        "question": "True or False: A Sun-synchronous satellite passes over each location on Earth at different local times each day.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Sun-synchronous orbits maintain a constant local solar time for imaging consistency."
-    },
-    {
-        "question": "Which orbit allows a satellite to appear fixed above one point on Earth?",
-        "choices": ["A. Polar", "B. Geostationary", "C. Sun-synchronous", "D: Elliptical"],
-        "answer": "B",
-        "explanation": "A geostationary satellite orbits at ~35,786 km, matching Earth’s rotation period and appearing stationary over the equator."
-    },
-    {
-        "question": "True or False: A planet’s orbital energy determines whether its path is bound or unbound.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "If total energy is negative, the orbit is bound; if positive, the object escapes to infinity."
-    },
-    {
-        "question": "What does the vis-viva equation describe?",
-        "choices": ["A. The relation between orbital speed, position, and semi-major axis", "B. The escape speed from a planet", "C. The surface gravity of a star", "D: The expansion of the universe"],
-        "answer": "A",
-        "explanation": "The vis-viva equation v² = GM(2/r − 1/a) links orbital velocity, distance, and the semi-major axis."
-    },
-    {
-        "question": "True or False: A circular orbit has the same speed everywhere because r = a.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "For circular orbits, distance from the focus is constant, so the orbital velocity doesn’t vary."
-    },
-    {
-        "question": "Conceptually, how would you find perihelion and aphelion speeds of an orbit?",
-        "choices": ["A. Use the vis-viva equation with r = r_min or r_max", "B. Multiply the semi-major axis by eccentricity", "C. Divide orbital period by mass", "D: Assume constant velocity"],
-        "answer": "A",
-        "explanation": "By applying v² = GM(2/r − 1/a) at the closest and farthest orbital points (r_min, r_max)."
-    },
-    {
-        "question": "What determines the equilibrium temperature of a planet?",
-        "choices": ["A. Distance from its star and albedo", "B. Planet’s density", "C. Its moons’ orbits", "D: Its magnetic field strength"],
-        "answer": "A",
-        "explanation": "A planet’s temperature depends mainly on how much sunlight it receives and how much it reflects (albedo)."
-    },
-    {
-        "question": "True or False: A perfect blackbody absorbs all incident radiation.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "By definition, a blackbody absorbs all incoming radiation and re-emits according to its temperature."
-    },
-    {
-        "question": "Why is the Moon’s blackbody temperature similar to Earth’s?",
-        "choices": ["A. It has an atmosphere", "B. It receives similar solar flux", "C. It rotates quickly", "D: It has volcanic heating"],
-        "answer": "B",
-        "explanation": "Both Earth and Moon are at roughly the same distance from the Sun and thus receive similar solar energy per area."
-    },
-    {
-        "question": "True or False: The solar constant increases if the Sun expands into a red giant.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "A larger, more luminous Sun would greatly increase the solar energy reaching a given distance."
-    },
-    {
-        "question": "What is the approximate blackbody temperature of Earth (ignoring greenhouse effects)?",
-        "choices": ["A. 255 K", "B. 300 K", "C. 100 K", "D: 500 K"],
-        "answer": "A",
-        "explanation": "Using solar flux and albedo, Earth’s equilibrium temperature is about 255 K (~−18°C)."
-    },
-    {
-        "question": "Describe the structure of a comet’s nucleus and surrounding regions.",
-        "choices": ["A. Rocky core only", "B. Icy nucleus with coma and tails", "C. Metallic center with rings", "D: Gas-only sphere"],
-        "answer": "B",
-        "explanation": "A comet has an icy nucleus surrounded by a coma of gas and dust, with tails pointing away from the Sun."
-    },
-    {
-        "question": "True or False: Comet tails always point opposite to the comet’s motion.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Tails always point away from the Sun due to solar radiation and the solar wind, not necessarily opposite to motion."
-    },
-    {
-        "question": "What was the main goal of the Rosetta mission?",
-        "choices": ["A. Study the Sun’s corona", "B. Orbit and land on a comet nucleus", "C. Measure dark matter", "D: Explore the Kuiper Belt"],
-        "answer": "B",
-        "explanation": "ESA’s Rosetta mission orbited comet 67P/Churyumov–Gerasimenko and deployed the Philae lander to its surface."
-    },
-    {
-        "question": "Stars form in which type of interstellar clouds?",
-        "choices": ["A. Diffuse atomic clouds", "B. Molecular clouds", "C. Ionized H II regions", "D: Planetary nebulae"],
-        "answer": "B",
-        "explanation": "Stars form in cold, dense molecular clouds where gravity can overcome gas pressure to start collapse."
-    },
-    {
-        "question": "The first step in star formation is called:",
-        "choices": ["A. Protostar ignition", "B. Gravitational collapse", "C. Main sequence burning", "D: Nuclear condensation"],
-        "answer": "B",
-        "explanation": "Star formation begins when a region of a molecular cloud collapses under its own gravity, forming a protostar."
-    },
-    {
-        "question": "True or False: Most stars spend the majority of their lives on the main sequence.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "The main sequence phase, where hydrogen fusion occurs in the core, is the longest stage in a star’s life."
-    },
-    {
-        "question": "Which two parameters determine a star’s luminosity?",
-        "choices": ["A. Temperature and radius", "B. Age and distance", "C. Density and metallicity", "D: Rotation and mass loss"],
-        "answer": "A",
-        "explanation": "Luminosity is proportional to R²T⁴ — both size and surface temperature control how bright a star is."
-    },
-    {
-        "question": "True or False: Planets generally orbit the Sun in random directions.",
-        "choices": ["True", "False"],
-        "answer": "False",
-        "explanation": "Conservation of angular momentum in the rotating solar nebula caused most planets to orbit in the same direction."
-    },
-    {
-        "question": "Which planets are terrestrial?",
-        "choices": ["A. Mercury, Venus, Earth, Mars", "B. Jupiter, Saturn, Uranus, Neptune", "C. Pluto and Eris", "D: Only Earth"],
-        "answer": "A",
-        "explanation": "The inner four planets are rocky and dense — classified as terrestrial planets."
-    },
-    {
-        "question": "Why is Mercury’s atmosphere so thin compared to Venus?",
-        "choices": ["A. It’s closer to the Sun and has low gravity", "B. It’s farther from the Sun", "C. It has many moons", "D: It rotates faster"],
-        "answer": "A",
-        "explanation": "High temperature and weak gravity allow gases to escape from Mercury’s surface easily."
-    },
-    {
-        "question": "True or False: A planet’s Hill sphere defines the region where it can hold moons in stable orbits.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "Inside the Hill sphere, a planet’s gravity dominates over the Sun’s, allowing stable satellite orbits."
-    },
-    {
-        "question": "Conceptually, how is the Hill radius calculated?",
-        "choices": ["A. It depends on planet mass and distance from the Sun", "B. Only on orbital speed", "C. Only on the Sun’s luminosity", "D: On the planet’s temperature"],
-        "answer": "A",
-        "explanation": "r_H ≈ a × (m_planet / (3M_sun))^(1/3); it grows with planet mass and distance from the Sun."
-    },
-    {
-        "question": "What happens if a moon orbits within the Roche limit of its planet?",
-        "choices": ["A. It becomes more spherical", "B. It can be torn apart by tidal forces", "C. It gains mass from the planet", "D: It moves to a higher orbit"],
-        "answer": "B",
-        "explanation": "Tidal forces exceed the moon’s gravity, causing it to disintegrate — forming rings or debris."
-    },
-    {
-        "question": "Why are most moons found within a planet’s Hill sphere?",
-        "choices": ["A. The planet’s gravity dominates there", "B. It’s the coldest region", "C. It’s protected from solar radiation", "D: It has strong magnetic fields"],
-        "answer": "A",
-        "explanation": "Outside the Hill sphere, solar gravity overcomes the planet’s pull, making orbits unstable."
-    },
-    {
-        "question": "Explain the difference between a meteor, meteoroid, and meteorite.",
-        "choices": ["A. They are all the same", "B. Meteoroid = in space, Meteor = in atmosphere, Meteorite = on ground", "C. Meteorite = in space, Meteor = on ground", "D: Meteor = star"],
-        "answer": "B",
-        "explanation": "A meteoroid travels in space, a meteor is the streak in the sky, and a meteorite is what reaches the surface."
-    },
-    {
-        "question": "True or False: Dwarf planets are typically more massive than comets or asteroids.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "Dwarf planets like Pluto and Eris are the largest class of small Solar System bodies."
-    },
-    {
-        "question": "How are comet orbits classified?",
-        "choices": ["A. By their brightness", "B. By orbital period (short or long)", "C. By their composition", "D: By their distance from Jupiter"],
-        "answer": "B",
-        "explanation": "Comets with periods under 200 years are short-period; longer ones come from the distant Oort Cloud."
-    },
-    {
-        "question": "Where do long-period comets originate?",
-        "choices": ["A. The Oort Cloud", "B. The Asteroid Belt", "C. The Kuiper Belt", "D: The Scattered Disk"],
-        "answer": "A",
-        "explanation": "Long-period comets come from the spherical Oort Cloud, far beyond Pluto."
-    },
-    {
-        "question": "Where do short-period comets come from?",
-        "choices": ["A. Oort Cloud", "B. Kuiper Belt", "C. Asteroid Belt", "D: Interstellar space"],
-        "answer": "B",
-        "explanation": "Short-period comets typically originate in the Kuiper Belt, beyond Neptune."
-    },
-    {
-        "question": "True or False: The vis-viva equation can be used to find a spacecraft’s speed at any orbital point.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "v² = GM(2/r − 1/a) gives the orbital velocity based on position and semi-major axis."
-    },
-    {
-        "question": "Conceptually, how can you estimate the time for a Hohmann transfer between two planets?",
-        "choices": ["A. Half the orbital period of the transfer ellipse", "B. Twice the orbital period", "C. Equal to the inner planet’s period", "D: Equal to one full orbit of the outer planet"],
-        "answer": "A",
-        "explanation": "A Hohmann transfer covers half of an elliptical orbit between the two circular orbits."
-    },
-    {
-        "question": "What does 'effective potential' in orbital motion represent?",
-        "choices": ["A. Gravitational + rotational energy per mass", "B. Magnetic field strength", "C. Electric charge balance", "D: Kinetic energy only"],
-        "answer": "A",
-        "explanation": "Effective potential combines gravitational potential with the centrifugal term, useful for analyzing orbital stability."
-    },
-    {
-        "question": "True or False: Total mechanical energy of a bound orbit is negative.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "A negative total energy indicates a closed, bound orbit—object cannot escape the central body."
-    },
-    {
-        "question": "Conceptually, what is a blackbody in astronomy?",
-        "choices": ["A. A perfectly reflecting object", "B. An ideal emitter that absorbs all radiation", "C. A black hole", "D: A starless planet"],
-        "answer": "B",
-        "explanation": "A blackbody absorbs all incident energy and emits radiation only based on its temperature."
-    },
-    {
-        "question": "How do solar radius and surface temperature affect luminosity?",
-        "choices": ["A. Luminosity ∝ R²T⁴", "B. Luminosity ∝ 1/(R²T)", "C. Luminosity ∝ R/T²", "D: Luminosity ∝ T"],
-        "answer": "A",
-        "explanation": "Luminosity grows rapidly with both radius and temperature, following the Stefan–Boltzmann law."
-    },
-    {
-        "question": "True or False: Earth’s actual temperature is higher than its blackbody temperature because of the greenhouse effect.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "Atmospheric gases trap infrared radiation, keeping Earth’s surface warmer than the 255 K blackbody estimate."
-    },
-    {
-        "question": "How can an electrostatic + magnetic analyzer measure ion mass on a spacecraft?",
-        "choices": ["A. By measuring light emission", "B. By combining deflection by electric and magnetic fields", "C. By weighing particles directly", "D: By counting photons"],
-        "answer": "B",
-        "explanation": "Ion analyzers determine particle mass-to-charge ratios from their deflection in electric and magnetic fields."
-    },
-    {
-        "question": "True or False: Comet orbits can change due to outgassing effects.",
-        "choices": ["True", "False"],
-        "answer": "True",
-        "explanation": "Jets of gas from sublimating ice can slightly alter a comet’s path, making its orbit deviate from predictions."
-    },
-    {
-        "question": "Why do planets orbit roughly in the same plane?",
-        "choices": [
-            "A. Due to random collisions during planet formation",
-            "B. Because the Sun’s gravity flattens their orbits",
-            "C. Result of angular momentum conservation in the protoplanetary disk",
-            "D: Because of tidal forces from nearby stars"
-        ],
-        "answer": "C",
-        "explanation": "The protoplanetary disk was rotating, and conservation of angular momentum caused most planets to orbit roughly in the same plane."
-    },
-    {
-        "question": "What differentiates terrestrial and giant planets?",
-        "choices": [
-            "A. Terrestrial planets are gas-rich; giant planets are rocky",
-            "B. Terrestrial planets are small, dense, rocky; giants are large, gas-dominated",
-            "C. Terrestrial planets are further from the Sun; giants are closer",
-            "D: Terrestrial planets have rings; giants do not"
-        ],
-        "answer": "B",
-        "explanation": "Terrestrial planets formed in the hot inner disk and are rocky, whereas giant planets accreted gas and ice in the cooler outer disk."
-    },
-    {
-        "question": "What is the ice line in a protoplanetary disk?",
-        "choices": [
-            "A. The distance where water ice can exist in solid form",
-            "B. The boundary between rocky planets and gas giants",
-            "C. The limit of the Sun’s magnetic field",
-            "D: The distance beyond which planets cannot form"
-        ],
-        "answer": "A",
-        "explanation": "The ice line marks where temperatures are low enough for volatile compounds like water to freeze, aiding formation of giant planet cores."
-    },
-    {
-        "question": "Why does the Moon always show the same face to Earth?",
-        "choices": [
-            "A. Because of tidal locking",
-            "B. Because the Moon does not rotate",
-            "C. Because Earth’s gravity slows its orbit",
-            "D: Because of solar radiation pressure"
-        ],
-        "answer": "A",
-        "explanation": "The Moon is tidally locked to Earth, meaning its rotation period equals its orbital period around Earth."
-    },
-    {
-        "question": "Which of the following is an example of another tidally locked body?",
-        "choices": [
-            "A. Mercury around the Sun",
-            "B. Jupiter around the Sun",
-            "C. Venus around Earth",
-            "D: Mars around the Sun"
-        ],
-        "answer": "A",
-        "explanation": "Mercury rotates three times on its axis for every two orbits around the Sun, a form of tidal resonance (effectively locked in long-term)."
-    },
-    {
-        "question": "Why does Earth have a magnetic field but Venus does not?",
-        "choices": [
-            "A. Earth is larger than Venus",
-            "B. Earth has a liquid iron core generating a dynamo; Venus rotates too slowly",
-            "C. Venus lacks water",
-            "D: Venus is too far from the Sun"
-        ],
-        "answer": "B",
-        "explanation": "Earth’s liquid outer core and rotation drive a magnetic dynamo. Venus rotates very slowly, preventing a similar dynamo."
-    },
-    {
-        "question": "How does a planet’s magnetic field protect its atmosphere?",
-        "choices": [
-            "A. By reflecting sunlight",
-            "B. By deflecting solar wind particles",
-            "C. By heating the atmosphere",
-            "D: By creating auroras"
-        ],
-        "answer": "B",
-        "explanation": "The magnetic field deflects charged particles from the solar wind, preventing significant atmospheric erosion."
-    },
-    {
-        "question": "How are comets classified?",
-        "choices": [
-            "A. By their brightness",
-            "B. By orbital period (short or long)",
-            "C. By composition",
-            "D: By distance from Jupiter"
-        ],
-        "answer": "B",
-        "explanation": "Comets with periods under 200 years are short-period; longer ones typically come from the distant Oort Cloud."
-    },
-    {
-        "question": "What is the main source of energy in the Sun’s interior?",
-        "choices": [
-            "A. Thermal fusion",
-            "B. Neutron capture",
-            "C. Radioactive decay",
-            "D: Gravitational contraction"
-        ],
-        "answer": "A",
-        "explanation": "Hydrogen nuclei fuse into helium in the Sun’s core, releasing energy as radiation."
-    },
-    {
-        "question": "Which formula gives the Hill radius of a planet?",
-        "choices": [
-            "A. r_Hill = (m / M)^(1/3) * R",
-            "B. r_Roche = 2.4 * (rho_planet / rho_satellite)^(1/3) * R_planet",
-            "C. v_orb = sqrt(G * M / R)",
-            "D: T_eq = ((1 - A_B) * L / (16 * pi * r^2 * sigma))^(1/4)"
-        ],
-        "answer": "A",
-        "explanation": "The Hill radius marks the region where a planet dominates the gravitational attraction of nearby satellites."
-    },
-    {
-        "question": "Which formula gives the blackbody temperature of a planet in radiation balance?",
-        "choices": [
-            "A. T = ((1 - A_B) * L / (16 * pi * r^2 * sigma))^(1/4)",
-            "B. v = sqrt(G * M / r)",
-            "C. P = n * k_B * T",
-            "D: r_Hill = (m / M)^(1/3) * R"
-        ],
-        "answer": "A",
-        "explanation": "A planet absorbs energy on the Sun-facing side and radiates over its surface; this formula computes its equilibrium blackbody temperature."
-    },
-    {
-        "question": "Which formula is used to calculate the solar constant at Earth after the Sun changes size and temperature?",
-        "choices": [
-            "A. S = L / (4 * pi * r^2), with L = 4 * pi * R^2 * sigma * T^4",
-            "B. v = sqrt(G * M / r)",
-            "C. r_Roche = 2.4 * (rho_planet / rho_satellite)^(1/3) * R_planet",
-            "D: T_eq = ((1 - A_B) * L / (16 * pi * r^2 * sigma))^(1/4)"
-        ],
-        "answer": "A",
-        "explanation": "The solar constant depends on the Sun’s luminosity and distance; luminosity is computed from radius and surface temperature via the Stefan-Boltzmann law."
-    },
-    {
-        "question": "Which formula is relevant to calculate the transfer time in a Hohmann orbit from Earth to Mars?",
-        "choices": [
-            "A. t_transfer = pi * sqrt(a^3 / (G * M))",
-            "B. v = sqrt(G * M * (2 / r - 1 / a))",
-            "C. r_Roche = 2.4 * (rho_planet / rho_satellite)^(1/3) * R_planet",
-            "D: T_eq = ((1 - A_B) * L / (16 * pi * r^2 * sigma))^(1/4)"
-        ],
-        "answer": "A",
-        "explanation": "The transfer time is half the period of the elliptical Hohmann orbit, which can be derived from Kepler’s third law."
+        "question": "What defines the habitable zone around a star?",
+        "choices": ["A. The region where liquid water can exist on a planet's surface",
+                    "B. The distance at which planets are tidally locked",
+                    "C. The area with the highest asteroid density",
+                    "D. The zone where magnetic fields are strongest"],
+        "answer": "A. The region where liquid water can exist on a planet's surface",
+        "explanation": "The habitable zone is the range of distances from a star where a planet can have liquid water, essential for life as we know it."
+    },
+    {
+        "question": "What is the Drake equation used for?",
+        "choices": ["A. Estimating the number of active, communicative extraterrestrial civilizations in the Milky Way",
+                    "B. Calculating comet impact probabilities",
+                    "C. Measuring the luminosity of a star",
+                    "D. Determining the age of planets"],
+        "answer": "A. Estimating the number of active, communicative extraterrestrial civilizations in the Milky Way",
+        "explanation": "The Drake equation multiplies factors like star formation rate, fraction of stars with planets, and probability of life to estimate extraterrestrial civilizations."
     },
     {
         "question": "The dust rings of Uranus were discovered in 1977. How?",
-        "choices": [
-            "A. With camera observations from Voyager 1 spacecraft",
-            "B. With stellar occultation observations",
-            "C. With a solar occultation observation"
-        ],
-        "answer": "B",
-        "explanation": "The dust rings of Uranus were first detected using the method of stellar occultation, where the dimming of a background star as it passed behind Uranus' rings revealed their presence."
+        "choices": ["A. By observing stellar occultations",
+                    "B. Using the Hubble Space Telescope",
+                    "C. Through radio emissions",
+                    "D. By flyby spacecraft imagery"],
+        "answer": "A. By observing stellar occultations",
+        "explanation": "Occultations occur when a planet passes in front of a star, allowing detection of rings through dips in starlight."
+    },
+    {
+        "question": "Which two parameters does Kepler’s third law relate?",
+        "choices": ["A. Orbital period and average orbital radius",
+                    "B. Planet mass and orbital speed",
+                    "C. Star mass and luminosity",
+                    "D. Planet radius and surface gravity"],
+        "answer": "A. Orbital period and average orbital radius",
+        "explanation": "Kepler’s third law shows that the square of a planet's orbital period is proportional to the cube of the semi-major axis of its orbit."
+    },
+    {
+        "question": "Mercury has a very thin atmosphere while Saturn has a thick one because Mercury's gravity is too weak to retain gases, and Saturn's stronger gravity retains a thick atmosphere. True or False?",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Planetary gravity, temperature, and solar radiation affect atmospheric retention. Mercury is small and close to the Sun, losing most gases."
+    },
+    {
+        "question": "How are meteor showers linked to comets?",
+        "choices": ["A. Meteor showers occur when Earth passes through debris left by comets",
+                    "B. Comets emit meteor showers when they leave the solar system",
+                    "C. Meteor showers create new comets in the outer Solar System",
+                    "D. They are unrelated phenomena"],
+        "answer": "A. Meteor showers occur when Earth passes through debris left by comets",
+        "explanation": "Comets leave trails of dust and particles that cause meteors when Earth crosses these orbits."
     },
     {
         "question": "What defines an Astronomical Unit (AU)?",
-        "choices": [
-            "A. The distance from the Sun to Neptune",
-            "B. The mean distance from the Earth to the Sun",
-            "C. The distance light travels in one hour",
-            "D: The radius of Earth's orbit at perihelion"
-        ],
-        "answer": "B",
-        "explanation": "An Astronomical Unit is defined as the average distance between the Earth and the Sun, approximately 149.6 million kilometers."
+        "choices": ["A. Average distance from Earth to the Sun",
+                    "B. Distance light travels in one year",
+                    "C. Diameter of the Sun",
+                    "D. Radius of Earth"],
+        "answer": "A. Average distance from Earth to the Sun",
+        "explanation": "1 AU is approximately 149.6 million kilometers, the average distance between Earth and Sun."
     },
     {
-        "question": "How is the Lyapunov characteristic exponent used to distinguish between regular and chaotic trajectories?",
-        "choices": [
-            "A. It measures the energy of the orbit",
-            "B. It quantifies the rate at which nearby trajectories diverge",
-            "C. It calculates orbital period",
-            "D: It gives the average orbital radius"
-        ],
-        "answer": "B",
-        "explanation": "The Lyapunov exponent indicates how quickly nearby trajectories in phase space diverge. Positive exponents indicate chaotic motion, while zero or negative exponents indicate regular, stable motion."
+        "question": "How is the Lyapunov characteristic exponent used?",
+        "choices": ["A. To distinguish between regular and chaotic trajectories",
+                    "B. To measure planetary mass",
+                    "C. To calculate orbital speed",
+                    "D. To determine star luminosity"],
+        "answer": "A. To distinguish between regular and chaotic trajectories",
+        "explanation": "Positive Lyapunov exponents indicate chaos, while zero or negative exponents indicate regular motion."
     },
     {
-        "question": "As a comet passes the Sun we observe that its tail at one point gets disconnected. Which of the comet’s tails were broken, and why did it happen?",
-        "choices": [
-            "A. The dust tail, because of solar radiation pressure",
-            "B. The ion tail, due to interactions with the solar wind and magnetic field",
-            "C. Both tails, due to gravitational perturbations",
-            "D: None, tails never break"
-        ],
-        "answer": "B",
-        "explanation": "The ion tail is made of charged particles that interact strongly with the solar wind and the Sun’s magnetic field. Changes in the magnetic field can cause disconnection events in the ion tail."
+        "question": "What powers the stars?",
+        "choices": ["A. Nuclear fusion in their cores",
+                    "B. Gravitational collapse",
+                    "C. Chemical reactions",
+                    "D. Rotational energy"],
+        "answer": "A. Nuclear fusion in their cores",
+        "explanation": "Stars fuse hydrogen into helium in their cores, releasing energy that powers them."
     },
     {
-        "question": "The magnetic field of the Sun typically has radial and azimuthal components that are roughly equal at a distance of 1 AU. What causes this?",
-        "choices": [
-            "A. Solar rotation and the Parker spiral",
-            "B. Sunspot activity",
-            "C. Convection in the solar core",
-            "D: Tidal effects from planets"
-        ],
-        "answer": "A",
-        "explanation": "The Sun’s rotation twists the magnetic field lines into a spiral shape known as the Parker spiral. At 1 AU, the radial and azimuthal components are roughly comparable."
+        "question": "What is runaway growth in planetary formation?",
+        "choices": ["A. Rapid accretion of planetesimals forming protoplanets",
+                    "B. Sudden collapse of a star",
+                    "C. Increase in comet velocity near planets",
+                    "D. Explosion of planetary atmospheres"],
+        "answer": "A. Rapid accretion of planetesimals forming protoplanets",
+        "explanation": "Runaway growth occurs when larger bodies attract more material faster, leading to faster growth than smaller bodies."
     },
     {
-        "question": "The Sun follows an 11-year-long cycle. Discuss the changes that happen to sunspots during these cycles.",
-        "choices": [
-            "A. Sunspots disappear completely at solar minimum and reach maximum at solar maximum",
-            "B. Sunspots change color",
-            "C. Sunspots migrate from Earth-facing side to far side",
-            "D: Sunspots increase only in size but not in number"
-        ],
-        "answer": "A",
-        "explanation": "During the 11-year solar cycle, the number of sunspots varies from a minimum (few or none) to a maximum, reflecting the magnetic activity of the Sun."
+        "question": "As a comet approaches the Sun, its velocity can increase up to 11 times its initial velocity at infinity. The impact parameter b is the distance the comet would have passed the Sun without gravitational influence. Which statement is true about calculating b?",
+        "choices": ["A. It is derived from energy and angular momentum conservation",
+                    "B. It is measured directly from the comet’s tail",
+                    "C. It is equal to the comet’s initial distance from the Sun",
+                    "D. It depends only on the comet’s mass"],
+        "answer": "A. It is derived from energy and angular momentum conservation",
+        "explanation": "The impact parameter can be calculated using the conservation of energy and angular momentum for hyperbolic trajectories."
     },
     {
-        "question": "What is Jeans instability and why is it important?",
-        "choices": [
-            "A. Gravitational collapse of a cloud when internal pressure cannot support it, leading to star formation",
-            "B. Instability in planetary orbits",
-            "C. Turbulent mixing in the Sun's convection zone",
-            "D: Oscillations in comet tails"
-        ],
-        "answer": "A",
-        "explanation": "Jeans instability occurs when a region in a gas cloud exceeds a critical mass or size (the Jeans mass) so that gravity overcomes pressure, leading to collapse and eventually star formation."
+        "question": "When a comet’s tail gets disconnected, which tail is usually affected and why?",
+        "choices": ["A. The ion (plasma) tail, because of interactions with the solar magnetic field",
+                    "B. The dust tail, because of solar radiation pressure",
+                    "C. Both tails, due to tidal forces",
+                    "D. Neither tail is affected; it is an optical illusion"],
+        "answer": "A. The ion (plasma) tail, because of interactions with the solar magnetic field",
+        "explanation": "The ion tail is made of charged particles carried by the solar wind and can get disconnected when encountering magnetic disturbances."
     },
     {
-        "question": "What is described with the Jeans mass?",
-        "choices": [
-            "A. The mass at which a gas cloud becomes unstable to gravitational collapse",
-            "B. The total mass of a star cluster",
-            "C. The mass of the Sun",
-            "D: The mass needed for a planet to retain an atmosphere"
-        ],
-        "answer": "A",
-        "explanation": "The Jeans mass is the critical mass for which a gas cloud will collapse under its own gravity, initiating star formation."
+        "question": "The Sun’s magnetic field at 1 AU has roughly equal radial and azimuthal components. What causes this?",
+        "choices": ["A. The combination of the Sun’s rotation and solar wind stretching the field lines",
+                    "B. Planetary magnetic fields balancing the solar field",
+                    "C. Tidal interactions with comets",
+                    "D. Sunspots creating temporary magnetic fields"],
+        "answer": "A. The combination of the Sun’s rotation and solar wind stretching the field lines",
+        "explanation": "The Sun’s rotation causes azimuthal twisting of magnetic field lines, while the solar wind stretches them radially."
     },
     {
-        "question": "What is the virial theorem and when do we use it?",
-        "choices": [
-            "A. Relates the kinetic and potential energy in a bound system; used to estimate stability of stars and clusters",
-            "B. Predicts the luminosity of stars",
-            "C. Determines escape velocity from planets",
-            "D: Describes the expansion of the universe"
-        ],
-        "answer": "A",
-        "explanation": "The virial theorem states that for a stable, bound gravitational system, twice the kinetic energy plus the potential energy is zero. It's used to analyze systems like star clusters or galaxies."
+        "question": "True or False: Sunspots follow an 11-year cycle, changing in number and position on the Sun’s surface.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Sunspot numbers increase and decrease in an 11-year cycle, migrating toward the solar equator as the cycle progresses."
     },
     {
-        "question": "The dust rings of Neptune were discovered in 1984. How?",
-        "choices": [
-            "A. With camera observations from Voyager 1 spacecraft",
-            "B. With stellar occultation observations",
-            "C. With a solar occultation observation"
-        ],
-        "answer": "B",
-        "explanation": "Neptune's rings were first detected by observing the dimming of a star as it passed behind them (stellar occultation), before Voyager 2 confirmed their structure."
+        "question": "What is the Virial Theorem and when do we use it?",
+        "choices": ["A. It relates kinetic and potential energy in a gravitational system; used to determine stability of clouds",
+                    "B. It predicts comet trajectories using angular momentum",
+                    "C. It measures the luminosity of stars",
+                    "D. It calculates orbital period of planets"],
+        "answer": "A. It relates kinetic and potential energy in a gravitational system; used to determine stability of clouds",
+        "explanation": "The Virial theorem states that for a stable, self-gravitating system, 2K + U = 0. It is used to determine whether clouds will collapse to form stars."
     },
     {
-        "question": "What is the main process of heat transfer from Sun to planets?",
-        "choices": [
-            "A. Diffusion / Conduction",
-            "B. Convection",
-            "C. Radiation"
-        ],
-        "answer": "C",
-        "explanation": "Heat from the Sun reaches planets primarily by radiation, as energy is transmitted through electromagnetic waves across space."
+        "question": "The Jeans criterion determines when a cloud will collapse under gravity. Which inequality expresses it?",
+        "choices": ["A. 3 M c k_B T / m < 3/5 G M^2 / R_c",
+                    "B. 3 M c k_B T / m > 3/5 G M^2 / R_c",
+                    "C. 2 K + U = 0",
+                    "D. v_escape > v_orbital"],
+        "answer": "A. 3 M c k_B T / m < 3/5 G M^2 / R_c",
+        "explanation": "This inequality, derived from the Virial theorem, indicates that when gravitational energy dominates thermal energy, a cloud becomes unstable and collapses."
     },
     {
-        "question": "What is the main difference when solar element abundance and element abundance of a primitive meteorite are compared?",
-        "choices": [
-            "A. The meteorite contains smaller amounts of the volatile elements",
-            "B. The meteorite contains amino acids",
-            "C. The meteorite contains less He because Sun is enriched in He"
-        ],
-        "answer": "A",
-        "explanation": "Primitive meteorites lack volatile elements that can easily evaporate, whereas the Sun retains these elements in its composition."
+        "question": "The Jeans mass MJ gives the minimum mass for gravitational collapse. Which expression is correct?",
+        "choices": ["A. MJ = (5 k_B T / G m)^(3/2) * (3 / 4πρ)^(1/2)",
+                    "B. MJ = (G m / 5 k_B T)^(3/2) * (4πρ / 3)^(1/2)",
+                    "C. MJ = 3 M c k_B T / m",
+                    "D. MJ = R_c^3 / G M^2"],
+        "answer": "A. MJ = (5 k_B T / G m)^(3/2) * (3 / 4πρ)^(1/2)",
+        "explanation": "Starting from the Jeans criterion, this formula gives the critical mass at which a cloud becomes gravitationally unstable and collapses to form stars."
+    },
+    {
+        "question": "Which phenomena are related to planetary environments: Hill sphere, Roche limit, and synchronous orbit?",
+        "choices": ["A. They define regions of gravitational influence and tidal effects around a planet",
+                    "B. They are used to measure a planet’s magnetic field",
+                    "C. They define the atmosphere thickness",
+                    "D. They describe comet trajectories"],
+        "answer": "A. They define regions of gravitational influence and tidal effects around a planet",
+        "explanation": "Hill sphere is the region a planet dominates gravitationally; Roche limit defines tidal disruption of moons; synchronous orbit is where orbital period equals rotation period."
+    },
+    {
+        "question": "True or False: The Roche limit for a planet and moon with equal densities is rRoche ≤ √3/2 R.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Using tidal acceleration and the moon's gravity, the Roche limit shows the closest distance a moon can orbit without being disrupted by planetary tides."
+    },
+    {
+        "question": "The largest impact velocity a meteoroid can have on a planet depends on which factors?",
+        "choices": ["A. The planet’s orbital radius R and the mass M of the star it orbits",
+                    "B. Only the meteoroid’s composition",
+                    "C. Only the planet’s mass",
+                    "D. Only the Sun’s magnetic field"],
+        "answer": "A. The planet’s orbital radius R and the mass M of the star it orbits",
+        "explanation": "The maximum impact velocity is determined by the planet’s orbital speed around the star and the gravitational influence of the star."
+    },
+     {
+        "question": "The formation of stars is possible in:",
+        "choices": ["A. Low-temperature, high-density interstellar clouds",
+                    "B. High-temperature, low-density interstellar clouds",
+                    "C. Low-temperature, low-density interstellar clouds"],
+        "answer": "A. Low-temperature, high-density interstellar clouds",
+        "explanation": "Star formation occurs in regions with high density and low temperatures, allowing gravitational collapse."
+    },
+    {
+        "question": "Which of the products of reactions in the interior of the Sun reaches the Earth?",
+        "choices": ["A. Neutrinos",
+                    "B. Atomic nuclei in the solar wind",
+                    "C. Photons from the solar light"],
+        "answer": "A. Neutrinos",
+        "explanation": "Neutrinos escape directly from the Sun's core and reach Earth almost immediately, whereas photons take thousands of years to reach the surface."
+    },
+    {
+        "question": "The Giant planets grew in the protoplanetary disk by:",
+        "choices": ["A. Collecting smaller planets",
+                    "B. Accumulation of planetesimals, dust, and gas",
+                    "C. Gravitational collapse"],
+        "answer": "B. Accumulation of planetesimals, dust, and gas",
+        "explanation": "Giant planets formed by accreting gas and solid material from the protoplanetary disk, gradually growing larger than terrestrial planets."
+    },
+    {
+        "question": "The rings of Neptune were discovered in 1984:",
+        "choices": ["A. With camera observations from the Voyager 2 spacecraft",
+                    "B. With stellar occultation observations",
+                    "C. With ground-based telescope observations"],
+        "answer": "B. With stellar occultation observations",
+        "explanation": "Stellar occultations allow detection of faint rings when the planet passes in front of a star, revealing rings by dips in starlight."
+    },
+    {
+        "question": "The first exoplanet around a main sequence star was discovered by:",
+        "choices": ["A. Its thermal emission brightness",
+                    "B. The Doppler shift in the spectrum of its host star",
+                    "C. Its transit reducing the brightness of the host star"],
+        "answer": "B. The Doppler shift in the spectrum of its host star",
+        "explanation": "The radial velocity method detects the tiny wobble in a star’s motion caused by the gravitational pull of an orbiting planet."
+    },
+    {
+        "question": "What is the main process of heat transfer from the Sun to the planets?",
+        "choices": ["A. Diffusion",
+                    "B. Convection",
+                    "C. Radiation"],
+        "answer": "C. Radiation",
+        "explanation": "Energy from the Sun is transmitted through space primarily as electromagnetic radiation (light), not by conduction or convection."
+    },
+    {
+        "question": "Several different observations of the Sun are made to monitor the progress of its 11-year cycle. Which of the listed parameters is NOT typically used to monitor the solar cycle?",
+        "choices": ["A. Sunspot number",
+                    "B. Solar flux at radio wavelength",
+                    "C. Solar neutrino flux"],
+        "answer": "C. Solar neutrino flux",
+        "explanation": "Sunspot numbers and solar flux are used to track the solar cycle, while solar neutrino flux remains roughly constant."
+    },
+    {
+        "question": "In comparison to Earth’s orbit, the intensity of sunlight at the orbit of Jupiter is reduced by approximately:",
+        "choices": ["A. 1/5",
+                    "B. 1/25",
+                    "C. 1/125"],
+        "answer": "C. 1/25",
+        "explanation": "Solar intensity decreases with the square of the distance from the Sun. Jupiter is ~5 AU from the Sun, so intensity is 1/25 that at Earth."
+    },
+    {
+        "question": "Short-period comets are observed when they approach the inner solar system from the:",
+        "choices": ["A. Kuiper belt",
+                    "B. Planetary nebula",
+                    "C. Molecular cloud"],
+        "answer": "A. Kuiper belt",
+        "explanation": "Short-period comets originate from the Kuiper belt beyond Neptune and have orbital periods less than 200 years."
+    },
+    {
+        "question": "Which of the following parameters most affected the bulk density of solar system planets at present?",
+        "choices": ["A. Element compositions in the protoplanetary disk",
+                    "B. Condensation temperatures in the protoplanetary disk",
+                    "C. Self-gravity of the planets"],
+        "answer": "A. Element compositions in the protoplanetary disk",
+        "explanation": "Planetary bulk density primarily depends on the mix of rock, metal, and ices in the material from which planets formed."
     },
     {
         "question": "With few exceptions, the planets and other solar system objects orbit the Sun in the same direction. What concept of classical physics explains this observation?",
-        "choices": [
-            "A. Conservation of energy",
-            "B. Conservation of angular momentum",
-            "C. Kepler’s law"
-        ],
-        "answer": "B",
-        "explanation": "The protoplanetary disk's rotation led to most objects conserving angular momentum, causing them to orbit in the same direction."
+        "choices": ["A. Conservation of energy",
+                    "B. Conservation of angular momentum",
+                    "C. Kepler’s laws"],
+        "answer": "B. Conservation of angular momentum",
+        "explanation": "The protoplanetary disk’s initial rotation led to most objects conserving angular momentum, orbiting the Sun in the same direction."
     },
     {
-        "question": "Which of the following parameters most affected the bulk density of solar system planets at present?",
-        "choices": [
-            "A. Element compositions in the protoplanetary disk",
-            "B. Condensation temperatures in the protoplanetary disk",
-            "C. Self-gravity of the planets"
-        ],
-        "answer": "A",
-        "explanation": "The initial elemental composition of the protoplanetary disk determined the rocky or gaseous nature of planets, strongly influencing their bulk density."
-    },
-    {
-        "question": "In comparison to Earth's orbit, the intensity of sunlight at the orbit of Jupiter is reduced by:",
-        "choices": [
-            "A. 1 / 5",
-            "B. 1 / 5^2",
-            "C. 1 / 5^3"
-        ],
-        "answer": "B",
-        "explanation": "The intensity of sunlight decreases with the square of distance from the Sun. Jupiter is about 5 AU from the Sun, so intensity is 1/25 of that at Earth."
-    },
-    {
-        "question": "Discuss how the Hill sphere changes when the planet mass m increases.",
-        "choices": [
-            "A. The Hill sphere radius increases with m^(1/3)",
-            "B. The Hill sphere radius decreases with m^(1/3)",
-            "C. The Hill sphere radius is independent of m",
-            "D: The Hill sphere radius increases linearly with m"
-        ],
-        "answer": "A",
-        "explanation": "The Hill sphere radius r_Hill is proportional to (m/3M)^(1/3) R, so increasing the planet’s mass increases the radius of the region where it can dominate satellite orbits."
-    },
-    {
-        "question": "Discuss how the Hill sphere changes when the distance R between planet and star increases.",
-        "choices": [
-            "A. The Hill sphere radius increases linearly with R",
-            "B. The Hill sphere radius decreases linearly with R",
-            "C. The Hill sphere radius is independent of R",
-            "D: The Hill sphere radius increases with R^(1/3)"
-        ],
-        "answer": "A",
-        "explanation": "The Hill sphere radius is directly proportional to the planet-star distance R, so moving farther from the star expands the gravitational sphere of influence."
-    },
-    {
-        "question": "Give an example of a primary planetary atmosphere.",
-        "choices": [
-            "A. Jupiter’s hydrogen-helium atmosphere",
-            "B. Earth's nitrogen-oxygen atmosphere",
-            "C. Mars' thin carbon dioxide atmosphere",
-            "D: Pluto’s nitrogen-methane atmosphere"
-        ],
-        "answer": "A",
-        "explanation": "Primary atmospheres are captured from the solar nebula, like Jupiter’s hydrogen-helium envelope. Secondary atmospheres form later through outgassing or impacts."
-    },
-    {
-        "question": "Give an example of a secondary planetary atmosphere.",
-        "choices": [
-            "A. Jupiter’s hydrogen-helium atmosphere",
-            "B. Earth’s nitrogen-oxygen atmosphere",
-            "C. Neptune’s hydrogen-helium atmosphere",
-            "D: Saturn’s hydrogen-helium atmosphere"
-        ],
-        "answer": "B",
-        "explanation": "Secondary atmospheres form after the planet's formation, often via outgassing or biological activity, like Earth's atmosphere."
-    },
-    {
-        "question": "What does 'hydrostatic equilibrium' describe in an atmosphere?",
-        "choices": [
-            "A. Balance between gravitational force and pressure gradient",
-            "B. Balance between centrifugal and gravitational forces",
-            "C. The thermal balance between radiation and conduction",
-            "D: The balance between atmospheric convection and rotation"
-        ],
-        "answer": "A",
-        "explanation": "Hydrostatic equilibrium occurs when the downward gravitational force is balanced by the upward pressure gradient in a planetary atmosphere."
-    },
-    {
-        "question": "The Sun follows an 11-year-long solar cycle. How do sunspots change during this cycle?",
-        "choices": [
-            "A. Their number increases and decreases periodically",
-            "B. Their size increases but number stays constant",
-            "C. They move from poles to equator only",
-            "D: They disappear entirely at maximum"
-        ],
-        "answer": "A",
-        "explanation": "Sunspots vary in number with the solar cycle, peaking at solar maximum and decreasing at solar minimum."
-    },
-     {
-        "question": "What is the origin of the name Allende given to the meteorite found in 1969?",
-        "choices": [
-            "A. The name was chosen because of the writer with the same name",
-            "B. It was found in northern Mexico, near the village of Pueblito de Allende",
-            "C. It is by convention named after the person who discovered it in Northern Mexico"
-        ],
-        "answer": "B",
-        "explanation": "The Allende meteorite was named after the village of Pueblito de Allende in northern Mexico where it was found in 1969."
-    },
-    {
-        "question": "Which of the products of the reactions in the interior of the Sun reaches the Earth?",
-        "choices": [
-            "A. Atomic nuclei in the solar wind",
-            "B. Photons from the solar light",
-            "C. Neutrinos"
-        ],
-        "answer": "C",
-        "explanation": "Neutrinos produced in the Sun’s core escape directly and reach Earth almost immediately, unlike photons which take thousands of years to emerge."
-    },
-    {
-        "question": "Which of these objects is observed in the solar system?",
-        "choices": [
-            "A. Exoplanets",
-            "B. Brown dwarfs",
-            "C. Dwarf planets"
-        ],
-        "answer": "C",
-        "explanation": "Dwarf planets like Pluto and Ceres are small solar system objects, whereas exoplanets and brown dwarfs exist outside the solar system."
-    },
-    {
-        "question": "What is the approximate temperature in the interior of the Sun?",
-        "choices": [
-            "A. 10^5 – 10^6 K",
-            "B. 6000 K",
-            "C. 15 × 10^6 K"
-        ],
-        "answer": "C",
-        "explanation": "The core temperature of the Sun is around 15 million Kelvin, which is required for nuclear fusion to occur."
-    },
-    {
-        "question": "With few exceptions, the planets and other solar system objects orbit the Sun in the same direction. What concept of classical physics explains this?",
-        "choices": [
-            "A. Conservation of energy",
-            "B. Conservation of angular momentum",
-            "C. Kepler’s law"
-        ],
-        "answer": "B",
-        "explanation": "The initial rotation of the protoplanetary disk is conserved as angular momentum, causing most bodies to orbit in the same direction."
-    },
-    {
-        "question": "Asteroid families describe asteroids with:",
-        "choices": [
-            "A. Similar composition",
-            "B. Similar orbital parameters, inclination and semi-major axis",
-            "C. Similar size and bulk density"
-        ],
-        "answer": "B",
-        "explanation": "Asteroid families are groups of asteroids sharing similar orbits, likely formed from the breakup of a parent body."
-    },
-    {
-        "question": "Pluto is not classified as a planet anymore because:",
-        "choices": [
-            "A. It turned out its shape is not spherical",
-            "B. It turned out it does not have an atmosphere",
-            "C. It does not clear its orbital region from other objects"
-        ],
-        "answer": "C",
-        "explanation": "Pluto does not dominate its orbit, which is one of the criteria for full planet classification under IAU rules."
-    },
-    {
-        "question": "How was the first extra-solar planet around a main-sequence star discovered?",
-        "choices": [
-            "A. By transit observation",
-            "B. By Doppler shift observation",
-            "C. By thermal emission observation"
-        ],
-        "answer": "B",
-        "explanation": "The first exoplanet around a main-sequence star was detected using the Doppler shift in the host star's spectrum caused by the planet’s gravitational pull."
-    },
-    {
-        "question": "Which of the following parameters most affected the bulk density of solar system planets at present?",
-        "choices": [
-            "A. Element compositions in the protoplanetary disk",
-            "B. Condensation temperatures in the protoplanetary disk",
-            "C. Self-gravity of the planets"
-        ],
-        "answer": "A",
-        "explanation": "The initial elemental composition of the protoplanetary disk determines whether a planet becomes rocky, icy, or gaseous, which strongly affects its density."
-    },
-    {
-        "question": "Several different observations of the Sun are made to monitor the progress of its 11-year cycle; which of the listed parameters is NOT typically used to monitor the solar cycle?",
-        "choices": [
-            "A. Sunspot number",
-            "B. Solar flux at radio wavelength",
-            "C. Solar neutrino flux"
-        ],
-        "answer": "C",
-        "explanation": "Solar neutrino flux is not typically used to monitor the solar cycle because neutrino production in the Sun's core remains relatively constant; sunspots and radio flux vary with the cycle."
-    },
-    {
-        "question": "The Sun follows a periodic change of activity of approximately 11 years. Which of the following parameters is commonly used to measure this cycle?",
-        "choices": [
-            "A. Sunspot number",
-            "B. Solar neutrino flux",
-            "C. Orbital eccentricity of planets"
-        ],
-        "answer": "A",
-        "explanation": "The number of sunspots is the primary observable used to track the Sun's 11-year cycle, as it directly reflects solar magnetic activity."
-    },
-    {
-        "question": "Despite the observation of dark sunspots during solar maximum, why is the Earth's atmosphere found to be slightly warmer during solar maximum than during solar minimum?",
-        "choices": [
-            "A. Increased solar radiation in other wavelengths",
-            "B. Increased reflection from sunspots",
-            "C. Decrease in solar wind velocity"
-        ],
-        "answer": "A",
-        "explanation": "Sunspots themselves are cooler, but the overall solar output increases due to bright regions called faculae, which increases the total solar energy reaching Earth."
-    },
-    {
-        "question": "Which object is used to estimate the flux of interplanetary meteoroids at Mars?",
-        "choices": [
-            "A. Crater counts on Mars and its moons",
-            "B. Orbital period of Mars",
-            "C. Solar rotation period"
-        ],
-        "answer": "A",
-        "explanation": "Meteor flux estimates are derived from crater counts on Mars, Phobos, and Deimos, as well as direct meteor observations."
-    },
-    {
-        "question": "Which of the following best describes a Sun-synchronous orbit?",
-        "choices": [
-            "A. An orbit where the spacecraft always passes over the same solar longitude at the same local solar time",
-            "B. An orbit where the spacecraft remains stationary relative to the Sun",
-            "C. An orbit where the spacecraft stays at a fixed distance from the Earth"
-        ],
-        "answer": "A",
-        "explanation": "A Sun-synchronous orbit precesses so that the spacecraft passes over any given point on the Sun (or Earth) at the same local solar time, useful for continuous observations."
-    },
-    {
-        "question": "A spacecraft travels from Earth to Mars using a Hohmann transfer orbit. Which of the following statements is correct?",
-        "choices": [
-            "A. It follows an elliptical path tangent to Earth's and Mars' orbits",
-            "B. It follows a circular path at constant speed",
-            "C. It requires instantaneous acceleration at the midpoint of the orbit"
-        ],
-        "answer": "A",
-        "explanation": "A Hohmann transfer orbit is an elliptical trajectory tangent to the departure and arrival orbits, optimized for minimum energy transfer."
-    },
-    {
-        "question": "When estimating the flux of interplanetary objects from crater counts on Mars, Phobos, and Deimos, why could the crater counts lead to different estimates?",
-        "choices": [
-            "A. Differences in surface gravity affect crater formation",
-            "B. Differences in surface age and geological activity",
-            "C. Differences in atmospheric presence or absence",
-            "D: All of the above"
-        ],
-        "answer": "D",
-        "explanation": "Crater counts vary due to differences in surface gravity (affecting crater size), surface age or erosion (older surfaces accumulate more craters), and presence or absence of atmosphere (which can burn up meteoroids before impact). Therefore, all these factors can cause different flux estimates on Mars, Phobos, and Deimos."
-    },
-    {
-        "question": "Which of the products of the reactions in the interior of the Sun reaches the Earth?",
-        "choices": [
-            "A. Neutrinos",
-            "B. Atomic nuclei in the solar wind",
-            "C. Photons from the solar light"
-        ],
-        "answer": "A",
-        "explanation": "Neutrinos interact very weakly with matter and can escape the Sun’s core almost immediately, reaching Earth directly. Photons from the core take thousands of years to reach the surface, and atomic nuclei in the solar wind originate from the Sun’s outer layers, not its core fusion reactions."
-    },
-    {
-        "question": "The first exoplanet around a main-sequence star was discovered by:",
-        "choices": [
-            "A. Its thermal emission brightness",
-            "B. The Doppler shift in the spectrum of its host star",
-            "C. Its transit reducing the brightness of the host star"
-        ],
-        "answer": "B",
-        "explanation": "The first exoplanet around a main-sequence star was detected using Doppler spectroscopy, observing the wobble of the star caused by the planet's gravitational pull."
-    },
-    {
-        "question": "Which of the following parameters most affected the bulk density of solar system planets at present?",
-        "choices": [
-            "A. Element compositions in the protoplanetary disk",
-            "B. Condensation temperatures in the protoplanetary disk",
-            "C. Self-gravity of the planets"
-        ],
-        "answer": "A",
-        "explanation": "The bulk density of planets is primarily determined by their elemental composition, which depends on the materials present in the protoplanetary disk during formation."
-    },
-    {
-        "question": "With few exceptions the planets and other solar system objects orbit the Sun in the same direction. What concept of classical physics explains this observation?",
-        "choices": [
-            "A. Conservation of energy",
-            "B. Conservation of angular momentum",
-            "C. Kepler’s laws"
-        ],
-        "answer": "B",
-        "explanation": "The conservation of angular momentum from the rotating protoplanetary disk causes most objects to orbit in the same direction around the Sun."
-    },
-    {
-        "question": "What is the main difference when solar element abundance and element abundance of a primitive meteorite are compared?",
-        "choices": [
-            "A. The meteorite contains aminoacids",
-            "B. The meteorite contains less He because the Sun is enriched in He",
-            "C. The meteorite contains smaller amounts of the volatile elements"
-        ],
-        "answer": "C",
-        "explanation": "Meteorites typically have fewer volatile elements compared to the Sun, which loses some of these elements during formation and evolution."
+        "question": "When comparing solar element abundance and element abundance of a primitive meteorite, what is the main difference?",
+        "choices": ["A. The meteorite contains amino acids",
+                    "B. The meteorite contains less He because the Sun is enriched in He",
+                    "C. The meteorite contains smaller amounts of the volatile elements"],
+        "answer": "C. The meteorite contains smaller amounts of the volatile elements",
+        "explanation": "Meteorites generally lack volatile elements that escaped from the protoplanetary disk, whereas the Sun retains them."
     },
     {
         "question": "The moons of the solar system planets are typically located:",
-        "choices": [
-            "A. Inside the Roche limit of the planet",
-            "B. Inside the Hill sphere of the planet",
-            "C. Inside the Jeans radius"
-        ],
-        "answer": "B",
-        "explanation": "Moons orbit within the Hill sphere, which defines the region where a planet’s gravity dominates over the Sun’s, allowing stable satellite orbits."
+        "choices": ["A. Inside the Roche limit of the planet",
+                    "B. Inside the Hill sphere of the planet",
+                    "C. Inside the Jeans radius"],
+        "answer": "B. Inside the Hill sphere of the planet",
+        "explanation": "The Hill sphere defines the region around a planet where its gravity dominates over the Sun, allowing moons to orbit stably."
     },
     {
         "question": "Asteroid families describe asteroids with:",
-        "choices": [
-            "A. Similar composition",
-            "B. Similar orbital parameters, inclination and semimajor axis",
-            "C. Similar size and bulk density"
-        ],
-        "answer": "B",
-        "explanation": "Asteroid families are identified based on clustering in orbital parameters, such as semimajor axis, eccentricity, and inclination, often indicating a common origin from a parent body."
+        "choices": ["A. Similar composition",
+                    "B. Similar orbital parameters, inclination and semi-major axis",
+                    "C. Similar size and bulk density"],
+        "answer": "B. Similar orbital parameters, inclination and semi-major axis",
+        "explanation": "Asteroid families are groups of asteroids sharing similar orbital elements, indicating a common origin from a parent body."
     },
     {
-        "question": "Explain what the differential equation of hydrostatic equilibrium (∇P = -gρ) means for a planetary atmosphere.",
-        "choices": [
-            "A. It describes the balance between pressure gradient and gravitational force in the atmosphere",
-            "B. It calculates the temperature profile of the atmosphere",
-            "C. It describes the chemical composition of the atmosphere"
-        ],
-        "answer": "A",
-        "explanation": "Hydrostatic equilibrium states that the upward pressure gradient force balances the downward gravitational force, maintaining atmospheric stability."
+        "question": "True or False: Despite sunspots being cooler and darker, Earth’s atmosphere can be slightly warmer during solar maximum than solar minimum.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Increased solar activity during maximum enhances solar irradiance and UV radiation, slightly warming Earth's upper atmosphere despite darker sunspots."
     },
     {
-        "question": "Which assumptions were made to derive the hydrostatic equilibrium equation from the full momentum equation?",
-        "choices": [
-            "A. Neglecting viscosity and acceleration, assuming steady-state conditions",
-            "B. Assuming the atmosphere is incompressible",
-            "C. Ignoring gravitational effects"
-        ],
-        "answer": "A",
-        "explanation": "Deriving hydrostatic equilibrium assumes a steady-state, negligible viscosity, and small vertical accelerations compared to gravity."
+        "question": "The thermal velocity of particles in the solar wind depends primarily on:",
+        "choices": ["A. Temperature of the solar wind",
+                    "B. Distance from the Sun",
+                    "C. Magnetic field strength",
+                    "D. Planetary composition"],
+        "answer": "A. Temperature of the solar wind",
+        "explanation": "Thermal velocity of protons and electrons is determined by the kinetic temperature of the plasma, independent of bulk flow velocity."
     },
     {
-    "question": "The Giant planets grew in the protoplanetary disk by:",
-    "choices": [
-        "A. collecting smaller planets",
-        "B. accumulation of planetesimals, dust, and gas",
-        "C. gravitational collapse"
-    ],
-    "answer": "B",
-    "explanation": "Giant planets formed by gradually accumulating solids and gas from the protoplanetary disk, not by collecting other planets or direct collapse."
+        "question": "True or False: The Hill sphere defines the region around a planet where its gravity dominates over the Sun’s.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Within the Hill sphere, satellites can orbit a planet stably without being pulled away by the Sun."
+    },
+    {
+        "question": "Which assumption is made to derive the hydrostatic equilibrium equation for planetary atmospheres?",
+        "choices": ["A. The atmosphere is in steady-state and velocity terms are negligible",
+                    "B. The atmosphere is fully convective",
+                    "C. The atmosphere rotates as a solid body",
+                    "D. The Sun’s magnetic field is constant"],
+        "answer": "A. The atmosphere is in steady-state and velocity terms are negligible",
+        "explanation": "Hydrostatic equilibrium assumes pressure gradients balance gravity, neglecting large-scale flows or accelerations."
+    },
+    {
+        "question": "The scale height H in a planetary atmosphere is physically interpreted as:",
+        "choices": ["A. The height over which pressure drops by a factor of e",
+                    "B. The total height of the atmosphere",
+                    "C. The distance to the ionosphere",
+                    "D. The maximum altitude for clouds"],
+        "answer": "A. The height over which pressure drops by a factor of e",
+        "explanation": "Scale height H = k_B T / (mg) represents the characteristic height over which atmospheric pressure decreases exponentially."
+    },
+    {
+        "question": "True or False: Comets and Kuiper belt objects share similar compositions, being mostly ices and dust, but comets develop tails when approaching the Sun.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "Kuiper belt objects and comets are both icy bodies, but comets show activity like tails when solar radiation sublimates their ices near the Sun."
+    },
+    {
+        "question": "Which component of a comet is directly influenced by the solar wind?",
+        "choices": ["A. Ion (plasma) tail",
+                    "B. Dust tail",
+                    "C. Nucleus",
+                    "D. Coma"],
+        "answer": "A. Ion (plasma) tail",
+        "explanation": "The ion tail is formed from charged particles carried by the solar wind and always points away from the Sun."
+    },
+    {
+        "question": "True or False: The Sun’s 11-year cycle affects solar wind speed and coronal structure.",
+        "choices": ["A. True", "B. False"],
+        "answer": "A. True",
+        "explanation": "During solar maximum and minimum, sunspot numbers and coronal magnetic structures change, influencing solar wind patterns."
+    },
+     {
+        "question": "Star formation typically begins with:",
+        "choices": ["A. Jeans instability in a molecular cloud",
+                    "B. Collision of two exoplanets",
+                    "C. Encounter of two interstellar clouds"],
+        "answer": "A. Jeans instability in a molecular cloud",
+        "explanation": "Gravitational collapse due to Jeans instability in dense molecular clouds initiates star formation."
+    },
+    {
+        "question": "Which small object in the solar system is typically the most massive?",
+        "choices": ["A. Dwarf planet",
+                    "B. Comet nucleus",
+                    "C. Asteroid"],
+        "answer": "A. Dwarf planet",
+        "explanation": "Dwarf planets are generally larger and more massive than comets or typical asteroids."
+    },
+    {
+        "question": "Primary and secondary planetary atmospheres differ mainly in:",
+        "choices": ["A. How they are acquired: primary from nebula gas, secondary from outgassing or impacts",
+                    "B. Their magnetic field strength",
+                    "C. Their orbital period around the Sun",
+                    "D. Whether they contain water"],
+        "answer": "A. How they are acquired: primary from nebula gas, secondary from outgassing or impacts",
+        "explanation": "Primary atmospheres are captured from the protoplanetary disk, while secondary atmospheres are generated by volcanic outgassing or impacts."
+    },
+    {
+        "question": "Hot Jupiters are:",
+        "choices": ["A. Gas giant exoplanets very close to their stars with high temperatures",
+                    "B. Gas giants in the Kuiper belt",
+                    "C. Young stars forming planets",
+                    "D. Comets with unusually large masses"],
+        "answer": "A. Gas giant exoplanets very close to their stars with high temperatures",
+        "explanation": "Hot Jupiters orbit very close to their stars, causing high surface temperatures due to intense stellar irradiation."
+    },
+    {
+        "question": "Most stars observed in the Milky Way are main sequence stars because:",
+        "choices": ["A. These are all brighter than other stars in the Milky Way",
+                    "B. These are in the vicinity of the solar system",
+                    "C. All stars spend a long time as main sequence stars"],
+        "answer": "C. All stars spend a long time as main sequence stars",
+        "explanation": "Stars spend the majority of their lifetimes fusing hydrogen into helium on the main sequence, making them the most commonly observed stars."
     },
     {
         "question": "Light emitted from the Sun reaches Earth within about 8 minutes. The solar wind emitted at the same time reaches Earth:",
-        "choices": [
-            "A. at the same time",
-            "B. earlier",
-            "C. later"
-        ],
-        "answer": "C",
-        "explanation": "Solar wind particles travel much slower than light, so they reach Earth later than photons from sunlight."
+        "choices": ["A. At the same time",
+                    "B. Earlier",
+                    "C. Later"],
+        "answer": "C. Later",
+        "explanation": "Solar wind particles travel much slower than light and typically take 2–4 days to reach Earth, depending on their speed."
     },
     {
-        "question": "The blackbody temperature of the Earth's moon is:",
-        "choices": [
-            "A. significantly higher because the moon is exposed to the solar wind and Earth is not",
-            "B. significantly lower because the moon's radius is less than 1/3 of Earth's radius",
-            "C. the same because both are at the same distance from the Sun"
-        ],
-        "answer": "C",
-        "explanation": "The Moon and Earth are at nearly the same distance from the Sun, so their equilibrium blackbody temperatures are approximately the same."
+        "question": "The blackbody temperature of the Earth’s Moon is:",
+        "choices": ["A. Significantly higher because the Moon is exposed to the solar wind",
+                    "B. Significantly lower because the Moon’s radius is less than 1/3 of the Earth’s radius",
+                    "C. The same because both are at the same distance from the Sun"],
+        "answer": "C. The same because both are at the same distance from the Sun",
+        "explanation": "Blackbody temperature depends primarily on distance from the Sun and albedo, not on the size of the body."
     },
     {
         "question": "The blackbody temperature of Venus is:",
-        "choices": [
-            "A. higher than that of the Earth",
-            "B. lower than that of the Earth",
-            "C. about the same, because both planets have about the same size"
-        ],
-        "answer": "A",
-        "explanation": "Venus is hotter than Earth due to its thick CO2 atmosphere, which traps heat via the greenhouse effect."
+        "choices": ["A. Higher than that of the Earth",
+                    "B. Lower than that of the Earth",
+                    "C. About the same because both planets have similar size"],
+        "answer": "A. Higher than that of the Earth",
+        "explanation": "Venus has a strong greenhouse effect due to its thick CO₂ atmosphere, raising its surface temperature above Earth’s."
     },
     {
         "question": "The solar system comets contain dust and ice because:",
-        "choices": [
-            "A. they are fragments of the outer icy planets",
-            "B. they formed outside of the ice line in the protoplanetary cloud",
-            "C. they formed in the cold interstellar medium"
-        ],
-        "answer": "B",
-        "explanation": "Comets formed beyond the ice line in the protoplanetary disk where temperatures were low enough for ices to condense, along with dust."
+        "choices": ["A. They are fragments of the outer icy planets",
+                    "B. They formed outside of the ice line in the protoplanetary cloud",
+                    "C. They formed in the cold interstellar medium"],
+        "answer": "B. They formed outside of the ice line in the protoplanetary cloud",
+        "explanation": "Comets formed beyond the ice line where temperatures were low enough for volatile ices to condense along with dust."
     },
     {
-        "question": "Most of the solar wind particles that reach the Earth are:",
-        "choices": [
-            "A. absorbed in the Earth's atmosphere",
-            "B. deflected by the Earth's magnetic field",
-            "C. reach the surface of the Earth without interaction"
-        ],
-        "answer": "B",
-        "explanation": "Earth's magnetic field deflects most solar wind particles, protecting the surface from direct impact."
+        "question": "Most of the solar wind particles that reach Earth are:",
+        "choices": ["A. Absorbed in the Earth’s atmosphere",
+                    "B. Deflected by the Earth’s magnetic field",
+                    "C. Reach the surface of the Earth without interaction"],
+        "answer": "B. Deflected by the Earth’s magnetic field",
+        "explanation": "Earth’s magnetosphere protects the surface by deflecting most solar wind particles."
     },
     {
-        "question": "The term 'habitable zone' is used in astronomy to describe the:",
-        "choices": [
-            "A. region in the solar system that is within the ice line",
-            "B. region around a star where Earth-like planets can have liquid water on the surface",
-            "C. region in the Milky Way where main sequence stars exist"
-        ],
-        "answer": "B",
-        "explanation": "The habitable zone is defined as the orbital region around a star where temperatures allow liquid water to exist on a planet's surface."
+        "question": "Which objects are located in the Sun–Earth Lagrange points?",
+        "choices": ["A. The Jupiter trojans",
+                    "B. ESA’s Solar Heliospheric Observatory (SOHO) spacecraft",
+                    "C. The Mars trojans"],
+        "answer": "B. ESA’s Solar Heliospheric Observatory (SOHO) spacecraft",
+        "explanation": "SOHO is positioned at the Sun–Earth L1 Lagrange point, where gravitational forces allow it to remain in a stable position relative to Earth and the Sun."
+    },
+     {
+        "question": "What is the origin of the name Allende given to the meteorite found in 1969?",
+        "choices": ["A. The name was chosen because of the writer with the same name",
+                    "B. It was found in northern Mexico, near the village of Pueblito de Allende",
+                    "C. It is by convention named after the person who discovered it in Northern Mexico"],
+        "answer": "B. It was found in northern Mexico, near the village of Pueblito de Allende",
+        "explanation": "Meteorites are commonly named after the location where they were found."
     },
     {
-        "question": "The ring systems of planets were discovered in the 20th century. There is one exception:",
-        "choices": [
-            "A. Saturn’s rings are so massive that they are visible even with small telescopes",
-            "B. Uranus’ rings were known by astronomers for centuries because they occult stars",
-            "C. Jupiter’s rings are easily observed because Jupiter is the giant planet closest to Earth"
-        ],
-        "answer": "A",
-        "explanation": "Saturn's rings are visible even with small telescopes, unlike the faint rings of other planets which required modern observations."
+        "question": "Which of these objects is observed in the solar system?",
+        "choices": ["A. Exoplanets",
+                    "B. Brown dwarfs",
+                    "C. Dwarf planets"],
+        "answer": "C. Dwarf planets",
+        "explanation": "Dwarf planets, such as Pluto, are observed in the solar system, while exoplanets are outside the solar system and brown dwarfs are sub-stellar objects."
     },
     {
-        "question": "Which of these objects is/are located in Lagrange points of the Sun–Earth system:",
-        "choices": [
-            "A. the Jupiter trojans",
-            "B. ESA’s Solar Heliospheric Observatory spacecraft: SOHO",
-            "C. the Mars trojans"
-        ],
-        "answer": "B",
-        "explanation": "SOHO is located near the Sun–Earth L1 Lagrange point to continuously monitor the Sun."
+        "question": "What is the approximate temperature in the interior of the Sun?",
+        "choices": ["A. 10^5 – 10^6 K",
+                    "B. 6000 K",
+                    "C. 15 × 10^6 K"],
+        "answer": "C. 15 × 10^6 K",
+        "explanation": "The core of the Sun reaches temperatures of about 15 million Kelvin, where nuclear fusion occurs."
     },
     {
-        "question": "What is the main process of heat transfer from Sun to planets:",
-        "choices": [
-            "A. diffusion",
-            "B. convection",
-            "C. radiation"
-        ],
-        "answer": "C",
-        "explanation": "Energy from the Sun reaches planets primarily via radiation, not conduction or convection."
+        "question": "Pluto is not classified as a planet anymore because:",
+        "choices": ["A. It turned out its shape is not spherical",
+                    "B. It turned out it does not have an atmosphere",
+                    "C. It does not clear its orbital region from other objects"],
+        "answer": "C. It does not clear its orbital region from other objects",
+        "explanation": "The IAU redefined planets in 2006; Pluto is classified as a dwarf planet because it shares its orbit with other objects in the Kuiper belt."
     },
     {
-        "question": "Long-period comets are observed when they approach the vicinity of the Sun from:",
+        "question": "Several different observations of the Sun are made to monitor the progress of its 11-year cycle; which parameter is NOT typically used?",
+        "choices": ["A. Sunspot number",
+                    "B. Solar flux at radio wavelength",
+                    "C. Solar neutrino flux"],
+        "answer": "C. Solar neutrino flux",
+        "explanation": "Sunspot numbers and solar radio flux are used to track the solar cycle; solar neutrino flux remains roughly constant."
+    },
+     {
+        "question": "Which step is part of the currently accepted formation of the solar system?",
         "choices": [
-            "A. Oort cloud",
-            "B. planetary nebula",
-            "C. molecular cloud"
+            "A. Collapse of a molecular cloud into a rotating disk",
+            "B. Instant creation of planets from interstellar dust",
+            "C. Planets forming before the Sun",
+            "D. Stars forming from planetary collisions"
         ],
-        "answer": "A",
-        "explanation": "Long-period comets originate from the distant Oort cloud and are seen when they enter the inner solar system."
-    }
+        "answer": "A. Collapse of a molecular cloud into a rotating disk",
+        "explanation": "The solar system formed from a collapsing molecular cloud that flattened into a rotating protoplanetary disk, where planets eventually accreted."
+    },
+    {
+        "question": "What does it mean for a celestial body to be tidally locked?",
+        "choices": [
+            "A. Its rotational period equals its orbital period around another body",
+            "B. Its orbit is highly eccentric",
+            "C. It has no atmosphere",
+            "D. It always orbits in the equatorial plane"
+        ],
+        "answer": "A. Its rotational period equals its orbital period around another body",
+        "explanation": "Tidal locking occurs when a body's rotation period matches its orbital period, causing the same face to always point toward its partner (like the Moon and Earth)."
+    },
+    {
+        "question": "Which factor primarily shapes the Earth’s magnetosphere?",
+        "choices": [
+            "A. Interaction of solar wind with Earth's magnetic field",
+            "B. Earth’s orbital speed around the Sun",
+            "C. The Moon’s gravitational pull",
+            "D. Earth's atmosphere density"
+        ],
+        "answer": "A. Interaction of solar wind with Earth's magnetic field",
+        "explanation": "The solar wind compresses the magnetosphere on the day side and stretches it into a long tail on the night side, producing the characteristic shape."
+    },
+    {
+        "question": "Why does Earth’s average surface temperature differ from its blackbody temperature?",
+        "choices": [
+            "A. Due to atmospheric greenhouse effects and albedo",
+            "B. Because Earth is closer to the Sun than calculated",
+            "C. The Moon reflects sunlight onto Earth",
+            "D. Solar wind increases surface temperature directly"
+        ],
+        "answer": "A. Due to atmospheric greenhouse effects and albedo",
+        "explanation": "The blackbody calculation ignores greenhouse gases and surface reflectivity, which trap heat and modify the temperature."
+    },
+    {
+        "question": "The Hill radius of a planet defines:",
+        "choices": [
+            "A. The region where the planet’s gravity dominates over the star’s gravity",
+            "B. The maximum radius of the planet",
+            "C. The Roche limit of the planet",
+            "D. The orbital speed of moons"
+        ],
+        "answer": "A. The region where the planet’s gravity dominates over the star’s gravity",
+        "explanation": "The Hill sphere is the region around a planet within which satellites can orbit without being pulled away by the star."
+    },
+    {
+        "question": "The Roche limit determines:",
+        "choices": [
+            "A. The closest distance a moon can orbit a planet without being tidally disrupted",
+            "B. The farthest stable orbit of a planet",
+            "C. The distance at which tides stop affecting a moon",
+            "D. The size limit of asteroids"
+        ],
+        "answer": "A. The closest distance a moon can orbit a planet without being tidally disrupted",
+        "explanation": "Within the Roche limit, tidal forces exceed the self-gravity of a satellite, potentially breaking it apart."
+    },
+    {
+        "question": "In a gravitational potential, a particle with total energy E greater than zero will:",
+        "choices": [
+            "A. Escape to infinity on a hyperbolic trajectory",
+            "B. Remain in a stable circular orbit",
+            "C. Oscillate between two radii indefinitely",
+            "D. Fall directly into the central mass"
+        ],
+        "answer": "A. Escape to infinity on a hyperbolic trajectory",
+        "explanation": "If the total energy is positive, the particle is unbound and follows an open (hyperbolic or parabolic) trajectory away from the central mass."
+    },
+    {
+    "question": "Which of the following statements about meteors, meteorites, and craters is correct?",
+    "choices": [
+        "A. Earth has meteors, meteorites, and craters",
+        "B. Moon has meteors but no meteorites",
+        "C. Mars has no craters",
+        "D. Meteors occur only on Earth"
+    ],
+    "answer": "A. Earth has meteors, meteorites, and craters",
+    "explanation": "Earth's atmosphere burns up many meteoroids (meteors) but some reach the surface (meteorites). Craters exist on all rocky bodies but are more visible on bodies without erosion."
+    },
+    {
+    "question": "What is a key difference between the b Pictoris debris disk and the solar system's interplanetary dust cloud?",
+    "choices": [
+        "A. The b Pictoris disk is much more extended",
+        "B. The solar system has no dust",
+        "C. Both are composed entirely of gas",
+        "D. Only b Pictoris contains planets"
+    ],
+    "answer": "A. The b Pictoris disk is much more extended",
+    "explanation": "The b Pictoris debris disk spans ~1500 AU, far larger than the solar system's zodiacal dust cloud, but both contain small dust particles orbiting their central star."
+    },
+    {
+    "question": "What do the b Pictoris debris disk and the solar system's dust cloud have in common?",
+    "choices": [
+        "A. Both contain dust particles orbiting a star",
+        "B. Both are remnants of planetary collisions only",
+        "C. Both contain no planets",
+        "D. Both are fully gaseous"
+    ],
+    "answer": "A. Both contain dust particles orbiting a star",
+    "explanation": "Despite differences in size and structure, both consist of small dust particles orbiting their respective stars."
+    },
+    {
+    "question": "How was the first exoplanet around a main-sequence star detected?",
+    "choices": [
+        "A. By direct imaging",
+        "B. By the Doppler shift of the star's spectrum",
+        "C. By measuring star spots",
+        "D. By the planet's thermal radiation"
+    ],
+    "answer": "B. By the Doppler shift of the star's spectrum",
+    "explanation": "The radial velocity (Doppler) method detects a star's motion due to the gravitational pull of orbiting planets; Kepler’s laws alone cannot detect exoplanets."
+    },
+    {
+    "question": "An asteroid has a semi-major axis of 3.1 AU and eccentricity 0.60. Its perihelion distance is closest to:",
+    "choices": [
+        "A. 1.24 AU",
+        "B. 2.0 AU",
+        "C. 3.1 AU",
+        "D. 4.96 AU"
+    ],
+    "answer": "A. 1.24 AU",
+    "explanation": "Perihelion = a(1-e) = 3.1*(1-0.6) ≈ 1.24 AU. Aphelion = a(1+e) ≈ 4.96 AU."
+    }, 
+    {
+    "question": "Which solar system body has an ionosphere and why?",
+    "choices": [
+        "A. Earth, because solar radiation ionizes the upper atmosphere",
+        "B. Moon, because it has strong volcanic activity",
+        "C. Mars, because it has no atmosphere",
+        "D. Mercury, because it has a thick atmosphere"
+    ],
+    "answer": "A. Earth, because solar radiation ionizes the upper atmosphere",
+    "explanation": "An ionosphere forms where solar UV and X-rays ionize atmospheric particles. The Moon has no atmosphere, and Mercury and Mars have very thin atmospheres."
+    },
+    {
+        "question": "If asked to derive the blackbody temperature of a planet, which steps would you take?",
+        "choices": [
+            "A. Use the Stefan-Boltzmann law, set absorbed solar power equal to emitted thermal power",
+            "B. Measure the planet with a thermometer",
+            "C. Assume the planet has the same temperature as the Sun",
+            "D. Use Kepler's third law directly"
+        ],
+        "answer": "A. Use the Stefan-Boltzmann law, set absorbed solar power equal to emitted thermal power",
+        "explanation": "The blackbody temperature comes from energy balance between incoming solar radiation and thermal emission."
+    },
+    {
+        "question": "When calculating the Roche limit for a planet and satellite, what is your general approach?",
+        "choices": [
+            "A. Compare tidal forces to the satellite's self-gravity",
+            "B. Measure the planet’s temperature",
+            "C. Calculate orbital period only",
+            "D. Determine the planet's escape velocity"
+        ],
+        "answer": "A. Compare tidal forces to the satellite's self-gravity",
+        "explanation": "The Roche limit is derived by balancing tidal forces trying to pull apart a satellite with its internal gravitational cohesion."
+    },
+    {
+        "question": "How would you estimate the Hill radius of a planet?",
+        "choices": [
+            "A. Use the formula r_Hill = R * (m/(3M))^(1/3) where m is planet mass, M is star mass, R is orbital distance",
+            "B. Measure the size of the planet’s rings",
+            "C. Measure the planet’s rotation period",
+            "D. Estimate from the planet’s density"
+        ],
+        "answer": "A. Use the formula r_Hill = R * (m/(3M))^(1/3) where m is planet mass, M is star mass, R is orbital distance",
+        "explanation": "The Hill radius defines the region where a planet’s gravity dominates over its star, allowing stable satellite orbits."
+    },
+    {
+        "question": "To calculate the perihelion and aphelion of an asteroid orbit, which quantities do you need?",
+        "choices": [
+            "A. Semi-major axis and eccentricity",
+            "B. Planet mass only",
+            "C. Radius of the asteroid",
+            "D. The asteroid’s albedo"
+        ],
+        "answer": "A. Semi-major axis and eccentricity",
+        "explanation": "Perihelion = a(1-e) and aphelion = a(1+e). These are derived directly from orbital parameters."
+    },
+    {
+        "question": "When asked to estimate the solar wind speed required to compress Mercury’s magnetosphere, which physical principles would you use?",
+        "choices": [
+            "A. Equate solar wind dynamic pressure to magnetic pressure",
+            "B. Use Kepler’s laws",
+            "C. Use the planet’s temperature only",
+            "D. Measure solar flares visually"
+        ],
+        "answer": "A. Equate solar wind dynamic pressure to magnetic pressure",
+        "explanation": "The solar wind compresses the magnetosphere where dynamic pressure equals magnetic pressure from the planetary field."
+    },
+    {
+        "question": "If you were asked to estimate the temperature of an exoplanet in radiation balance, what steps would you take?",
+        "choices": [
+            "A. Use the star's luminosity, distance from the planet, albedo, and Stefan-Boltzmann law",
+            "B. Assume it has the same temperature as Earth",
+            "C. Measure with a telescope directly",
+            "D. Estimate from the planet’s mass alone"
+        ],
+        "answer": "A. Use the star's luminosity, distance from the planet, albedo, and Stefan-Boltzmann law",
+        "explanation": "The equilibrium temperature comes from the absorbed stellar radiation balanced by thermal emission of the planet."
+    },
+    {
+        "question": "How would you calculate the Hohmann transfer time from Earth to Mars?",
+        "choices": [
+            "A. Use orbital mechanics formulas for the semi-major axis of the transfer ellipse and Kepler’s third law",
+            "B. Measure the distance with a ruler",
+            "C. Estimate based on solar wind",
+            "D. Use the planet’s mass only"
+        ],
+        "answer": "A. Use orbital mechanics formulas for the semi-major axis of the transfer ellipse and Kepler’s third law",
+        "explanation": "The Hohmann transfer time is half the orbital period of the elliptical orbit connecting Earth and Mars."
+    },
+    {
+        "question": "To determine whether a meteoroid will reach Mars, what approach would you use?",
+        "choices": [
+            "A. Analyze the meteoroid’s orbit relative to Mars and its velocity at intersection",
+            "B. Measure Mars’ surface temperature",
+            "C. Use the Sun’s blackbody radiation",
+            "D. Check if Mars has moons"
+        ],
+        "answer": "A. Analyze the meteoroid’s orbit relative to Mars and its velocity at intersection",
+        "explanation": "You need to know the meteoroid's orbit and relative velocity to determine if it will collide with Mars."
+    },
+    {
+        "question": "How would you approach deriving the effective potential for a particle orbiting a mass M?",
+        "choices": [
+            "A. Combine the gravitational potential energy with the centrifugal potential term from angular momentum",
+            "B. Use only the gravitational potential",
+            "C. Measure the particle’s velocity with a telescope",
+            "D. Use Kepler’s third law alone"
+        ],
+        "answer": "A. Combine the gravitational potential energy with the centrifugal potential term from angular momentum",
+        "explanation": "The effective potential includes the radial gravitational potential plus the angular momentum term L²/(2mr²)."
+    },
+    {
+        "question": "If asked to calculate the temperature difference between Earth’s blackbody temperature and actual average temperature, what would you do?",
+        "choices": [
+            "A. Consider the greenhouse effect, atmospheric composition, and albedo",
+            "B. Assume both are equal",
+            "C. Use only the solar constant",
+            "D. Use the Moon’s temperature as a reference"
+        ],
+        "answer": "A. Consider the greenhouse effect, atmospheric composition, and albedo",
+        "explanation": "Earth’s actual temperature is higher than its simple blackbody temperature due to greenhouse gases and reflective properties."
+    },
+    {
+        "question": "How would you determine the distance range for stable moons around an exoplanet?",
+        "choices": [
+            "A. Use the Hill radius and the planet’s mass and orbital distance",
+            "B. Measure the planet’s brightness",
+            "C. Use Kepler’s first law alone",
+            "D. Estimate from the star’s temperature"
+        ],
+        "answer": "A. Use the Hill radius and the planet’s mass and orbital distance",
+        "explanation": "The Hill radius gives the region around a planet where moons can have stable orbits without being pulled away by the star."
+    },
+    {
+        "question": "To estimate the temperature of a planet assuming it is a blackbody, which factors do you need?",
+        "choices": [
+            "A. Star luminosity, orbital distance, planetary albedo",
+            "B. Only the planet’s radius",
+            "C. Only the planet’s mass",
+            "D. Only the orbital eccentricity"
+        ],
+        "answer": "A. Star luminosity, orbital distance, planetary albedo",
+        "explanation": "The equilibrium temperature comes from balancing absorbed stellar radiation and emitted thermal radiation."
+    },
+    {
+        "question": "How would you estimate the velocity of meteors on Mars from bound orbit meteoroids?",
+        "choices": [
+            "A. Use energy conservation between orbiting meteoroid and Mars gravitational potential",
+            "B. Assume they all have the same velocity as Earth meteors",
+            "C. Measure the meteors with a camera directly",
+            "D. Use Mars surface temperature"
+        ],
+        "answer": "A. Use energy conservation between orbiting meteoroid and Mars gravitational potential",
+        "explanation": "The velocity is determined by the gravitational potential of Mars and the initial orbital energy of the meteoroid."
+    },
+    {
+        "question": "When tasked with explaining why a body is tidally locked, what reasoning would you use?",
+        "choices": [
+            "A. Discuss gravitational torque and energy dissipation over time leading to synchronous rotation",
+            "B. Assume the body rotates freely",
+            "C. Compare it to the Sun’s rotation",
+            "D. Use Kepler’s third law only"
+        ],
+        "answer": "A. Discuss gravitational torque and energy dissipation over time leading to synchronous rotation",
+        "explanation": "Tidal forces cause a body to gradually synchronize its rotation period with its orbital period."
+    },
+    {
+        "question": "If asked to sketch the Earth’s magnetosphere and explain its shape, what would your approach be?",
+        "choices": [
+            "A. Draw a compressed sunward side and elongated tail, and explain with solar wind pressure and Earth's magnetic field",
+            "B. Draw a perfect sphere without explanation",
+            "C. Use the Moon’s magnetosphere as reference",
+            "D. Explain using only gravity"
+        ],
+        "answer": "A. Draw a compressed sunward side and elongated tail, and explain with solar wind pressure and Earth's magnetic field",
+        "explanation": "The shape arises from the balance between the solar wind dynamic pressure and the Earth’s magnetic pressure."
+    } 
 
 ]
 
