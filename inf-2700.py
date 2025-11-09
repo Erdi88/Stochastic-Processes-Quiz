@@ -56,12 +56,7 @@ questions = [
         "answer": "A. True",
         "explanation": "Leaf nodes in B+-trees store data or pointers to data for efficient search."
     },
-    {
-        "question": "What does SQL's DISTINCT keyword do?",
-        "choices": ["A. Orders rows", "B. Removes duplicates", "C. Filters rows", "D. Aggregates values"],
-        "answer": "B. Removes duplicates",
-        "explanation": "DISTINCT ensures each row in the result is unique."
-    },
+    
     {
         "question": "Which of the following is a condition for a relation to be in BCNF?",
         "choices": ["A. All attributes are numeric", "B. Every determinant is a candidate key", "C. No duplicate rows", "D. Only one primary key exists"],
@@ -300,12 +295,6 @@ questions = [
         "explanation": "Composite keys use multiple columns to uniquely identify a row."
     },
     {
-        "question": "Which SQL clause specifies conditions to filter rows before aggregation?",
-        "choices": ["A. HAVING", "B. WHERE", "C. GROUP BY", "D. ORDER BY"],
-        "answer": "B. WHERE",
-        "explanation": "WHERE filters rows before GROUP BY or aggregation is applied."
-    },
-    {
         "question": "True or False: A view can be used to simplify complex queries for users.",
         "choices": ["A. True", "B. False"],
         "answer": "A. True",
@@ -438,12 +427,6 @@ questions = [
         "explanation": "Clustered indexes physically order table data according to the key."
     },
     {
-        "question": "Which SQL function counts the number of rows in a table?",
-        "choices": ["A. COUNT", "B. SUM", "C. AVG", "D. TOTAL"],
-        "answer": "A. COUNT",
-        "explanation": "COUNT returns the total number of rows satisfying a condition."
-    },
-    {
         "question": "True or False: Normalization always improves query performance.",
         "choices": ["A. True", "B. False"],
         "answer": "B. False",
@@ -460,12 +443,6 @@ questions = [
         "choices": ["A. True", "B. False"],
         "answer": "A. True",
         "explanation": "Two-phase locking ensures serializability with growing and shrinking phases."
-    },
-    {
-        "question": "Which SQL clause sorts the results of a query?",
-        "choices": ["A. WHERE", "B. ORDER BY", "C. GROUP BY", "D. HAVING"],
-        "answer": "B. ORDER BY",
-        "explanation": "ORDER BY arranges the output rows according to specified columns."
     },
     {
         "question": "True or False: A fuzzy checkpoint allows updates during checkpoint creation to reduce system downtime.",
@@ -490,18 +467,6 @@ questions = [
         "choices": ["A. DELETE", "B. TRUNCATE", "C. DROP", "D. REMOVE"],
         "answer": "A. DELETE",
         "explanation": "DELETE removes rows matching the WHERE condition."
-    },
-     {
-        "question": "Which type of join returns only rows that match in both tables?",
-        "choices": ["A. Inner Join", "B. Left Outer Join", "C. Right Outer Join", "D. Full Outer Join"],
-        "answer": "A. Inner Join",
-        "explanation": "Inner Join returns only rows where the join condition is satisfied in both tables."
-    },
-    {
-        "question": "True or False: A composite primary key is a primary key consisting of more than one attribute.",
-        "choices": ["A. True", "B. False"],
-        "answer": "A. True",
-        "explanation": "Composite keys combine multiple attributes to uniquely identify a row."
     },
     {
         "question": "Which SQL query lists students who have taken both course INF-1101 and INF-2700?",
@@ -532,12 +497,6 @@ questions = [
         "choices": ["A. Dirty Read", "B. Lost Update", "C. Unrepeatable Read", "D. Phantom Read"],
         "answer": "B. Lost Update",
         "explanation": "A lost update happens when one transaction overwrites another transaction’s changes."
-    },
-    {
-        "question": "Which SQL keyword is used to prevent duplicates in the result of a SELECT query?",
-        "choices": ["A. DISTINCT", "B. UNIQUE", "C. GROUP BY", "D. HAVING"],
-        "answer": "A. DISTINCT",
-        "explanation": "DISTINCT removes duplicate rows from the query result."
     },
     {
         "question": "True or False: A checkpoint allows the database to recover faster after a crash.",
@@ -604,12 +563,6 @@ questions = [
         "choices": ["A. True", "B. False"],
         "answer": "A. True",
         "explanation": "Dependency preservation ensures constraints can be checked on decomposed tables individually."
-    },
-    {
-        "question": "Which SQL command removes a table completely from the database?",
-        "choices": ["A. DELETE", "B. TRUNCATE", "C. DROP", "D. REMOVE"],
-        "answer": "C. DROP",
-        "explanation": "DROP deletes the table schema and all its data permanently."
     },
     {
         "question": "True or False: Hash file organization is better for sequential range queries than B+-tree file organization.",
@@ -766,3 +719,4 @@ st.markdown("</div>", unsafe_allow_html=True)
 st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
+
