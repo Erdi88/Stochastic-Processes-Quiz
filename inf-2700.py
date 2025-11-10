@@ -21,6 +21,18 @@ questions = [
         "explanation": "Primary keys must uniquely identify each row and cannot be NULL."
     },
     {
+    "question": "What is two-phase locking (2PL), and how do strict and rigorous 2PL differ from the basic version?",
+    "choices": [
+        "A. 2PL is a protocol where a transaction has a growing and shrinking phase for acquiring and releasing locks; strict 2PL holds all exclusive locks until commit, while rigorous 2PL holds all locks until commit to prevent cascading rollbacks and ensure serializability.",
+        "B. 2PL is a concurrency control method that allows locks to be acquired and released at any time; strict and rigorous 2PL reduce concurrency by adding time delays.",
+        "C. 2PL is a recovery mechanism for crashed transactions; strict and rigorous 2PL optimize memory usage.",
+        "D. 2PL is a deadlock prevention algorithm; strict and rigorous 2PL remove the need for locks entirely."
+    ],
+    "answer": "A. 2PL is a protocol where a transaction has a growing and shrinking phase for acquiring and releasing locks; strict 2PL holds all exclusive locks until commit, while rigorous 2PL holds all locks until commit to prevent cascading rollbacks and ensure serializability.",
+    "explanation": "In two-phase locking, transactions first acquire locks (growing phase) and then release them (shrinking phase). Strict 2PL keeps exclusive locks until commit to prevent cascading rollbacks, while rigorous 2PL keeps both shared and exclusive locks until commit, providing stronger isolation."
+    },
+
+    {
         "question": "Which SQL clause is used to filter rows after a GROUP BY?",
         "choices": ["A. WHERE", "B. HAVING", "C. ORDER BY", "D. SELECT"],
         "answer": "B. HAVING",
@@ -1030,6 +1042,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 st.progress((st.session_state.q_index + 1) / len(st.session_state.shuffled_questions))
 st.caption(f"Question {st.session_state.q_index + 1} of {len(st.session_state.shuffled_questions)}")
 st.metric("Score", f"{st.session_state.score} / {len(st.session_state.shuffled_questions)}")
+
 
 
 
